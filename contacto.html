@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Slushy App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+       <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">Slushy</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="#" class="nav-link">Servicios</a></li>
+                        <li><a href="vip.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                <li><a href="index.html#servicios" class="mobile-nav-link">Servicios</a></li>
+                <li><a href="index.html#vip" class="mobile-nav-link">Membresía VIP</a></li>
+                <li><a href="index.html#recompensas" class="mobile-nav-link">Recompensas</a></li>
+                <li><a href="#" class="mobile-nav-link">Contacto</a></li>
+                <li><a href="#" class="mobile-nav-link">Mi Perfil</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header" style="background-color: var(--primary-light); padding: 3rem 0;">
+        <div class="container">
+            <h1 class="page-title">Contacto</h1>
+            <p class="page-description">Estamos aquí para ayudarte. Contáctanos para cualquier consulta o sugerencia.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2 style="margin-bottom: 1.5rem;">Envíanos un Mensaje</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Nombre Completo</label>
+                            <input type="text" class="form-input" id="name" placeholder="Tu nombre completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Correo Electrónico</label>
+                            <input type="email" class="form-input" id="email" placeholder="Tu correo electrónico" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Teléfono</label>
+                            <input type="tel" class="form-input" id="phone" placeholder="Tu número de teléfono">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Asunto</label>
+                            <select class="form-select" id="subject" required>
+                                <option value="" selected disabled>Selecciona un asunto</option>
+                                <option value="reserva">Consulta sobre reservas</option>
+                                <option value="servicio">Información de servicios</option>
+                                <option value="vip">Membresía VIP</option>
+                                <option value="sugerencia">Sugerencia</option>
+                                <option value="queja">Queja o reclamo</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensaje</label>
+                            <textarea class="form-textarea" id="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h2 style="margin-bottom: 1.5rem;">Información de Contacto</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Dirección</h3>
+                            <p>Av. Principal 123, Ciudad Central</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Teléfono</h3>
+                            <p>+123 456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>info@slushyapp.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Horario de Atención</h3>
+                            <p>Lunes a Viernes: 8:00 AM - 7:00 PM<br>
+                            Sábados: 9:00 AM - 5:00 PM<br>
+                            Domingos: 10:00 AM - 3:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-contact">
+                        <a href="#" class="social-contact-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-contact-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-contact-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-contact-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container" style="margin-top: 3rem;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d-79.9191697!3d-2.1705686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwMTAnMTQuMCJTIDc5wrA1NScwOS4wIlc!5e0!3m2!1ses!2sec!4v1610123456789!5m2!1ses!2sec" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" style="padding: 3rem 0; background-color: var(--secondary);">
+        <div class="container">
+            <h2 style="margin-bottom: 2rem; text-align: center;">Preguntas Frecuentes</h2>
+            
+            <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo puedo reservar un servicio?</div>
+                    <div class="faq-answer">
+                        Puedes reservar un servicio a través de nuestra aplicación móvil, en nuestro sitio web o llamando directamente a nuestro número de teléfono. También aceptamos clientes sin cita previa, aunque el tiempo de espera puede variar según la demanda.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué métodos de pago aceptan?</div>
+                    <div class="faq-answer">
+                        Aceptamos efectivo, tarjetas de crédito/débito (Visa, MasterCard, American Express), transferencias bancarias y pagos a través de nuestra aplicación móvil. También ofrecemos opciones de pago para miembros VIP con facturación mensual.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo funciona la membresía VIP?</div>
+                    <div class="faq-answer">
+                        Nuestra membresía VIP ofrece beneficios exclusivos como lavados gratuitos, descuentos en servicios adicionales, acceso prioritario y más. Tenemos planes mensuales, trimestrales y anuales. Puedes registrarte en nuestra aplicación o en nuestras instalaciones.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué hago si tengo una queja o sugerencia?</div>
+                    <div class="faq-answer">
+                        Valoramos tus comentarios. Puedes enviarnos tus quejas o sugerencias a través del formulario de contacto en esta página, por correo electrónico a feedback@slushyapp.com, o hablar directamente con nuestro gerente en las instalaciones.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">¿Ofrecen servicio a domicilio?</div>
+                    <div class="faq-answer">
+                        Actualmente no ofrecemos servicio a domicilio para lavado de autos, pero estamos trabajando en implementar esta opción en el futuro. Te recomendamos estar atento a nuestras redes sociales para anuncios sobre nuevos servicios.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <div class="logo-icon">S</div>
+                        <span class="logo-text">Slushy</span>
+                    </div>
+                    <p class="footer-description">
+                        La mejor aplicación para el cuidado de tu vehículo. Reserva citas, monitorea el progreso y disfruta de beneficios exclusivos.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Nuestros Servicios</a></li>
+                        <li><a href="index.html#vip" class="footer-link">Membresía VIP</a></li>
+                        <li><a href="index.html#recompensas" class="footer-link">Sistema de Recompensas</a></li>
+                        <li><a href="#" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h3 class="footer-title">Servicios</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Básico</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Premium</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Deluxe</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Exprés</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Encerado</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">Suscríbete</h3>
+                    <p class="footer-description">
+                        Recibe nuestras últimas noticias y promociones exclusivas
+                    </p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© <span id="currentYear">2023</span> Slushy App. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+        
+        // FAQ Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', function() {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te responderemos a la brevedad posible.');
+            this.reset();
+        });
+        
+        // Update current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

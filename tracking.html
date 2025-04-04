@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Servicio - Slushy App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+ <!-- Header -->
+ <header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">G</div>
+                <span class="logo-text">Slushy</span>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link">Servicios</a></li>
+                    <li><a href="vip.html" class="nav-link">Membresía VIP</a></li>
+                    <li><a href="recompensas.html" class="nav-link">Recompensas</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn-icon">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                <li><a href="index.html#servicios" class="mobile-nav-link">Servicios</a></li>
+                <li><a href="index.html#vip" class="mobile-nav-link">Membresía VIP</a></li>
+                <li><a href="index.html#recompensas" class="mobile-nav-link">Recompensas</a></li>
+                <li><a href="index.html#contacto" class="mobile-nav-link">Contacto</a></li>
+                <li><a href="#" class="mobile-nav-link">Mi Perfil</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header" style="background-color: var(--primary-light); padding: 3rem 0;">
+        <div class="container">
+            <h1 class="page-title">Seguimiento de Servicio</h1>
+            <p class="page-description">Monitorea el progreso de tu vehículo en tiempo real</p>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="tracking-section" style="padding: 3rem 0;">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Ingresa tu código de seguimiento" value="SL-12345">
+                <button class="btn btn-primary">Buscar</button>
+            </div>
+            
+            <div class="card" style="background-color: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 2rem; margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
+                    <div>
+                        <h2 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <i class="fas fa-car" style="color: var(--primary);"></i>
+                            Servicio #SL-12345
+                        </h2>
+                        <p style="color: var(--gray);">Toyota Corolla (Sedán) • Lavado Premium</p>
+                    </div>
+                    <span style="background-color: #f59e0b; color: white; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">En Proceso</span>
+                </div>
+                
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-size: 0.875rem; font-weight: 500;">Progreso del Servicio</span>
+                        <span style="font-size: 0.875rem; font-weight: 500;">60%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <p class="info-label">Tiempo Estimado Restante</p>
+                            <p class="info-value">15 minutos</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="info-content">
+                            <p class="info-label">Inicio del Servicio</p>
+                            <p class="info-value">10:30 AM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-weight: 600; margin-bottom: 1rem;">Etapas del Proceso</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-info">
+                                    <h4 class="timeline-title">Recepción</h4>
+                                    <p class="timeline-description">Vehículo recibido y en espera</p>
+                                </div>
+                                <div class="timeline-time">
+                                    <p>10:30 AM</p>
+                                    <p class="timeline-status">Completado</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-info">
+                                    <h4 class="timeline-title">Lavado con Espuma</h4>
+                                    <p class="timeline-description">Aplicación de espuma y detergente</p>
+                                </div>
+                                <div class="timeline-time">
+                                    <p>10:40 AM</p>
+                                    <p class="timeline-status">Completado</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-info">
+                                    <h4 class="timeline-title">Enjuague</h4>
+                                    <p class="timeline-description">Eliminación de espuma y suciedad</p>
+                                </div>
+                                <div class="timeline-time">
+                                    <p>10:55 AM</p>
+                                    <p class="timeline-status" style="color: var(--primary);">En proceso</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-sparkles"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-info">
+                                    <h4 class="timeline-title">Secado y Detalles</h4>
+                                    <p class="timeline-description">Secado manual y limpieza de detalles</p>
+                                </div>
+                                <div class="timeline-time">
+                                    <p>Pendiente</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-info">
+                                    <h4 class="timeline-title">Listo para Recoger</h4>
+                                    <p class="timeline-description">Vehículo listo y en espera de recogida</p>
+                                </div>
+                                <div class="timeline-time">
+                                    <p>Pendiente</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                    <button class="btn btn-outline">Contactar Soporte</button>
+                    <button class="btn btn-primary">Actualizar Estado</button>
+                </div>
+            </div>
+            
+            <div class="additional-info">
+                <h3>Información Adicional</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <span class="check-icon"></span>
+                        <span>Recibirás una notificación cuando tu vehículo esté listo para recoger.</span>
+                    </li>
+                    <li class="info-item">
+                        <span class="check-icon"></span>
+                        <span>Tienes hasta 30 minutos después de completado el servicio para recoger tu vehículo sin cargos adicionales.</span>
+                    </li>
+                    <li class="info-item">
+                        <span class="check-icon"></span>
+                        <span>Si tienes alguna pregunta, puedes contactar a nuestro equipo de soporte.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <div class="logo-icon">S</div>
+                        <span class="logo-text">Slushy</span>
+                    </div>
+                    <p class="footer-description">
+                        La mejor aplicación para el cuidado de tu vehículo. Reserva citas, monitorea el progreso y disfruta de beneficios exclusivos.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Nuestros Servicios</a></li>
+                        <li><a href="index.html#vip" class="footer-link">Membresía VIP</a></li>
+                        <li><a href="index.html#recompensas" class="footer-link">Sistema de Recompensas</a></li>
+                        <li><a href="index.html#contacto" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h3 class="footer-title">Servicios</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Básico</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Premium</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Deluxe</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Lavado Exprés</a></li>
+                        <li><a href="index.html#servicios" class="footer-link">Encerado</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">Suscríbete</h3>
+                    <p class="footer-description">
+                        Recibe nuestras últimas noticias y promociones exclusivas
+                    </p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© <span id="currentYear">2023</span> Slushy App. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+        
+        // Update current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Simulate real-time updates
+        let progress = 60;
+        let timeRemaining = 15;
+        
+        function updateProgress() {
+            if (progress < 100) {
+                progress += 5;
+                timeRemaining = Math.max(0, timeRemaining - 1);
+                
+                document.querySelector('.progress-bar').style.width = progress + '%';
+                document.querySelector('.progress-container + div span:last-child').textContent = progress + '%';
+                document.querySelector('.info-value').textContent = timeRemaining + ' minutos';
+                
+                if (progress >= 80) {
+                    // Move to next step
+                    const activeItem = document.querySelector('.timeline-item.active');
+                    const nextItem = activeItem.nextElementSibling;
+                    
+                    activeItem.classList.remove('active');
+                    activeItem.classList.add('completed');
+                    activeItem.querySelector('.timeline-status').textContent = 'Completado';
+                    activeItem.querySelector('.timeline-status').style.color = 'var(--success)';
+                    
+                    nextItem.classList.add('active');
+                    nextItem.querySelector('.timeline-icon').innerHTML = '<i class="fas fa-sparkles"></i>';
+                    nextItem.querySelector('.timeline-time p:first-child').textContent = '11:10 AM';
+                    nextItem.querySelector('.timeline-time').innerHTML += '<p class="timeline-status" style="color: var(--primary);">En proceso</p>';
+                }
+            }
+        }
+        
+        // Update every 3 seconds
+        setInterval(updateProgress, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Empleado - Slushy App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+ <!-- Header -->
+ <header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">G</div>
+                <span class="logo-text">Slushy</span>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link">Servicios</a></li>
+                    <li><a href="vip.html" class="nav-link">Membresía VIP</a></li>
+                    <li><a href="recompensas.html" class="nav-link">Recompensas</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn-icon">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                <li><a href="servicios.html" class="mobile-nav-link">Servicios</a></li>
+                <li><a href="vip.html" class="mobile-nav-link">Membresía VIP</a></li>
+                <li><a href="recompensas.html" class="mobile-nav-link">Recompensas</a></li>
+                <li><a href="contacto.html" class="mobile-nav-link">Contacto</a></li>
+                <li><a href="#" class="mobile-nav-link">Mi Perfil</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Employee Header -->
+    <section class="employee-header">
+        <div class="container">
+            <div class="employee-title">
+                <i class="fas fa-user-tie"></i>
+                Panel de Empleado
+            </div>
+            
+            <div class="employee-user">
+                <div class="employee-info">
+                    <div class="employee-name">Roberto Sánchez</div>
+                    <div class="employee-role">Operador</div>
+                </div>
+                <div class="employee-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Employee Tabs -->
+        <div class="employee-tabs">
+            <div class="employee-tab active" data-tab="queue">
+                <i class="fas fa-list"></i>
+                <span>Cola de Vehículos</span>
+            </div>
+            <div class="employee-tab" data-tab="active">
+                <i class="fas fa-car-wash"></i>
+                <span>Servicio Activo</span>
+            </div>
+            <div class="employee-tab" data-tab="schedule">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Horarios</span>
+            </div>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="tab-content active" id="queue-content">
+            <h2 style="margin-bottom: 1.5rem;">Cola de Vehículos</h2>
+            
+            <div class="queue-grid">
+                <div class="queue-card">
+                    <div class="queue-header">
+                        <h3 class="queue-title">En Espera</h3>
+                        <span class="queue-count">3</span>
+                    </div>
+                    
+                    <div class="queue-list">
+                        <div class="queue-item">
+                            <div class="queue-item-header">
+                                <h4 class="queue-item-title">Toyota Corolla</h4>
+                                <span class="queue-item-time">10:30 AM</span>
+                            </div>
+                            <div class="queue-item-details">
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-user queue-item-icon"></i>
+                                    <span>María González</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-car queue-item-icon"></i>
+                                    <span>Sedán • ABC-123</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-list-check queue-item-icon"></i>
+                                    <span>Lavado Premium</span>
+                                </div>
+                            </div>
+                            <div class="queue-item-actions">
+                                <button class="btn btn-primary">Iniciar Servicio</button>
+                                <button class="btn btn-outline">Ver Detalles</button>
+                            </div>
+                        </div>
+                        
+                        <div class="queue-item">
+                            <div class="queue-item-header">
+                                <h4 class="queue-item-title">Honda CR-V</h4>
+                                <span class="queue-item-time">10:45 AM</span>
+                            </div>
+                            <div class="queue-item-details">
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-user queue-item-icon"></i>
+                                    <span>Carlos Rodríguez</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-car queue-item-icon"></i>
+                                    <span>SUV • XYZ-789</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-list-check queue-item-icon"></i>
+                                    <span>Lavado Deluxe</span>
+                                </div>
+                            </div>
+                            <div class="queue-item-actions">
+                                <button class="btn btn-primary">Iniciar Servicio</button>
+                                <button class="btn btn-outline">Ver Detalles</button>
+                            </div>
+                        </div>
+                        
+                        <div class="queue-item">
+                            <div class="queue-item-header">
+                                <h4 class="queue-item-title">Nissan Sentra</h4>
+                                <span class="queue-item-time">11:00 AM</span>
+                            </div>
+                            <div class="queue-item-details">
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-user queue-item-icon"></i>
+                                    <span>Ana Martínez</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-car queue-item-icon"></i>
+                                    <span>Sedán • DEF-456</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-list-check queue-item-icon"></i>
+                                    <span>Lavado Básico</span>
+                                </div>
+                            </div>
+                            <div class="queue-item-actions">
+                                <button class="btn btn-primary">Iniciar Servicio</button>
+                                <button class="btn btn-outline">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="queue-card">
+                    <div class="queue-header">
+                        <h3 class="queue-title">Prioridad</h3>
+                        <span class="queue-count">1</span>
+                    </div>
+                    
+                    <div class="queue-list">
+                        <div class="queue-item">
+                            <div class="queue-item-header">
+                                <h4 class="queue-item-title">Ford F-150</h4>
+                                <span class="queue-item-time">10:15 AM</span>
+                            </div>
+                            <div class="queue-item-details">
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-user queue-item-icon"></i>
+                                    <span>Luis Sánchez</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-car queue-item-icon"></i>
+                                    <span>Camioneta • GHI-789</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-list-check queue-item-icon"></i>
+                                    <span>Lavado Exprés</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-crown queue-item-icon"></i>
+                                    <span>Cliente VIP</span>
+                                </div>
+                            </div>
+                            <div class="queue-item-actions">
+                                <button class="btn btn-primary">Iniciar Servicio</button>
+                                <button class="btn btn-outline">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="queue-card">
+                    <div class="queue-header">
+                        <h3 class="queue-title">En Proceso</h3>
+                        <span class="queue-count">2</span>
+                    </div>
+                    
+                    <div class="queue-list">
+                        <div class="queue-item">
+                            <div class="queue-item-header">
+                                <h4 class="queue-item-title">Chevrolet Spark</h4>
+                                <span class="queue-item-time">09:45 AM</span>
+                            </div>
+                            <div class="queue-item-details">
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-user queue-item-icon"></i>
+                                    <span>Pedro Gómez</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-car queue-item-icon"></i>
+                                    <span>Hatchback • JKL-012</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-list-check queue-item-icon"></i>
+                                    <span>Lavado Premium</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-clock queue-item-icon"></i>
+                                    <span>Progreso: 75%</span>
+                                </div>
+                            </div>
+                            <div class="queue-item-actions">
+                                <button class="btn btn-primary">Actualizar Estado</button>
+                                <button class="btn btn-outline">Ver Detalles</button>
+                            </div>
+                        </div>
+                        
+                        <div class="queue-item">
+                            <div class="queue-item-header">
+                                <h4 class="queue-item-title">Mazda CX-5</h4>
+                                <span class="queue-item-time">10:00 AM</span>
+                            </div>
+                            <div class="queue-item-details">
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-user queue-item-icon"></i>
+                                    <span>Laura Torres</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-car queue-item-icon"></i>
+                                    <span>SUV • MNO-345</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-list-check queue-item-icon"></i>
+                                    <span>Lavado Deluxe</span>
+                                </div>
+                                <div class="queue-item-detail">
+                                    <i class="fas fa-clock queue-item-icon"></i>
+                                    <span>Progreso: 30%</span>
+                                </div>
+                            </div>
+                            <div class="queue-item-actions">
+                                <button class="btn btn-primary">Actualizar Estado</button>
+                                <button class="btn btn-outline">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="active-content">
+            <h2 style="margin-bottom: 1.5rem;">Servicio Activo</h2>
+            
+            <div class="active-service">
+                <div class="active-service-header">
+                    <h3 class="active-service-title">Toyota Corolla • Lavado Premium</h3>
+                    <span class="active-service-status">En Proceso</span>
+                </div>
+                
+                <div class="active-service-grid">
+                    <div class="active-service-info">
+                        <div class="active-service-item">
+                            <div class="active-service-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div class="active-service-label">Cliente</div>
+                                <div class="active-service-value">María González</div>
+                            </div>
+                        </div>
+                        
+                        <div class="active-service-item">
+                            <div class="active-service-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div>
+                                <div class="active-service-label">Vehículo</div>
+                                <div class="active-service-value">Toyota Corolla (Sedán) • ABC-123</div>
+                            </div>
+                        </div>
+                        
+                        <div class="active-service-item">
+                            <div class="active-service-icon">
+                                <i class="fas fa-list-check"></i>
+                            </div>
+                            <div>
+                                <div class="active-service-label">Servicio</div>
+                                <div class="active-service-value">Lavado Premium</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="active-service-info">
+                        <div class="active-service-item">
+                            <div class="active-service-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <div class="active-service-label">Hora de Inicio</div>
+                                <div class="active-service-value">10:30 AM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="active-service-item">
+                            <div class="active-service-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div>
+                                <div class="active-service-label">Tiempo Estimado</div>
+                                <div class="active-service-value">40 minutos</div>
+                            </div>
+                        </div>
+                        
+                        <div class="active-service-item">
+                            <div class="active-service-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <div class="active-service-label">Tiempo Restante</div>
+                                <div class="active-service-value">15 minutos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="active-service-progress">
+                    <div class="progress-header">
+                        <span class="progress-label">Progreso del Servicio</span>
+                        <span class="progress-value">60%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                    </div>
+                </div>
+                
+                <div class="steps-container">
+                    <h4 style="margin-bottom: 1rem;">Etapas del Proceso</h4>
+                    
+                    <div class="step-item completed">
+                        <div class="step-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Recepción</h4>
+                            <p class="step-description">Vehículo recibido y en espera</p>
+                            <div class="step-actions">
+                                <span>Completado a las 10:30 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item completed">
+                        <div class="step-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Lavado con Espuma</h4>
+                            <p class="step-description">Aplicación de espuma y detergente</p>
+                            <div class="step-actions">
+                                <span>Completado a las 10:40 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item active">
+                        <div class="step-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Enjuague</h4>
+                            <p class="step-description">Eliminación de espuma y suciedad</p>
+                            <div class="step-actions">
+                                <button class="btn btn-primary">Marcar como Completado</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-sparkles"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Secado y Detalles</h4>
+                            <p class="step-description">Secado manual y limpieza de detalles</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Listo para Recoger</h4>
+                            <p class="step-description">Vehículo listo y en espera de recogida</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="active-service-actions">
+                    <button class="btn btn-outline">Pausar Servicio</button>
+                    <button class="btn btn-primary">Finalizar Servicio</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="schedule-content">
+            <h2 style="margin-bottom: 1.5rem;">Horarios</h2>
+            
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3 class="calendar-title">Mayo 2023</h3>
+                    <div class="calendar-nav">
+                        <div class="calendar-nav-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="calendar-nav-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">Dom</div>
+                    <div class="calendar-day-header">Lun</div>
+                    <div class="calendar-day-header">Mar</div>
+                    <div class="calendar-day-header">Mié</div>
+                    <div class="calendar-day-header">Jue</div>
+                    <div class="calendar-day-header">Vie</div>
+                    <div class="calendar-day-header">Sáb</div>
+                    
+                    <div class="calendar-day other-month">
+                        <span class="calendar-day-number">30</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">1</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">2</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">3</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">4</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">5</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">6</span>
+                    </div>
+                    
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">7</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">8</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">9</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">10</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">11</span>
+                    </div>
+                    <div class="calendar-day active has-events">
+                        <span class="calendar-day-number">12</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">13</span>
+                    </div>
+                    
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">14</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">15</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">16</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">17</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">18</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">19</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">20</span>
+                    </div>
+                    
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">21</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">22</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">23</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">24</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">25</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">26</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">27</span>
+                    </div>
+                    
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">28</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">29</span>
+                    </div>
+                    <div class="calendar-day has-events">
+                        <span class="calendar-day-number">30</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="calendar-day-number">31</span>
+                    </div>
+                    <div class="calendar-day other-month">
+                        <span class="calendar-day-number">1</span>
+                    </div>
+                    <div class="calendar-day other-month">
+                        <span class="calendar-day-number">2</span>
+                    </div>
+                    <div class="calendar-day other-month">
+                        <span class="calendar-day-number">3</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-title">Reservas para Hoy</h3>
+                        <span class="schedule-count">5</span>
+                    </div>
+                    
+                    <div class="schedule-list">
+                        <div class="schedule-item">
+                            <div class="schedule-item-header">
+                                <h4 class="schedule-item-title">Toyota Corolla</h4>
+                                <span class="schedule-item-time">10:30 AM</span>
+                            </div>
+                            <div class="schedule-item-details">
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-user schedule-item-icon"></i>
+                                    <span>María González</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-car schedule-item-icon"></i>
+                                    <span>Sedán • ABC-123</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-list-check schedule-item-icon"></i>
+                                    <span>Lavado Premium</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item-actions">
+                                <button class="btn btn-primary">Iniciar Servicio</button>
+                                <button class="btn btn-outline">Reprogramar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-item-header">
+                                <h4 class="schedule-item-title">Honda CR-V</h4>
+                                <span class="schedule-item-time">11:15 AM</span>
+                            </div>
+                            <div class="schedule-item-details">
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-user schedule-item-icon"></i>
+                                    <span>Carlos Rodríguez</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-car schedule-item-icon"></i>
+                                    <span>SUV • XYZ-789</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-list-check schedule-item-icon"></i>
+                                    <span>Lavado Deluxe</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item-actions">
+                                <button class="btn btn-primary">Iniciar Servicio</button>
+                                <button class="btn btn-outline">Reprogramar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-item-header">
+                                <h4 class="schedule-item-title">Nissan Sentra</h4>
+                                <span class="schedule-item-time">12:00 PM</span>
+                            </div>
+                            <div class="schedule-item-details">
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-user schedule-item-icon"></i>
+                                    <span>Ana Martínez</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-car schedule-item-icon"></i>
+                                    <span>Sedán • DEF-456</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-list-check schedule-item-icon"></i>
+                                    <span>Lavado Básico</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item-actions">
+                                <button class="btn btn-primary">Iniciar Servicio</button>
+                                <button class="btn btn-outline">Reprogramar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-title">Disponibilidad</h3>
+                        <button class="btn btn-outline">Editar</button>
+                    </div>
+                    
+                    <div class="schedule-list">
+                        <div class="schedule-item">
+                            <div class="schedule-item-header">
+                                <h4 class="schedule-item-title">Mañana</h4>
+                                <span class="schedule-item-time">8:00 AM - 12:00 PM</span>
+                            </div>
+                            <div class="schedule-item-details">
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-calendar-check schedule-item-icon"></i>
+                                    <span>3 de 8 espacios reservados</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-user-tie schedule-item-icon"></i>
+                                    <span>2 operadores disponibles</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-item-header">
+                                <h4 class="schedule-item-title">Tarde</h4>
+                                <span class="schedule-item-time">1:00 PM - 5:00 PM</span>
+                            </div>
+                            <div class="schedule-item-details">
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-calendar-check schedule-item-icon"></i>
+                                    <span>5 de 8 espacios reservados</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-user-tie schedule-item-icon"></i>
+                                    <span>3 operadores disponibles</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-item-header">
+                                <h4 class="schedule-item-title">Noche</h4>
+                                <span class="schedule-item-time">5:00 PM - 7:00 PM</span>
+                            </div>
+                            <div class="schedule-item-details">
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-calendar-check schedule-item-icon"></i>
+                                    <span>2 de 4 espacios reservados</span>
+                                </div>
+                                <div class="schedule-item-detail">
+                                    <i class="fas fa-user-tie schedule-item-icon"></i>
+                                    <span>1 operador disponible</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <div class="logo-icon">S</div>
+                        <span class="logo-text">Slushy</span>
+                    </div>
+                    <p class="footer-description">
+                        La mejor aplicación para el cuidado de tu vehículo. Reserva citas, monitorea el progreso y disfruta de beneficios exclusivos.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="servicios.html" class="footer-link">Nuestros Servicios</a></li>
+                        <li><a href="vip.html" class="footer-link">Membresía VIP</a></li>
+                        <li><a href="recompensas.html" class="footer-link">Sistema de Recompensas</a></li>
+                        <li><a href="contacto.html" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h3 class="footer-title">Servicios</h3>
+                    <ul class="footer-nav">
+                        <li><a href="servicios.html" class="footer-link">Lavado Básico</a></li>
+                        <li><a href="servicios.html" class="footer-link">Lavado Premium</a></li>
+                        <li><a href="servicios.html" class="footer-link">Lavado Deluxe</a></li>
+                        <li><a href="servicios.html" class="footer-link">Lavado Exprés</a></li>
+                        <li><a href="servicios.html" class="footer-link">Encerado</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">Suscríbete</h3>
+                    <p class="footer-description">
+                        Recibe nuestras últimas noticias y promociones exclusivas
+                    </p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© <span id="currentYear">2023</span> Slushy App. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+        
+        // Tabs functionality
+        const tabs = document.querySelectorAll('.employee-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to current tab and content
+                this.classList.add('active');
+                document.getElementById(tabId + '-content').classList.add('active');
+            });
+        });
+        
+        // Update current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Progress bar animation
+        function updateProgress() {
+            const progressBar = document.querySelector('.progress-bar');
+            const progressValue = document.querySelector('.progress-value');
+            let progress = 60;
+            
+            const interval = setInterval(() => {
+                if (progress < 100) {
+                    progress += 1;
+                    progressBar.style.width = progress + '%';
+                    progressValue.textContent = progress + '%';
+                } else {
+                    clearInterval(interval);
+                }
+            }, 3000);
+        }
+        
+        // Call the function if we're on the active service tab
+        if (document.getElementById('active-content').classList.contains('active')) {
+            updateProgress();
+        }
+    </script>
+</body>
+</html>
