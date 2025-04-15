@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Vehículos - Slushy App</title>
+    <link rel="stylesheet" href="vehiculos-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">SLUSHY</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                        <li><a href="../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Vehiculos Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+ <nav class="sidebar-menu">
+            <a href="../admin.html" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="vehiculos.html" class="sidebar-link active">
+                <i class="fas fa-car"></i>
+                <span>Vehículos</span>
+            </a>
+            <a href="../Clientes/clientes.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="../Empleados/empleados.html" class="sidebar-link">
+                <i class="fas fa-user-tie"></i>
+                <span>Empleados</span>
+            </a>
+            <a href="../Reservas/reservas.html" class="sidebar-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Reservas</span>
+            </a>
+            <a href="../Reportes/reportes.html" class="sidebar-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="../Configuracion/configuracion.html" class="sidebar-link">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="../Salir/salir.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Content -->
+    <main class="admin-content">
+        <div class="page-header">
+            <h1>Gestión de Vehículos</h1>
+            <button class="btn btn-primary" id="btnAddVehicle">
+                <i class="fas fa-plus"></i> Agregar Vehículo
+            </button>
+        </div>
+        
+        <!-- Filters and Search -->
+        <div class="filters-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar vehículo...">
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filterType">Tipo:</label>
+                    <select id="filterType" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="sedan">Sedán</option>
+                        <option value="suv">SUV</option>
+                        <option value="hatchback">Hatchback</option>
+                        <option value="pickup">Camioneta</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filterStatus">Estado:</label>
+                    <select id="filterStatus" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="active">Activo</option>
+                        <option value="inactive">Inactivo</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-outline">
+                    <i class="fas fa-filter"></i> Filtrar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Vehicle Stats -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Vehículos</div>
+                    <div class="stat-icon primary">
+                        <i class="fas fa-car"></i>
+                    </div>
+                </div>
+                <div class="stat-value">128</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend-up"></i>
+                    <span>5% más que el mes pasado</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Sedanes</div>
+                    <div class="stat-icon success">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                </div>
+                <div class="stat-value">64</div>
+                <div class="stat-description">
+                    <span>50% del total</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">SUVs</div>
+                    <div class="stat-icon warning">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                </div>
+                <div class="stat-value">42</div>
+                <div class="stat-description">
+                    <span>33% del total</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Otros</div>
+                    <div class="stat-icon info">
+                        <i class="fas fa-car-alt"></i>
+                    </div>
+                </div>
+                <div class="stat-value">22</div>
+                <div class="stat-description">
+                    <span>17% del total</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vehicles Table -->
+        <div class="table-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Lista de Vehículos</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todos</div>
+                    <div class="chart-filter">Inactivos</div>
+                    <div class="chart-filter">Activos</div>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Tipo</th>
+                        <th>Placa</th>
+                        <th>Color</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#V-1001</td>
+                        <td>Toyota</td>
+                        <td>Corolla</td>
+                        <td>Sedán</td>
+                        <td>ABC-123</td>
+                        <td><span class="color-badge" style="background-color: #e0e0e0;"></span> Plata</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#V-1002</td>
+                        <td>Honda</td>
+                        <td>Civic</td>
+                        <td>Sedán</td>
+                        <td>DEF-456</td>
+                        <td><span class="color-badge" style="background-color: #2c3e50;"></span> Azul Marino</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#V-1003</td>
+                        <td>Nissan</td>
+                        <td>X-Trail</td>
+                        <td>SUV</td>
+                        <td>GHI-789</td>
+                        <td><span class="color-badge" style="background-color: #000000;"></span> Negro</td>
+                        <td><span class="status-badge status-pending">Inactivo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#V-1004</td>
+                        <td>Chevrolet</td>
+                        <td>Spark</td>
+                        <td>Hatchback</td>
+                        <td>JKL-012</td>
+                        <td><span class="color-badge" style="background-color: #ffffff; border: 1px solid #ccc;"></span> Blanco</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#V-1005</td>
+                        <td>Ford</td>
+                        <td>F-150</td>
+                        <td>Camioneta</td>
+                        <td>MNO-345</td>
+                        <td><span class="color-badge" style="background-color: #000000;"></span> Negro</td>
+                        <td><span class="status-badge status-pending">Inactivo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#V-1006</td>
+                        <td>Mazda</td>
+                        <td>CX-5</td>
+                        <td>SUV</td>
+                        <td>PQR-678</td>
+                        <td><span class="color-badge" style="background-color: #7f8c8d;"></span> Gris</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <span class="pagination-ellipsis">...</span>
+                <button class="pagination-btn">10</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Add Vehicle Modal -->
+        <div class="modal" id="addVehicleModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Agregar Nuevo Vehículo</h2>
+                    <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="vehicleForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="marca">Marca</label>
+                                <input type="text" id="marca" name="marca" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modelo">Modelo</label>
+                                <input type="text" id="modelo" name="modelo" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipo">Tipo</label>
+                                <select id="tipo" name="tipo" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="sedan">Sedán</option>
+                                    <option value="suv">SUV</option>
+                                    <option value="hatchback">Hatchback</option>
+                                    <option value="pickup">Camioneta</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="placa">Placa</label>
+                                <input type="text" id="placa" name="placa" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="color">Color</label>
+                                <input type="text" id="color" name="color" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select id="estado" name="estado" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="active">Activo</option>
+                                    <option value="inactive">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notas">Notas Adicionales</label>
+                            <textarea id="notas" name="notas" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelBtn">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Vehículo</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Responsive sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('adminSidebar');
+            sidebar.classList.toggle('active');
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('addVehicleModal');
+        const btnAddVehicle = document.getElementById('btnAddVehicle');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        
+        btnAddVehicle.addEventListener('click', function() {
+            modal.classList.add('show');
+        });
+        
+        function closeModalFunc() {
+            modal.classList.remove('show');
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        cancelBtn.addEventListener('click', closeModalFunc);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModalFunc();
+            }
+        });
+        
+        // Form submission (prevent default for demo)
+        document.getElementById('vehicleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Vehículo guardado correctamente!');
+            closeModalFunc();
+        });
+    </script>
+</body>
+</html>

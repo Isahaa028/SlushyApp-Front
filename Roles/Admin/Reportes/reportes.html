@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Slushy App</title>
+    <link rel="stylesheet" href="reportes-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Precargar la fuente para asegurar que se cargue correctamente -->
+    <link rel="preload" href="../../../fonts/Quicksand-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">SLUSHY</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <nav class="sidebar-menu">
+            <a href="../admin.html" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="../Vehiculos/vehiculos.html" class="sidebar-link">
+                <i class="fas fa-car"></i>
+                <span>Vehículos</span>
+            </a>
+            <a href="../Clientes/clientes.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="../Empleados/empleados.html" class="sidebar-link">
+                <i class="fas fa-user-tie"></i>
+                <span>Empleados</span>
+            </a>
+            <a href="../Reservas/reservas.html" class="sidebar-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Reservas</span>
+            </a>
+            <a href="reportes.html" class="sidebar-link active">
+                <i class="fas fa-chart-line"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="../Configuracion/configuracion.html" class="sidebar-link">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="../Salir/salir.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Content -->
+    <main class="admin-content">
+        <div class="page-header">
+            <h1>Reportes y Análisis</h1>
+            <div class="date-filter">
+                <button class="btn btn-outline">
+                    <i class="fas fa-calendar"></i>
+                    <span>Abril 2025</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-download"></i>
+                    <span>Exportar</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Ingresos Totales</div>
+                    <div class="stat-icon primary">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="stat-value">$28,450</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend-up"></i>
+                    <span>12% más que el mes pasado</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Servicios Completados</div>
+                    <div class="stat-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value">342</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend-up"></i>
+                    <span>8% más que el mes pasado</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Clientes Nuevos</div>
+                    <div class="stat-icon warning">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                </div>
+                <div class="stat-value">48</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-down stat-trend-down"></i>
+                    <span>5% menos que el mes pasado</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Tiempo Promedio</div>
+                    <div class="stat-icon info">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-value">32 min</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-down stat-trend-down"></i>
+                    <span>3 min menos que el mes pasado</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Revenue Chart -->
+        <div class="chart-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Ingresos Mensuales</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter">Semana</div>
+                    <div class="chart-filter active">Mes</div>
+                    <div class="chart-filter">Año</div>
+                </div>
+            </div>
+            
+            <div class="revenue-chart">
+                <div class="chart-bars">
+                    <div class="chart-bar" style="height: 60%;">
+                        <div class="chart-bar-value">$22,450</div>
+                        <div class="chart-bar-label">Ene</div>
+                    </div>
+                    <div class="chart-bar" style="height: 75%;">
+                        <div class="chart-bar-value">$24,800</div>
+                        <div class="chart-bar-label">Feb</div>
+                    </div>
+                    <div class="chart-bar" style="height: 65%;">
+                        <div class="chart-bar-value">$23,100</div>
+                        <div class="chart-bar-label">Mar</div>
+                    </div>
+                    <div class="chart-bar primary" style="height: 85%;">
+                        <div class="chart-bar-value">$28,450</div>
+                        <div class="chart-bar-label">Abr</div>
+                    </div>
+                    <div class="chart-bar" style="height: 45%;">
+                        <div class="chart-bar-value">$18,900</div>
+                        <div class="chart-bar-label">May</div>
+                    </div>
+                    <div class="chart-bar" style="height: 55%;">
+                        <div class="chart-bar-value">$21,300</div>
+                        <div class="chart-bar-label">Jun</div>
+                    </div>
+                    <div class="chart-bar" style="height: 70%;">
+                        <div class="chart-bar-value">$24,100</div>
+                        <div class="chart-bar-label">Jul</div>
+                    </div>
+                    <div class="chart-bar" style="height: 80%;">
+                        <div class="chart-bar-value">$26,750</div>
+                        <div class="chart-bar-label">Ago</div>
+                    </div>
+                    <div class="chart-bar" style="height: 75%;">
+                        <div class="chart-bar-value">$25,200</div>
+                        <div class="chart-bar-label">Sep</div>
+                    </div>
+                    <div class="chart-bar" style="height: 65%;">
+                        <div class="chart-bar-value">$23,400</div>
+                        <div class="chart-bar-label">Oct</div>
+                    </div>
+                    <div class="chart-bar" style="height: 60%;">
+                        <div class="chart-bar-value">$22,100</div>
+                        <div class="chart-bar-label">Nov</div>
+                    </div>
+                    <div class="chart-bar" style="height: 90%;">
+                        <div class="chart-bar-value">$29,800</div>
+                        <div class="chart-bar-label">Dic</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services and Customers Charts -->
+        <div class="charts-row">
+            <div class="chart-container half-width">
+                <div class="chart-header">
+                    <h2 class="chart-title">Servicios por Tipo</h2>
+                </div>
+                
+                <div class="pie-chart-container">
+                    <div class="pie-chart">
+                        <div class="pie-segment" style="--percentage: 45%; --color: var(--primary);"></div>
+                        <div class="pie-segment" style="--percentage: 25%; --color: var(--success); --offset: 45%;"></div>
+                        <div class="pie-segment" style="--percentage: 20%; --color: var(--warning); --offset: 70%;"></div>
+                        <div class="pie-segment" style="--percentage: 10%; --color: var(--gray); --offset: 90%;"></div>
+                    </div>
+                    
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--primary);"></div>
+                            <div class="legend-text">Lavado Premium (45%)</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--success);"></div>
+                            <div class="legend-text">Lavado Básico (25%)</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--warning);"></div>
+                            <div class="legend-text">Lavado Exprés (20%)</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--gray);"></div>
+                            <div class="legend-text">Detallado Completo (10%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container half-width">
+                <div class="chart-header">
+                    <h2 class="chart-title">Clientes por Tipo</h2>
+                </div>
+                
+                <div class="pie-chart-container">
+                    <div class="pie-chart">
+                        <div class="pie-segment" style="--percentage: 30%; --color: var(--primary);"></div>
+                        <div class="pie-segment" style="--percentage: 40%; --color: var(--success); --offset: 30%;"></div>
+                        <div class="pie-segment" style="--percentage: 30%; --color: var(--warning); --offset: 70%;"></div>
+                    </div>
+                    
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--primary);"></div>
+                            <div class="legend-text">VIP (30%)</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--success);"></div>
+                            <div class="legend-text">Recurrentes (40%)</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--warning);"></div>
+                            <div class="legend-text">Nuevos (30%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Top Services Table -->
+        <div class="table-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Servicios Más Populares</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todos</div>
+                    <div class="chart-filter">Este Mes</div>
+                    <div class="chart-filter">Este Año</div>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Cantidad</th>
+                        <th>Ingresos</th>
+                        <th>Tiempo Promedio</th>
+                        <th>Satisfacción</th>
+                        <th>Tendencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lavado Premium</td>
+                        <td>154</td>
+                        <td>$12,320</td>
+                        <td>45 min</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                        </td>
+                        <td><i class="fas fa-arrow-up stat-trend-up"></i> 8%</td>
+                    </tr>
+                    <tr>
+                        <td>Lavado Básico</td>
+                        <td>86</td>
+                        <td>$5,160</td>
+                        <td>30 min</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0</span>
+                            </div>
+                        </td>
+                        <td><i class="fas fa-arrow-up stat-trend-up"></i> 5%</td>
+                    </tr>
+                    <tr>
+                        <td>Lavado Exprés</td>
+                        <td>68</td>
+                        <td>$3,400</td>
+                        <td>15 min</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span>3.5</span>
+                            </div>
+                        </td>
+                        <td><i class="fas fa-arrow-up stat-trend-up"></i> 12%</td>
+                    </tr>
+                    <tr>
+                        <td>Detallado Completo</td>
+                        <td>34</td>
+                        <td>$7,480</td>
+                        <td>120 min</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </td>
+                        <td><i class="fas fa-arrow-down stat-trend-down"></i> 3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Employee Performance -->
+        <div class="table-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Rendimiento de Empleados</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todos</div>
+                    <div class="chart-filter">Lavado</div>
+                    <div class="chart-filter">Detallado</div>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Empleado</th>
+                        <th>Departamento</th>
+                        <th>Servicios Completados</th>
+                        <th>Tiempo Promedio</th>
+                        <th>Satisfacción</th>
+                        <th>Eficiencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">JR</div>
+                                <div>Juan Rodríguez</div>
+                            </div>
+                        </td>
+                        <td>Lavado</td>
+                        <td>87</td>
+                        <td>28 min</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                        </td>
+                        <td><div class="progress-bar"><div class="progress" style="width: 92%;"></div></div> 92%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">MG</div>
+                                <div>María González</div>
+                            </div>
+                        </td>
+                        <td>Recepción</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </td>
+                        <td><div class="progress-bar"><div class="progress" style="width: 98%;"></div></div> 98%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">CP</div>
+                                <div>Carlos Pérez</div>
+                            </div>
+                        </td>
+                        <td>Detallado</td>
+                        <td>42</td>
+                        <td>110 min</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0</span>
+                            </div>
+                        </td>
+                        <td><div class="progress-bar"><div class="progress" style="width: 85%;"></div></div> 85%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">LS</div>
+                                <div>Laura Sánchez</div>
+                            </div>
+                        </td>
+                        <td>Detallado</td>
+                        <td>38</td>
+                        <td>105 min</td>
+                        <td>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                        </td>
+                        <td><div class="progress-bar"><div class="progress" style="width: 90%;"></div></div> 90%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        // Responsive sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('adminSidebar');
+            sidebar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerrar Sesión - Slushy App</title>
+    <link rel="stylesheet" href="salir-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Precargar la fuente para asegurar que se cargue correctamente -->
+    <link rel="preload" href="../../../fonts/Quicksand-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <div class="logout-container">
+        <div class="logout-card">
+            <div class="logo">
+                <div class="logo-icon">G</div>
+                <span class="logo-text">SLUSHY</span>
+            </div>
+            
+            <div class="logout-content">
+                <div class="logout-icon">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                
+                <h1>¿Cerrar Sesión?</h1>
+                <p>¿Estás seguro de que deseas cerrar sesión en el panel de administración?</p>
+                
+                <div class="logout-actions">
+                    <a href="../admin.html" class="btn btn-outline">Cancelar</a>
+                    <a href="../../../Publico/Index/index.html" class="btn btn-primary">Cerrar Sesión</a>
+                </div>
+            </div>
+            
+            <div class="logout-footer">
+                <p>&copy; 2025 Slushy Car Wash. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Auto redirect after 60 seconds if no action is taken
+        setTimeout(function() {
+            window.location.href = "../../../index.html";
+        }, 60000);
+        
+        // Countdown timer
+        let seconds = 60;
+        const countdownInterval = setInterval(function() {
+            seconds--;
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

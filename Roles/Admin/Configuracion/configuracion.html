@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Slushy App</title>
+    <link rel="stylesheet" href="configuracion-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Precargar la fuente para asegurar que se cargue correctamente -->
+    <link rel="preload" href="../../../fonts/Quicksand-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">SLUSHY</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <nav class="sidebar-menu">
+            <a href="../admin.html" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="../Vehiculos/vehiculos.html" class="sidebar-link">
+                <i class="fas fa-car"></i>
+                <span>Vehículos</span>
+            </a>
+            <a href="../Clientes/clientes.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="../Empleados/empleados.html" class="sidebar-link">
+                <i class="fas fa-user-tie"></i>
+                <span>Empleados</span>
+            </a>
+            <a href="../Reservas/reservas.html" class="sidebar-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Reservas</span>
+            </a>
+            <a href="../Reportes/reportes.html" class="sidebar-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="configuracion.html" class="sidebar-link active">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="../Salir/salir.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Content -->
+    <main class="admin-content">
+        <div class="page-header">
+            <h1>Configuración del Sistema</h1>
+        </div>
+        
+        <!-- Settings Tabs -->
+        <div class="settings-container">
+            <div class="settings-tabs">
+                <button class="tab-btn active" data-tab="general">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>General</span>
+                </button>
+                <button class="tab-btn" data-tab="services">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>Servicios</span>
+                </button>
+                <button class="tab-btn" data-tab="users">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Usuarios</span>
+                </button>
+                <button class="tab-btn" data-tab="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificaciones</span>
+                </button>
+                <button class="tab-btn" data-tab="backup">
+                    <i class="fas fa-database"></i>
+                    <span>Respaldo</span>
+                </button>
+                <button class="tab-btn" data-tab="appearance">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Apariencia</span>
+                </button>
+            </div>
+            
+            <div class="settings-content">
+                <!-- General Settings -->
+                <div class="tab-content active" id="general">
+                    <h2 class="settings-title">Configuración General</h2>
+                    
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label for="companyName">Nombre de la Empresa</label>
+                            <input type="text" id="companyName" value="Slushy Car Wash" class="form-control">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email de Contacto</label>
+                                <input type="email" id="email" value="contacto@slushy.com" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Teléfono de Contacto</label>
+                                <input type="tel" id="phone" value="555-123-4567" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Dirección</label>
+                            <input type="text" id="address" value="Av. Principal #123, Ciudad" class="form-control">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="workingHoursStart">Horario de Apertura</label>
+                                <input type="time" id="workingHoursStart" value="08:00" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="workingHoursEnd">Horario de Cierre</label>
+                                <input type="time" id="workingHoursEnd" value="18:00" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timezone">Zona Horaria</label>
+                            <select id="timezone" class="form-control">
+                                <option value="UTC-6">UTC-6 (Ciudad de México)</option>
+                                <option value="UTC-5">UTC-5 (Bogotá, Lima)</option>
+                                <option value="UTC-4">UTC-4 (Caracas, Santiago)</option>
+                                <option value="UTC-3">UTC-3 (Buenos Aires, São Paulo)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="currency">Moneda</label>
+                            <select id="currency" class="form-control">
+                                <option value="MXN">Peso Mexicano (MXN)</option>
+                                <option value="USD">Dólar Estadounidense (USD)</option>
+                                <option value="COP">Peso Colombiano (COP)</option>
+                                <option value="ARS">Peso Argentino (ARS)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Services Settings -->
+                <div class="tab-content" id="services">
+                    <h2 class="settings-title">Configuración de Servicios</h2>
+                    
+                    <div class="table-container">
+                        <div class="table-actions">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Agregar Servicio
+                            </button>
+                        </div>
+                        
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Duración</th>
+                                    <th>Precio</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lavado Premium</td>
+                                    <td>Lavado exterior e interior completo con encerado</td>
+                                    <td>45 min</td>
+                                    <td>$80.00</td>
+                                    <td><span class="status-badge status-completed">Activo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Lavado Básico</td>
+                                    <td>Lavado exterior con aspirado básico</td>
+                                    <td>30 min</td>
+                                    <td>$60.00</td>
+                                    <td><span class="status-badge status-completed">Activo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Lavado Exprés</td>
+                                    <td>Lavado exterior rápido</td>
+                                    <td>15 min</td>
+                                    <td>$50.00</td>
+                                    <td><span class="status-badge status-completed">Activo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Detallado Completo</td>
+                                    <td>Limpieza profunda interior y exterior con tratamientos especiales</td>
+                                    <td>120 min</td>
+                                    <td>$220.00</td>
+                                    <td><span class="status-badge status-completed">Activo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Users Settings -->
+                <div class="tab-content" id="users">
+                    <h2 class="settings-title">Configuración de Usuarios</h2>
+                    
+                    <div class="table-container">
+                        <div class="table-actions">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Agregar Usuario
+                            </button>
+                        </div>
+                        
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Último Acceso</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="user-avatar">AM</div>
+                                            <div>Ana Martínez</div>
+                                        </div>
+                                    </td>
+                                    <td>ana.martinez@slushy.com</td>
+                                    <td>Administrador</td>
+                                    <td>Hoy, 10:30 AM</td>
+                                    <td><span class="status-badge status-completed">Activo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="user-avatar">JR</div>
+                                            <div>Juan Rodríguez</div>
+                                        </div>
+                                    </td>
+                                    <td>juan.rodriguez@slushy.com</td>
+                                    <td>Supervisor</td>
+                                    <td>Ayer, 4:15 PM</td>
+                                    <td><span class="status-badge status-completed">Activo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="user-avatar">MG</div>
+                                            <div>María González</div>
+                                        </div>
+                                    </td>
+                                    <td>maria.gonzalez@slushy.com</td>
+                                    <td>Recepcionista</td>
+                                    <td>Hoy, 9:45 AM</td>
+                                    <td><span class="status-badge status-completed">Activo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Notifications Settings -->
+                <div class="tab-content" id="notifications">
+                    <h2 class="settings-title">Configuración de Notificaciones</h2>
+                    
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Enviar notificaciones por email</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Enviar notificaciones por SMS</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Notificar nuevas reservas</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Notificar cancelaciones</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Recordatorios de citas (24h antes)</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox">
+                                <span>Notificaciones de marketing</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emailTemplate">Plantilla de Email</label>
+                            <textarea id="emailTemplate" rows="5" class="form-control">Estimado {nombre},
+
+Gracias por elegir Slushy Car Wash. Le recordamos su cita programada para el {fecha} a las {hora}.
+
+Atentamente,
+El equipo de Slushy</textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Backup Settings -->
+                <div class="tab-content" id="backup">
+                    <h2 class="settings-title">Respaldo y Recuperación</h2>
+                    
+                    <div class="backup-actions">
+                        <div class="backup-info">
+                            <h3>Último respaldo</h3>
+                            <p>12 de abril de 2025, 03:45 AM</p>
+                            <p class="backup-status">Estado: <span class="status-badge status-completed">Completado</span></p>
+                        </div>
+                        
+                        <div class="backup-buttons">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-download"></i> Crear Respaldo
+                            </button>
+                            <button class="btn btn-outline">
+                                <i class="fas fa-upload"></i> Restaurar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="backup-schedule">
+                        <h3>Programación de Respaldos</h3>
+                        
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label for="backupFrequency">Frecuencia</label>
+                                <select id="backupFrequency" class="form-control">
+                                    <option value="daily">Diario</option>
+                                    <option value="weekly" selected>Semanal</option>
+                                    <option value="monthly">Mensual</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="backupTime">Hora</label>
+                                <input type="time" id="backupTime" value="03:00" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="backupRetention">Retención (días)</label>
+                                <input type="number" id="backupRetention" value="30" min="1" class="form-control">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Appearance Settings -->
+                <div class="tab-content" id="appearance">
+                    <h2 class="settings-title">Configuración de Apariencia</h2>
+                    
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>Tema</label>
+                            <div class="theme-options">
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="light" checked>
+                                    <div class="theme-preview light-theme">
+                                        <div class="theme-header"></div>
+                                        <div class="theme-sidebar"></div>
+                                        <div class="theme-content"></div>
+                                    </div>
+                                    <span>Claro</span>
+                                </label>
+                                
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="dark">
+                                    <div class="theme-preview dark-theme">
+                                        <div class="theme-header"></div>
+                                        <div class="theme-sidebar"></div>
+                                        <div class="theme-content"></div>
+                                    </div>
+                                    <span>Oscuro</span>
+                                </label>
+                                
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="auto">
+                                    <div class="theme-preview auto-theme">
+                                        <div class="theme-header"></div>
+                                        <div class="theme-sidebar"></div>
+                                        <div class="theme-content"></div>
+                                    </div>
+                                    <span>Automático</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Color Principal</label>
+                            <div class="color-options">
+                                <label class="color-option">
+                                    <input type="radio" name="color" value="red" checked>
+                                    <span class="color-preview" style="background-color: var(--primary);"></span>
+                                </label>
+                                
+                                <label class="color-option">
+                                    <input type="radio" name="color" value="blue">
+                                    <span class="color-preview" style="background-color: #3b82f6;"></span>
+                                </label>
+                                
+                                <label class="color-option">
+                                    <input type="radio" name="color" value="green">
+                                    <span class="color-preview" style="background-color: #10b981;"></span>
+                                </label>
+                                
+                                <label class="color-option">
+                                    <input type="radio" name="color" value="purple">
+                                    <span class="color-preview" style="background-color: #8b5cf6;"></span>
+                                </label>
+                                
+                                <label class="color-option">
+                                    <input type="radio" name="color" value="orange">
+                                    <span class="color-preview" style="background-color: #f59e0b;"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="logoUpload">Logo de la Empresa</label>
+                            <div class="file-upload">
+                                <input type="file" id="logoUpload" class="form-control-file">
+                                <label for="logoUpload" class="file-upload-label">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Seleccionar archivo</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <button type="button" class="btn btn-outline">Restaurar Predeterminados</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Responsive sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('adminSidebar');
+            sidebar.classList.toggle('active');
+        });
+        
+        // Settings tabs functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

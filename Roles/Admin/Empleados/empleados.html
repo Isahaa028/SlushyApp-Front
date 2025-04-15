@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Empleados - Slushy App</title>
+    <link rel="stylesheet" href="empleados-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Precargar la fuente para asegurar que se cargue correctamente -->
+    <link rel="preload" href="../../../fonts/Quicksand-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">SLUSHY</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <nav class="sidebar-menu">
+            <a href="../admin.html" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="../Vehiculos/vehiculos.html" class="sidebar-link">
+                <i class="fas fa-car"></i>
+                <span>Vehículos</span>
+            </a>
+            <a href="../Clientes/clientes.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="empleados.html" class="sidebar-link active">
+                <i class="fas fa-user-tie"></i>
+                <span>Empleados</span>
+            </a>
+            <a href="../Reservas/reservas.html" class="sidebar-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Reservas</span>
+            </a>
+            <a href="../Reportes/reportes.html" class="sidebar-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="../Configuracion/configuracion.html" class="sidebar-link">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="../Salir/salir.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Content -->
+    <main class="admin-content">
+        <div class="page-header">
+            <h1>Gestión de Empleados</h1>
+            <button class="btn btn-primary" id="btnAddEmployee">
+                <i class="fas fa-plus"></i> Agregar Empleado
+            </button>
+        </div>
+        
+        <!-- Filters and Search -->
+        <div class="filters-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar empleado...">
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filterDepartment">Departamento:</label>
+                    <select id="filterDepartment" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="lavado">Lavado</option>
+                        <option value="detallado">Detallado</option>
+                        <option value="recepcion">Recepción</option>
+                        <option value="administracion">Administración</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filterStatus">Estado:</label>
+                    <select id="filterStatus" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="active">Activo</option>
+                        <option value="vacation">Vacaciones</option>
+                        <option value="inactive">Inactivo</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-outline">
+                    <i class="fas fa-filter"></i> Filtrar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Employee Stats -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Empleados</div>
+                    <div class="stat-icon primary">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="stat-value">24</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend-up"></i>
+                    <span>2 más que el mes pasado</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Lavado</div>
+                    <div class="stat-icon success">
+                        <i class="fas fa-shower"></i>
+                    </div>
+                </div>
+                <div class="stat-value">12</div>
+                <div class="stat-description">
+                    <span>50% del total</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Detallado</div>
+                    <div class="stat-icon warning">
+                        <i class="fas fa-brush"></i>
+                    </div>
+                </div>
+                <div class="stat-value">8</div>
+                <div class="stat-description">
+                    <span>33% del total</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Administración</div>
+                    <div class="stat-icon info">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                </div>
+                <div class="stat-value">4</div>
+                <div class="stat-description">
+                    <span>17% del total</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Employees Table -->
+        <div class="table-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Lista de Empleados</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todos</div>
+                    <div class="chart-filter">Activos</div>
+                    <div class="chart-filter">Vacaciones</div>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Departamento</th>
+                        <th>Cargo</th>
+                        <th>Teléfono</th>
+                        <th>Fecha Contratación</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#E-1001</td>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">JR</div>
+                                <div>
+                                    <div class="employee-name">Juan Rodríguez</div>
+                                    <div class="employee-email">juan.rodriguez@slushy.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Lavado</td>
+                        <td>Supervisor</td>
+                        <td>555-123-4567</td>
+                        <td>15/03/2022</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#E-1002</td>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">MG</div>
+                                <div>
+                                    <div class="employee-name">María González</div>
+                                    <div class="employee-email">maria.gonzalez@slushy.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Recepción</td>
+                        <td>Recepcionista</td>
+                        <td>555-234-5678</td>
+                        <td>05/06/2022</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#E-1003</td>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">CP</div>
+                                <div>
+                                    <div class="employee-name">Carlos Pérez</div>
+                                    <div class="employee-email">carlos.perez@slushy.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Detallado</td>
+                        <td>Especialista</td>
+                        <td>555-345-6789</td>
+                        <td>10/01/2023</td>
+                        <td><span class="status-badge status-in-progress">Vacaciones</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#E-1004</td>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">AL</div>
+                                <div>
+                                    <div class="employee-name">Ana López</div>
+                                    <div class="employee-email">ana.lopez@slushy.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Administración</td>
+                        <td>Gerente</td>
+                        <td>555-456-7890</td>
+                        <td>20/11/2021</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#E-1005</td>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">RM</div>
+                                <div>
+                                    <div class="employee-name">Roberto Martínez</div>
+                                    <div class="employee-email">roberto.martinez@slushy.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Lavado</td>
+                        <td>Operario</td>
+                        <td>555-567-8901</td>
+                        <td>15/02/2023</td>
+                        <td><span class="status-badge status-pending">Inactivo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#E-1006</td>
+                        <td>
+                            <div class="employee-info">
+                                <div class="employee-avatar">LS</div>
+                                <div>
+                                    <div class="employee-name">Laura Sánchez</div>
+                                    <div class="employee-email">laura.sanchez@slushy.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Detallado</td>
+                        <td>Operario</td>
+                        <td>555-678-9012</td>
+                        <td>03/04/2023</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <span class="pagination-ellipsis">...</span>
+                <button class="pagination-btn">5</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Add Employee Modal -->
+        <div class="modal" id="addEmployeeModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Agregar Nuevo Empleado</h2>
+                    <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="employeeForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" id="apellido" name="apellido" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="departamento">Departamento</label>
+                                <select id="departamento" name="departamento" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="lavado">Lavado</option>
+                                    <option value="detallado">Detallado</option>
+                                    <option value="recepcion">Recepción</option>
+                                    <option value="administracion">Administración</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo">Cargo</label>
+                                <select id="cargo" name="cargo" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="gerente">Gerente</option>
+                                    <option value="supervisor">Supervisor</option>
+                                    <option value="especialista">Especialista</option>
+                                    <option value="operario">Operario</option>
+                                    <option value="recepcionista">Recepcionista</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fechaContratacion">Fecha de Contratación</label>
+                                <input type="date" id="fechaContratacion" name="fechaContratacion" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select id="estado" name="estado" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="active">Activo</option>
+                                    <option value="vacation">Vacaciones</option>
+                                    <option value="inactive">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notas">Notas Adicionales</label>
+                            <textarea id="notas" name="notas" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelBtn">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Empleado</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Responsive sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('adminSidebar');
+            sidebar.classList.toggle('active');
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('addEmployeeModal');
+        const btnAddEmployee = document.getElementById('btnAddEmployee');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        
+        btnAddEmployee.addEventListener('click', function() {
+            modal.classList.add('show');
+        });
+        
+        function closeModalFunc() {
+            modal.classList.remove('show');
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        cancelBtn.addEventListener('click', closeModalFunc);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModalFunc();
+            }
+        });
+        
+        // Form submission (prevent default for demo)
+        document.getElementById('employeeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Empleado guardado correctamente!');
+            closeModalFunc();
+        });
+    </script>
+</body>
+</html>

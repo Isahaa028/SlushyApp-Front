@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Reservas - Slushy App</title>
+    <link rel="stylesheet" href="reservas-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Precargar la fuente para asegurar que se cargue correctamente -->
+    <link rel="preload" href="../../../fonts/Quicksand-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">SLUSHY</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <nav class="sidebar-menu">
+            <a href="../admin.html" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="../Vehiculos/vehiculos.html" class="sidebar-link">
+                <i class="fas fa-car"></i>
+                <span>Vehículos</span>
+            </a>
+            <a href="../Clientes/clientes.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="../Empleados/empleados.html" class="sidebar-link">
+                <i class="fas fa-user-tie"></i>
+                <span>Empleados</span>
+            </a>
+            <a href="reservas.html" class="sidebar-link active">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Reservas</span>
+            </a>
+            <a href="../Reportes/reportes.html" class="sidebar-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="../Configuracion/configuracion.html" class="sidebar-link">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="../Salir/salir.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Content -->
+    <main class="admin-content">
+        <div class="page-header">
+            <h1>Gestión de Reservas</h1>
+            <button class="btn btn-primary" id="btnAddReservation">
+                <i class="fas fa-plus"></i> Nueva Reserva
+            </button>
+        </div>
+        
+        <!-- Calendar View -->
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button class="btn-icon"><i class="fas fa-chevron-left"></i></button>
+                    <h2>Abril 2025</h2>
+                    <button class="btn-icon"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-view-options">
+                    <button class="btn-view active">Día</button>
+                    <button class="btn-view">Semana</button>
+                    <button class="btn-view">Mes</button>
+                </div>
+            </div>
+            
+            <div class="calendar-day-view">
+                <div class="time-column">
+                    <div class="time-slot">8:00 AM</div>
+                    <div class="time-slot">9:00 AM</div>
+                    <div class="time-slot">10:00 AM</div>
+                    <div class="time-slot">11:00 AM</div>
+                    <div class="time-slot">12:00 PM</div>
+                    <div class="time-slot">1:00 PM</div>
+                    <div class="time-slot">2:00 PM</div>
+                    <div class="time-slot">3:00 PM</div>
+                    <div class="time-slot">4:00 PM</div>
+                    <div class="time-slot">5:00 PM</div>
+                    <div class="time-slot">6:00 PM</div>
+                </div>
+                
+                <div class="events-column">
+                    <div class="event-container" style="top: 60px; height: 90px;">
+                        <div class="event-card status-completed">
+                            <div class="event-time">9:00 - 10:30 AM</div>
+                            <div class="event-title">Lavado Premium - Toyota Corolla</div>
+                            <div class="event-client">María González</div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-container" style="top: 180px; height: 60px;">
+                        <div class="event-card status-in-progress">
+                            <div class="event-time">11:00 - 12:00 PM</div>
+                            <div class="event-title">Lavado Básico - Honda Civic</div>
+                            <div class="event-client">Juan Pérez</div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-container" style="top: 300px; height: 120px;">
+                        <div class="event-card status-pending">
+                            <div class="event-time">1:00 - 3:00 PM</div>
+                            <div class="event-title">Detallado Completo - Ford F-150</div>
+                            <div class="event-client">Carlos Rodríguez</div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-container" style="top: 480px; height: 60px;">
+                        <div class="event-card status-completed">
+                            <div class="event-time">4:00 - 5:00 PM</div>
+                            <div class="event-title">Lavado Exprés - Nissan Sentra</div>
+                            <div class="event-client">Ana Martínez</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Filters and Search -->
+        <div class="filters-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar reserva...">
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filterService">Servicio:</label>
+                    <select id="filterService" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="premium">Lavado Premium</option>
+                        <option value="basic">Lavado Básico</option>
+                        <option value="express">Lavado Exprés</option>
+                        <option value="detail">Detallado Completo</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filterStatus">Estado:</label>
+                    <select id="filterStatus" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="pending">Pendiente</option>
+                        <option value="in-progress">En Proceso</option>
+                        <option value="completed">Completado</option>
+                        <option value="cancelled">Cancelado</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-outline">
+                    <i class="fas fa-filter"></i> Filtrar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Reservations Table -->
+        <div class="table-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Próximas Reservas</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todas</div>
+                    <div class="chart-filter">Hoy</div>
+                    <div class="chart-filter">Mañana</div>
+                    <div class="chart-filter">Esta Semana</div>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Vehículo</th>
+                        <th>Servicio</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#R-1248</td>
+                        <td>María González</td>
+                        <td>Toyota Corolla (Sedán)</td>
+                        <td>Lavado Premium</td>
+                        <td>12/04/2025</td>
+                        <td>9:00 AM</td>
+                        <td><span class="status-badge status-completed">Completado</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Cancelar"><i class="fas fa-times"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#R-1249</td>
+                        <td>Juan Pérez</td>
+                        <td>Honda Civic (Sedán)</td>
+                        <td>Lavado Básico</td>
+                        <td>12/04/2025</td>
+                        <td>11:00 AM</td>
+                        <td><span class="status-badge status-in-progress">En Proceso</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Cancelar"><i class="fas fa-times"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#R-1250</td>
+                        <td>Carlos Rodríguez</td>
+                        <td>Ford F-150 (Camioneta)</td>
+                        <td>Detallado Completo</td>
+                        <td>12/04/2025</td>
+                        <td>1:00 PM</td>
+                        <td><span class="status-badge status-pending">Pendiente</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Cancelar"><i class="fas fa-times"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#R-1251</td>
+                        <td>Ana Martínez</td>
+                        <td>Nissan Sentra (Sedán)</td>
+                        <td>Lavado Exprés</td>
+                        <td>12/04/2025</td>
+                        <td>4:00 PM</td>
+                        <td><span class="status-badge status-completed">Completado</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Cancelar"><i class="fas fa-times"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#R-1252</td>
+                        <td>Luis Sánchez</td>
+                        <td>Chevrolet Spark (Hatchback)</td>
+                        <td>Lavado Premium</td>
+                        <td>13/04/2025</td>
+                        <td>10:00 AM</td>
+                        <td><span class="status-badge status-pending">Pendiente</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Cancelar"><i class="fas fa-times"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <span class="pagination-ellipsis">...</span>
+                <button class="pagination-btn">8</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Add Reservation Modal -->
+        <div class="modal" id="addReservationModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Nueva Reserva</h2>
+                    <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reservationForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cliente">Cliente</label>
+                                <select id="cliente" name="cliente" required>
+                                    <option value="">Seleccionar cliente...</option>
+                                    <option value="1">María González</option>
+                                    <option value="2">Juan Pérez</option>
+                                    <option value="3">Carlos Rodríguez</option>
+                                    <option value="4">Ana Martínez</option>
+                                    <option value="5">Luis Sánchez</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vehiculo">Vehículo</label>
+                                <select id="vehiculo" name="vehiculo" required>
+                                    <option value="">Seleccionar vehículo...</option>
+                                    <option value="1">Toyota Corolla (Sedán)</option>
+                                    <option value="2">Honda Civic (Sedán)</option>
+                                    <option value="3">Ford F-150 (Camioneta)</option>
+                                    <option value="4">Nissan Sentra (Sedán)</option>
+                                    <option value="5">Chevrolet Spark (Hatchback)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="servicio">Servicio</label>
+                                <select id="servicio" name="servicio" required>
+                                    <option value="">Seleccionar servicio...</option>
+                                    <option value="premium">Lavado Premium</option>
+                                    <option value="basic">Lavado Básico</option>
+                                    <option value="express">Lavado Exprés</option>
+                                    <option value="detail">Detallado Completo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <input type="date" id="fecha" name="fecha" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hora">Hora</label>
+                                <input type="time" id="hora" name="hora" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="duracion">Duración (minutos)</label>
+                                <input type="number" id="duracion" name="duracion" min="30" step="30" value="60" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notas">Notas Adicionales</label>
+                            <textarea id="notas" name="notas" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelBtn">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Reserva</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Responsive sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('adminSidebar');
+            sidebar.classList.toggle('active');
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('addReservationModal');
+        const btnAddReservation = document.getElementById('btnAddReservation');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        
+        btnAddReservation.addEventListener('click', function() {
+            modal.classList.add('show');
+        });
+        
+        function closeModalFunc() {
+            modal.classList.remove('show');
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        cancelBtn.addEventListener('click', closeModalFunc);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModalFunc();
+            }
+        });
+        
+        // Form submission (prevent default for demo)
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Reserva guardada correctamente!');
+            closeModalFunc();
+        });
+    </script>
+</body>
+</html>

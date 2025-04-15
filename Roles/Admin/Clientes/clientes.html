@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes - Slushy App</title>
+    <link rel="stylesheet" href="clientes-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Precargar la fuente para asegurar que se cargue correctamente -->
+    <link rel="preload" href="../../../fonts/Quicksand-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">SLUSHY</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <nav class="sidebar-menu">
+            <a href="../admin.html" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="../Vehiculos/vehiculos.html" class="sidebar-link">
+                <i class="fas fa-car"></i>
+                <span>Vehículos</span>
+            </a>
+            <a href="clientes.html" class="sidebar-link active">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="../Empleados/empleados.html" class="sidebar-link">
+                <i class="fas fa-user-tie"></i>
+                <span>Empleados</span>
+            </a>
+            <a href="../Reservas/reservas.html" class="sidebar-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Reservas</span>
+            </a>
+            <a href="../Reportes/reportes.html" class="sidebar-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="../Configuracion/configuracion.html" class="sidebar-link">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="../Salir/salir.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Content -->
+    <main class="admin-content">
+        <div class="page-header">
+            <h1>Gestión de Clientes</h1>
+            <button class="btn btn-primary" id="btnAddClient">
+                <i class="fas fa-plus"></i> Agregar Cliente
+            </button>
+        </div>
+        
+        <!-- Client Stats -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Clientes</div>
+                    <div class="stat-icon primary">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="stat-value">248</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend-up"></i>
+                    <span>15 más que el mes pasado</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Clientes VIP</div>
+                    <div class="stat-icon success">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                </div>
+                <div class="stat-value">74</div>
+                <div class="stat-description">
+                    <span>30% del total</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Clientes Recurrentes</div>
+                    <div class="stat-icon warning">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                </div>
+                <div class="stat-value">98</div>
+                <div class="stat-description">
+                    <span>40% del total</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Clientes Nuevos</div>
+                    <div class="stat-icon info">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                </div>
+                <div class="stat-value">76</div>
+                <div class="stat-description">
+                    <span>30% del total</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Filters and Search -->
+        <div class="filters-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar cliente...">
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filterMembership">Membresía:</label>
+                    <select id="filterMembership" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="vip">VIP</option>
+                        <option value="regular">Regular</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filterStatus">Estado:</label>
+                    <select id="filterStatus" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="active">Activo</option>
+                        <option value="inactive">Inactivo</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-outline">
+                    <i class="fas fa-filter"></i> Filtrar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Clients Table -->
+        <div class="table-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Lista de Clientes</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todos</div>
+                    <div class="chart-filter">VIP</div>
+                    <div class="chart-filter">Recurrentes</div>
+                    <div class="chart-filter">Nuevos</div>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Teléfono</th>
+                        <th>Vehículos</th>
+                        <th>Membresía</th>
+                        <th>Última Visita</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#C-1001</td>
+                        <td>
+                            <div class="client-info">
+                                <div class="client-avatar">MG</div>
+                                <div>
+                                    <div class="client-name">María González</div>
+                                    <div class="client-email">maria.gonzalez@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>555-123-4567</td>
+                        <td>
+                            <div class="vehicle-tags">
+                                <span class="vehicle-tag">Toyota Corolla</span>
+                                <span class="vehicle-count">+1</span>
+                            </div>
+                        </td>
+                        <td><span class="membership-badge vip">VIP</span></td>
+                        <td>12/04/2025</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#C-1002</td>
+                        <td>
+                            <div class="client-info">
+                                <div class="client-avatar">JP</div>
+                                <div>
+                                    <div class="client-name">Juan Pérez</div>
+                                    <div class="client-email">juan.perez@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>555-234-5678</td>
+                        <td>
+                            <div class="vehicle-tags">
+                                <span class="vehicle-tag">Honda Civic</span>
+                            </div>
+                        </td>
+                        <td><span class="membership-badge regular">Regular</span></td>
+                        <td>10/04/2025</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#C-1003</td>
+                        <td>
+                            <div class="client-info">
+                                <div class="client-avatar">CR</div>
+                                <div>
+                                    <div class="client-name">Carlos Rodríguez</div>
+                                    <div class="client-email">carlos.rodriguez@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>555-345-6789</td>
+                        <td>
+                            <div class="vehicle-tags">
+                                <span class="vehicle-tag">Ford F-150</span>
+                                <span class="vehicle-count">+2</span>
+                            </div>
+                        </td>
+                        <td><span class="membership-badge vip">VIP</span></td>
+                        <td>08/04/2025</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#C-1004</td>
+                        <td>
+                            <div class="client-info">
+                                <div class="client-avatar">AM</div>
+                                <div>
+                                    <div class="client-name">Ana Martínez</div>
+                                    <div class="client-email">ana.martinez@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>555-456-7890</td>
+                        <td>
+                            <div class="vehicle-tags">
+                                <span class="vehicle-tag">Nissan Sentra</span>
+                            </div>
+                        </td>
+                        <td><span class="membership-badge regular">Regular</span></td>
+                        <td>05/04/2025</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#C-1005</td>
+                        <td>
+                            <div class="client-info">
+                                <div class="client-avatar">LS</div>
+                                <div>
+                                    <div class="client-name">Luis Sánchez</div>
+                                    <div class="client-email">luis.sanchez@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>555-567-8901</td>
+                        <td>
+                            <div class="vehicle-tags">
+                                <span class="vehicle-tag">Chevrolet Spark</span>
+                            </div>
+                        </td>
+                        <td><span class="membership-badge vip">VIP</span></td>
+                        <td>01/04/2025</td>
+                        <td><span class="status-badge status-pending">Inactivo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#C-1006</td>
+                        <td>
+                            <div class="client-info">
+                                <div class="client-avatar">PL</div>
+                                <div>
+                                    <div class="client-name">Patricia López</div>
+                                    <div class="client-email">patricia.lopez@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>555-678-9012</td>
+                        <td>
+                            <div class="vehicle-tags">
+                                <span class="vehicle-tag">Volkswagen Jetta</span>
+                                <span class="vehicle-count">+1</span>
+                            </div>
+                        </td>
+                        <td><span class="membership-badge regular">Regular</span></td>
+                        <td>28/03/2025</td>
+                        <td><span class="status-badge status-completed">Activo</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="#" class="table-action" title="Ver detalles"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="table-action" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="table-action" title="Eliminar"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <span class="pagination-ellipsis">...</span>
+                <button class="pagination-btn">10</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Client Details Section -->
+        <div class="client-details-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Historial de Servicios - María González</h2>
+                <div class="chart-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i> Exportar
+                    </button>
+                </div>
+            </div>
+            
+            <div class="client-profile">
+                <div class="client-profile-header">
+                    <div class="client-profile-avatar">MG</div>
+                    <div class="client-profile-info">
+                        <h3>María González</h3>
+                        <div class="client-contact">
+                            <span><i class="fas fa-envelope"></i> maria.gonzalez@email.com</span>
+                            <span><i class="fas fa-phone"></i> 555-123-4567</span>
+                        </div>
+                        <div class="client-meta">
+                            <span class="membership-badge vip">VIP</span>
+                            <span class="client-since">Cliente desde: 15/01/2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="client-vehicles">
+                    <h4>Vehículos</h4>
+                    <div class="vehicle-cards">
+                        <div class="vehicle-card">
+                            <div class="vehicle-card-header">
+                                <h5>Toyota Corolla</h5>
+                                <span class="vehicle-year">2020</span>
+                            </div>
+                            <div class="vehicle-details">
+                                <span><i class="fas fa-palette"></i> Blanco</span>
+                                <span><i class="fas fa-tag"></i> ABC-123</span>
+                            </div>
+                        </div>
+                        <div class="vehicle-card">
+                            <div class="vehicle-card-header">
+                                <h5>Honda CR-V</h5>
+                                <span class="vehicle-year">2022</span>
+                            </div>
+                            <div class="vehicle-details">
+                                <span><i class="fas fa-palette"></i> Gris</span>
+                                <span><i class="fas fa-tag"></i> XYZ-789</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-history">
+                    <h4>Historial de Servicios</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Servicio</th>
+                                <th>Vehículo</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12/04/2025</td>
+                                <td>Lavado Premium</td>
+                                <td>Toyota Corolla</td>
+                                <td>$80.00</td>
+                                <td><span class="status-badge status-completed">Completado</span></td>
+                            </tr>
+                            <tr>
+                                <td>28/03/2025</td>
+                                <td>Detallado Completo</td>
+                                <td>Honda CR-V</td>
+                                <td>$220.00</td>
+                                <td><span class="status-badge status-completed">Completado</span></td>
+                            </tr>
+                            <tr>
+                                <td>15/03/2025</td>
+                                <td>Lavado Básico</td>
+                                <td>Toyota Corolla</td>
+                                <td>$60.00</td>
+                                <td><span class="status-badge status-completed">Completado</span></td>
+                            </tr>
+                            <tr>
+                                <td>01/03/2025</td>
+                                <td>Lavado Premium</td>
+                                <td>Honda CR-V</td>
+                                <td>$80.00</td>
+                                <td><span class="status-badge status-completed">Completado</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add Client Modal -->
+        <div class="modal" id="addClientModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Agregar Nuevo Cliente</h2>
+                    <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="clientForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" id="apellido" name="apellido" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="direccion">Dirección</label>
+                                <input type="text" id="direccion" name="direccion">
+                            </div>
+                            <div class="form-group">
+                                <label for="membresia">Membresía</label>
+                                <select id="membresia" name="membresia" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="vip">VIP</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <h3 class="form-section-title">Información del Vehículo</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="marca">Marca</label>
+                                <input type="text" id="marca" name="marca" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modelo">Modelo</label>
+                                <input type="text" id="modelo" name="modelo" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="anio">Año</label>
+                                <input type="number" id="anio" name="anio" min="1900" max="2025" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="color">Color</label>
+                                <input type="text" id="color" name="color" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="placa">Placa</label>
+                                <input type="text" id="placa" name="placa" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Tipo</label>
+                                <select id="tipo" name="tipo" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="sedan">Sedán</option>
+                                    <option value="suv">SUV</option>
+                                    <option value="hatchback">Hatchback</option>
+                                    <option value="pickup">Pickup</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notas">Notas Adicionales</label>
+                            <textarea id="notas" name="notas" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelBtn">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Responsive sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('adminSidebar');
+            sidebar.classList.toggle('active');
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('addClientModal');
+        const btnAddClient = document.getElementById('btnAddClient');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        
+        btnAddClient.addEventListener('click', function() {
+            modal.classList.add('show');
+        });
+        
+        function closeModalFunc() {
+            modal.classList.remove('show');
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        cancelBtn.addEventListener('click', closeModalFunc);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModalFunc();
+            }
+        });
+        
+        // Form submission (prevent default for demo)
+        document.getElementById('clientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Cliente guardado correctamente!');
+            closeModalFunc();
+        });
+    </script>
+</body>
+</html>
