@@ -31,10 +31,10 @@
                 </nav>
                 
                 <div class="header-actions">
-                    <button class="btn-icon">
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
-                    </button>
-                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    </a>
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -590,6 +590,135 @@
                 </div>
             </div>
         </div>
+        <!-- Modal Ver Detalles -->
+<div class="modal" id="viewClientModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Detalles del Cliente</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="client-profile">
+                <div class="client-profile-header">
+                    <div class="client-profile-avatar" id="detailAvatar">MG</div>
+                    <div class="client-profile-info">
+                        <h3 id="detailName">María González</h3>
+                        <div class="client-contact">
+                            <span><i class="fas fa-envelope"></i> <span id="detailEmail">maria.gonzalez@email.com</span></span>
+                            <span><i class="fas fa-phone"></i> <span id="detailPhone">555-123-4567</span></span>
+                        </div>
+                        <div class="client-meta">
+                            <span class="membership-badge vip" id="detailMembership">VIP</span>
+                            <span class="client-since">Cliente desde: <span id="detailSince">15/01/2023</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="client-vehicles">
+                    <h4>Vehículos</h4>
+                    <div class="vehicle-cards" id="detailVehicles">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Cliente -->
+<div class="modal" id="editClientModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Cliente</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <form id="editClientForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editNombre">Nombre</label>
+                        <input type="text" id="editNombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editApellido">Apellido</label>
+                        <input type="text" id="editApellido" name="apellido" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTelefono">Teléfono</label>
+                        <input type="tel" id="editTelefono" name="telefono" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editDireccion">Dirección</label>
+                        <input type="text" id="editDireccion" name="direccion">
+                    </div>
+                    <div class="form-group">
+                        <label for="editMembresia">Membresía</label>
+                        <select id="editMembresia" name="membresia" required>
+                            <option value="regular">Regular</option>
+                            <option value="vip">VIP</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline modal-close">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eliminar Cliente -->
+<div class="modal" id="deleteClientModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Confirmar Eliminación</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <p>¿Estás seguro que deseas eliminar este cliente? Esta acción no se puede deshacer.</p>
+            <div class="client-info-delete">
+                <div class="client-avatar-delete" id="deleteAvatar">MG</div>
+                <div>
+                    <div class="client-name-delete" id="deleteName">María González</div>
+                    <div class="client-email-delete" id="deleteEmail">maria.gonzalez@email.com</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close">Cancelar</button>
+            <button class="btn btn-danger" id="confirmDelete">Eliminar</button>
+        </div>
+    </div>
+</div>
+<!-- Alertas (agregar antes del cierre de </body>) -->
+<div class="alert-notification" id="saveAlert">
+    <div class="alert-content">
+        <i class="fas fa-check-circle alert-icon"></i>
+        <span class="alert-text">Los cambios se guardaron correctamente</span>
+    </div>
+</div>
+
+<div class="alert-notification alert-danger" id="deleteAlert">
+    <div class="alert-content">
+        <i class="fas fa-trash-alt alert-icon"></i>
+        <span class="alert-text">Cliente eliminado correctamente</span>
+    </div>
+</div>
     </main>
 
     <script>
@@ -629,6 +758,141 @@
             alert('Cliente guardado correctamente!');
             closeModalFunc();
         });
+        // Modales y Alertas para Clientes
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos de los modales
+    const viewModal = document.getElementById('viewClientModal');
+    const editModal = document.getElementById('editClientModal');
+    const deleteModal = document.getElementById('deleteClientModal');
+    
+    // Botones de cierre
+    const closeButtons = document.querySelectorAll('.modal-close');
+    
+    // Abrir modales desde la tabla
+    document.querySelectorAll('.table-action[title="Ver detalles"]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            fillViewModal(row);
+            viewModal.classList.add('show');
+        });
+    });
+    
+    document.querySelectorAll('.table-action[title="Editar"]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            fillEditModal(row);
+            editModal.classList.add('show');
+        });
+    });
+    
+    document.querySelectorAll('.table-action[title="Eliminar"]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            fillDeleteModal(row);
+            deleteModal.classList.add('show');
+        });
+    });
+    
+    // Cerrar modales
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            viewModal.classList.remove('show');
+            editModal.classList.remove('show');
+            deleteModal.classList.remove('show');
+        });
+    });
+    
+    // Cerrar al hacer clic fuera del modal
+    window.addEventListener('click', function(e) {
+        if (e.target === viewModal) viewModal.classList.remove('show');
+        if (e.target === editModal) editModal.classList.remove('show');
+        if (e.target === deleteModal) deleteModal.classList.remove('show');
+    });
+    
+    // Formulario de edición
+    document.getElementById('editClientForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        editModal.classList.remove('show');
+        showAlert('saveAlert');
+    });
+    
+    // Confirmar eliminación
+    document.getElementById('confirmDelete').addEventListener('click', function() {
+        deleteModal.classList.remove('show');
+        showAlert('deleteAlert');
+    });
+    
+    // Funciones para llenar los modales
+    function fillViewModal(row) {
+        const name = row.querySelector('.client-name').textContent;
+        const email = row.querySelector('.client-email').textContent;
+        const phone = row.cells[2].textContent;
+        const membership = row.querySelector('.membership-badge').textContent;
+        
+        document.getElementById('detailName').textContent = name;
+        document.getElementById('detailEmail').textContent = email;
+        document.getElementById('detailPhone').textContent = phone;
+        document.getElementById('detailMembership').textContent = membership;
+        document.getElementById('detailAvatar').textContent = name.split(' ').map(n => n[0]).join('');
+        
+        // Limpiar vehículos anteriores
+        const vehiclesContainer = document.getElementById('detailVehicles');
+        vehiclesContainer.innerHTML = '';
+        
+        // Agregar vehículos (simulado)
+        const vehicles = row.querySelectorAll('.vehicle-tag');
+        vehicles.forEach(vehicle => {
+            const vehicleCard = document.createElement('div');
+            vehicleCard.className = 'vehicle-card';
+            vehicleCard.innerHTML = `
+                <div class="vehicle-card-header">
+                    <h5>${vehicle.textContent}</h5>
+                    <span class="vehicle-year">2020</span>
+                </div>
+                <div class="vehicle-details">
+                    <span><i class="fas fa-palette"></i> Blanco</span>
+                    <span><i class="fas fa-tag"></i> ABC-123</span>
+                </div>
+            `;
+            vehiclesContainer.appendChild(vehicleCard);
+        });
+    }
+    
+    function fillEditModal(row) {
+        const name = row.querySelector('.client-name').textContent.split(' ');
+        const email = row.querySelector('.client-email').textContent;
+        const phone = row.cells[2].textContent;
+        const membership = row.querySelector('.membership-badge').classList.contains('vip') ? 'vip' : 'regular';
+        
+        document.getElementById('editNombre').value = name[0] || '';
+        document.getElementById('editApellido').value = name[1] || '';
+        document.getElementById('editEmail').value = email;
+        document.getElementById('editTelefono').value = phone;
+        document.getElementById('editMembresia').value = membership;
+    }
+    
+    function fillDeleteModal(row) {
+        const name = row.querySelector('.client-name').textContent;
+        const email = row.querySelector('.client-email').textContent;
+        
+        document.getElementById('deleteName').textContent = name;
+        document.getElementById('deleteEmail').textContent = email;
+        document.getElementById('deleteAvatar').textContent = name.split(' ').map(n => n[0]).join('');
+    }
+    
+    // Mostrar alertas
+    function showAlert(alertId) {
+        const alert = document.getElementById(alertId);
+        alert.classList.add('show');
+        
+        setTimeout(() => {
+            alert.classList.remove('show');
+        }, 3000);
+    }
+});
     </script>
 </body>
 </html>

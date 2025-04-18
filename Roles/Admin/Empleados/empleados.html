@@ -31,10 +31,10 @@
                 </nav>
                 
                 <div class="header-actions">
-                    <button class="btn-icon">
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
-                    </button>
-                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    </a>
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -448,45 +448,307 @@
                 </div>
             </div>
         </div>
+        <!-- View Employee Modal -->
+     <div class="modal" id="viewEmployeeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalles del Empleado</h2>
+                <button class="modal-close" id="closeViewModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="employee-details">
+                    <div class="employee-avatar-lg">JR</div>
+                    <div class="employee-info-lg">
+                        <h3 class="employee-name-lg">Juan Rodríguez</h3>
+                        <p class="employee-email-lg">juan.rodriguez@slushy.com</p>
+                        <span class="status-badge status-completed">Activo</span>
+                    </div>
+                </div>
+                
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">ID Empleado:</span>
+                        <span class="detail-value">#E-1001</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Departamento:</span>
+                        <span class="detail-value">Lavado</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Cargo:</span>
+                        <span class="detail-value">Supervisor</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Teléfono:</span>
+                        <span class="detail-value">555-123-4567</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Fecha Contratación:</span>
+                        <span class="detail-value">15/03/2022</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Salario:</span>
+                        <span class="detail-value">$1,800.00</span>
+                    </div>
+                </div>
+                
+                <div class="detail-item full-width">
+                    <span class="detail-label">Notas:</span>
+                    <p class="detail-value">Excelente desempeño en el área de lavado. Capacitado para manejar equipos especializados.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="closeViewModalBtn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Employee Modal -->
+    <div class="modal" id="editEmployeeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Empleado</h2>
+                <button class="modal-close" id="closeEditModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="editEmployeeForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editNombre">Nombre</label>
+                            <input type="text" id="editNombre" name="editNombre" value="Juan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editApellido">Apellido</label>
+                            <input type="text" id="editApellido" name="editApellido" value="Rodríguez" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editEmail">Email</label>
+                            <input type="email" id="editEmail" name="editEmail" value="juan.rodriguez@slushy.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editTelefono">Teléfono</label>
+                            <input type="tel" id="editTelefono" name="editTelefono" value="555-123-4567" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editDepartamento">Departamento</label>
+                            <select id="editDepartamento" name="editDepartamento" required>
+                                <option value="lavado" selected>Lavado</option>
+                                <option value="detallado">Detallado</option>
+                                <option value="recepcion">Recepción</option>
+                                <option value="administracion">Administración</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editCargo">Cargo</label>
+                            <select id="editCargo" name="editCargo" required>
+                                <option value="supervisor" selected>Supervisor</option>
+                                <option value="gerente">Gerente</option>
+                                <option value="especialista">Especialista</option>
+                                <option value="operario">Operario</option>
+                                <option value="recepcionista">Recepcionista</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editFechaContratacion">Fecha de Contratación</label>
+                            <input type="date" id="editFechaContratacion" name="editFechaContratacion" value="2022-03-15" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEstado">Estado</label>
+                            <select id="editEstado" name="editEstado" required>
+                                <option value="active" selected>Activo</option>
+                                <option value="vacation">Vacaciones</option>
+                                <option value="inactive">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editSalario">Salario</label>
+                        <input type="number" id="editSalario" name="editSalario" value="1800" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editNotas">Notas Adicionales</label>
+                        <textarea id="editNotas" name="editNotas" rows="3">Excelente desempeño en el área de lavado. Capacitado para manejar equipos especializados.</textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelEditBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete Employee Modal -->
+    <div class="modal" id="deleteEmployeeModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Eliminar Empleado</h2>
+                <button class="modal-close" id="closeDeleteModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="delete-confirmation">
+                    <div class="delete-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>¿Estás seguro de eliminar este empleado?</h3>
+                    <p>Esta acción eliminará permanentemente los datos del empleado <strong>Juan Rodríguez (#E-1001)</strong> y no se podrá deshacer.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelDeleteBtn">Cancelar</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn">Eliminar Empleado</button>
+            </div>
+        </div>
+    </div>
+    <!-- Alertas (agregar antes del cierre de </body>) -->
+<div class="alert-notification" id="saveEmployeeAlert">
+    <div class="alert-content">
+        <i class="fas fa-check-circle alert-icon"></i>
+        <span class="alert-text">Los cambios se guardaron correctamente</span>
+    </div>
+</div>
+
+<div class="alert-notification alert-danger" id="deleteEmployeeAlert">
+    <div class="alert-content">
+        <i class="fas fa-trash-alt alert-icon"></i>
+        <span class="alert-text">Empleado eliminado correctamente</span>
+    </div>
+</div>
     </main>
+    
 
     <script>
-        // Responsive sidebar toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('adminSidebar');
-            sidebar.classList.toggle('active');
-        });
-        
-        // Modal functionality
-        const modal = document.getElementById('addEmployeeModal');
-        const btnAddEmployee = document.getElementById('btnAddEmployee');
-        const closeModal = document.getElementById('closeModal');
-        const cancelBtn = document.getElementById('cancelBtn');
-        
-        btnAddEmployee.addEventListener('click', function() {
-            modal.classList.add('show');
-        });
-        
-        function closeModalFunc() {
-            modal.classList.remove('show');
-        }
-        
-        closeModal.addEventListener('click', closeModalFunc);
-        cancelBtn.addEventListener('click', closeModalFunc);
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModalFunc();
-            }
-        });
-        
-        // Form submission (prevent default for demo)
-        document.getElementById('employeeForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Empleado guardado correctamente!');
+      document.addEventListener('DOMContentLoaded', function() {
+    // Responsive sidebar toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        const sidebar = document.getElementById('adminSidebar');
+        sidebar.classList.toggle('active');
+    });
+    
+    // Modal functionality
+    const modal = document.getElementById('addEmployeeModal');
+    const btnAddEmployee = document.getElementById('btnAddEmployee');
+    const closeModal = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    
+    btnAddEmployee.addEventListener('click', function() {
+        modal.classList.add('show');
+    });
+    
+    function closeModalFunc() {
+        modal.classList.remove('show');
+    }
+    
+    closeModal.addEventListener('click', closeModalFunc);
+    cancelBtn.addEventListener('click', closeModalFunc);
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
             closeModalFunc();
+        }
+    });
+    
+    // Form submission
+    document.getElementById('employeeForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        modal.classList.remove('show');
+        showAlert('saveEmployeeAlert', 'Empleado agregado correctamente');
+    });
+
+    // Modales Ver/Editar/Eliminar
+    const viewModal = document.getElementById('viewEmployeeModal');
+    const editModal = document.getElementById('editEmployeeModal');
+    const deleteModal = document.getElementById('deleteEmployeeModal');
+    
+    // Función para abrir modales
+    function setupTableActions() {
+        document.querySelectorAll('tbody tr').forEach(row => {
+            // Botón Ver
+            row.querySelector('.table-action[title="Ver detalles"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                viewModal.classList.add('show');
+            });
+            
+            // Botón Editar
+            row.querySelector('.table-action[title="Editar"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                editModal.classList.add('show');
+            });
+            
+            // Botón Eliminar
+            row.querySelector('.table-action[title="Eliminar"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                const employeeName = row.querySelector('.employee-name').textContent;
+                const employeeId = row.querySelector('td:first-child').textContent;
+                document.querySelector('#deleteEmployeeModal strong').textContent = 
+                    `${employeeName} (${employeeId})`;
+                
+                deleteModal.classList.add('show');
+            });
         });
+    }
+    
+    // Cerrar modales
+    document.getElementById('closeViewModal').addEventListener('click', () => viewModal.classList.remove('show'));
+    document.getElementById('closeViewModalBtn').addEventListener('click', () => viewModal.classList.remove('show'));
+    
+    document.getElementById('closeEditModal').addEventListener('click', () => editModal.classList.remove('show'));
+    document.getElementById('cancelEditBtn').addEventListener('click', () => editModal.classList.remove('show'));
+    
+    document.getElementById('closeDeleteModal').addEventListener('click', () => deleteModal.classList.remove('show'));
+    document.getElementById('cancelDeleteBtn').addEventListener('click', () => deleteModal.classList.remove('show'));
+    
+    // Cerrar modales al hacer clic fuera
+    window.addEventListener('click', function(event) {
+        if (event.target === viewModal) viewModal.classList.remove('show');
+        if (event.target === editModal) editModal.classList.remove('show');
+        if (event.target === deleteModal) deleteModal.classList.remove('show');
+    });
+    
+    // Formulario de edición
+    document.getElementById('editEmployeeForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        editModal.classList.remove('show');
+        showAlert('saveEmployeeAlert', 'Cambios del empleado guardados correctamente');
+    });
+    
+    // Confirmar eliminación
+    document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+        deleteModal.classList.remove('show');
+        showAlert('deleteEmployeeAlert', 'Empleado eliminado correctamente');
+    });
+    
+    // Inicializar los eventos de la tabla
+    setupTableActions();
+    
+    // Función para mostrar alertas
+    function showAlert(alertId, message = null) {
+        const alert = document.getElementById(alertId);
+        
+        if (message) {
+            alert.querySelector('.alert-text').textContent = message;
+        }
+
+        alert.classList.add('show');
+        
+        setTimeout(() => {
+            alert.classList.remove('show');
+        }, 3000);
+    }
+});
     </script>
 </body>
 </html>

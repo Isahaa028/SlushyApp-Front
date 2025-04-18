@@ -31,10 +31,10 @@
                 </nav>
                 
                 <div class="header-actions">
-                    <button class="btn-icon">
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
-                    </button>
-                    <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
+                    </a>
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -387,45 +387,323 @@
                 </div>
             </div>
         </div>
+        <!-- Modal Ver Detalles de Reserva -->
+<div class="modal" id="viewReservationModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Detalles de la Reserva</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="reservation-details">
+                <div class="detail-item">
+                    <span class="detail-label">ID Reserva:</span>
+                    <span class="detail-value" id="reservationId">#R-1248</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Cliente:</span>
+                    <span class="detail-value" id="reservationClient">María González</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Vehículo:</span>
+                    <span class="detail-value" id="reservationVehicle">Toyota Corolla (Sedán)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Servicio:</span>
+                    <span class="detail-value" id="reservationService">Lavado Premium</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Fecha y Hora:</span>
+                    <span class="detail-value" id="reservationDateTime">12/04/2025 - 9:00 AM</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Duración:</span>
+                    <span class="detail-value" id="reservationDuration">90 minutos</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Estado:</span>
+                    <span class="detail-value"><span class="status-badge status-completed">Completado</span></span>
+                </div>
+                <div class="detail-item full-width">
+                    <span class="detail-label">Notas:</span>
+                    <p class="detail-value" id="reservationNotes">El cliente solicita limpieza especial de tapicería.</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Reserva -->
+<div class="modal" id="editReservationModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Reserva</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <form id="editReservationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editReservationClient">Cliente</label>
+                        <select id="editReservationClient" name="cliente" required>
+                            <option value="1" selected>María González</option>
+                            <option value="2">Juan Pérez</option>
+                            <option value="3">Carlos Rodríguez</option>
+                            <option value="4">Ana Martínez</option>
+                            <option value="5">Luis Sánchez</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editReservationVehicle">Vehículo</label>
+                        <select id="editReservationVehicle" name="vehiculo" required>
+                            <option value="1" selected>Toyota Corolla (Sedán)</option>
+                            <option value="2">Honda Civic (Sedán)</option>
+                            <option value="3">Ford F-150 (Camioneta)</option>
+                            <option value="4">Nissan Sentra (Sedán)</option>
+                            <option value="5">Chevrolet Spark (Hatchback)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editReservationService">Servicio</label>
+                        <select id="editReservationService" name="servicio" required>
+                            <option value="premium" selected>Lavado Premium</option>
+                            <option value="basic">Lavado Básico</option>
+                            <option value="express">Lavado Exprés</option>
+                            <option value="detail">Detallado Completo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editReservationDate">Fecha</label>
+                        <input type="date" id="editReservationDate" name="fecha" value="2025-04-12" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editReservationTime">Hora</label>
+                        <input type="time" id="editReservationTime" name="hora" value="09:00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editReservationDuration">Duración (minutos)</label>
+                        <input type="number" id="editReservationDuration" name="duracion" min="30" step="30" value="90" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editReservationNotes">Notas Adicionales</label>
+                    <textarea id="editReservationNotes" name="notas" rows="3">El cliente solicita limpieza especial de tapicería.</textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline modal-close">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Cancelar Reserva -->
+<div class="modal" id="cancelReservationModal">
+    <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-header">
+            <h2>Cancelar Reserva</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="cancel-confirmation">
+                <div class="cancel-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>¿Estás seguro de cancelar esta reserva?</h3>
+                <p>Esta acción cancelará la reserva <strong id="reservationToCancel">#R-1248 - María González (Toyota Corolla)</strong>.</p>
+                <div class="form-group">
+                    <label for="cancelReason">Motivo de cancelación</label>
+                    <select id="cancelReason" name="cancelReason">
+                        <option value="">Seleccionar motivo...</option>
+                        <option value="client">Cancelación del cliente</option>
+                        <option value="schedule">Conflicto de horario</option>
+                        <option value="other">Otro motivo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close">No, mantener</button>
+            <button class="btn btn-danger" id="confirmCancelBtn">Sí, cancelar</button>
+        </div>
+    </div>
+</div>
+<!-- Alertas (agregar antes del cierre de </body>) -->
+<div class="alert-notification" id="saveReservationAlert">
+    <div class="alert-content">
+        <i class="fas fa-check-circle alert-icon"></i>
+        <span class="alert-text">Reserva guardada correctamente</span>
+    </div>
+</div>
+
+<div class="alert-notification alert-danger" id="cancelReservationAlert">
+    <div class="alert-content">
+        <i class="fas fa-times-circle alert-icon"></i>
+        <span class="alert-text">Reserva cancelada correctamente</span>
+    </div>
+</div>
     </main>
 
     <script>
-        // Responsive sidebar toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('adminSidebar');
-            sidebar.classList.toggle('active');
-        });
-        
-        // Modal functionality
-        const modal = document.getElementById('addReservationModal');
-        const btnAddReservation = document.getElementById('btnAddReservation');
-        const closeModal = document.getElementById('closeModal');
-        const cancelBtn = document.getElementById('cancelBtn');
-        
-        btnAddReservation.addEventListener('click', function() {
-            modal.classList.add('show');
-        });
-        
-        function closeModalFunc() {
-            modal.classList.remove('show');
-        }
-        
-        closeModal.addEventListener('click', closeModalFunc);
-        cancelBtn.addEventListener('click', closeModalFunc);
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModalFunc();
-            }
-        });
-        
-        // Form submission (prevent default for demo)
-        document.getElementById('reservationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Reserva guardada correctamente!');
-            closeModalFunc();
-        });
+// Responsive sidebar toggle
+document.getElementById('menuToggle').addEventListener('click', function() {
+    const sidebar = document.getElementById('adminSidebar');
+    sidebar.classList.toggle('active');
+});
+
+// Modal functionality
+const modal = document.getElementById('addReservationModal');
+const btnAddReservation = document.getElementById('btnAddReservation');
+const closeModal = document.getElementById('closeModal');
+const cancelBtn = document.getElementById('cancelBtn');
+
+btnAddReservation.addEventListener('click', function() {
+    modal.classList.add('show');
+});
+
+function closeModalFunc() {
+    modal.classList.remove('show');
+}
+
+closeModal.addEventListener('click', closeModalFunc);
+cancelBtn.addEventListener('click', closeModalFunc);
+
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+        closeModalFunc();
+    }
+});
+
+// Form submission
+document.getElementById('reservationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    modal.classList.remove('show');
+    showAlert('saveReservationAlert', 'Reserva creada correctamente');
+});
+
+// Modales para Ver/Editar/Cancelar
+const viewModal = document.getElementById('viewReservationModal');
+const editModal = document.getElementById('editReservationModal');
+const cancelModal = document.getElementById('cancelReservationModal');
+
+// Configurar eventos para los botones de acción
+document.querySelectorAll('.table-action[title="Ver detalles"]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const row = this.closest('tr');
+        fillViewModal(row);
+        viewModal.classList.add('show');
+    });
+});
+
+document.querySelectorAll('.table-action[title="Editar"]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const row = this.closest('tr');
+        fillEditModal(row);
+        editModal.classList.add('show');
+    });
+});
+
+document.querySelectorAll('.table-action[title="Cancelar"]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const row = this.closest('tr');
+        fillCancelModal(row);
+        cancelModal.classList.add('show');
+    });
+});
+
+// Cerrar modales
+document.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', function() {
+        viewModal.classList.remove('show');
+        editModal.classList.remove('show');
+        cancelModal.classList.remove('show');
+    });
+});
+
+// Cerrar al hacer clic fuera del modal
+window.addEventListener('click', function(event) {
+    if (event.target === viewModal) viewModal.classList.remove('show');
+    if (event.target === editModal) editModal.classList.remove('show');
+    if (event.target === cancelModal) cancelModal.classList.remove('show');
+});
+
+// Formulario de edición
+document.getElementById('editReservationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    editModal.classList.remove('show');
+    showAlert('saveReservationAlert', 'Cambios en la reserva guardados correctamente');
+});
+
+// Confirmar cancelación
+document.getElementById('confirmCancelBtn').addEventListener('click', function() {
+    cancelModal.classList.remove('show');
+    showAlert('cancelReservationAlert', 'Reserva cancelada correctamente');
+});
+
+// Función para llenar el modal de vista
+function fillViewModal(row) {
+    const cells = row.querySelectorAll('td');
+    document.getElementById('reservationId').textContent = cells[0].textContent;
+    document.getElementById('reservationClient').textContent = cells[1].textContent;
+    document.getElementById('reservationVehicle').textContent = cells[2].textContent;
+    document.getElementById('reservationService').textContent = cells[3].textContent;
+    document.getElementById('reservationDateTime').textContent = `${cells[4].textContent} - ${cells[5].textContent}`;
+    
+    // Actualizar estado
+    const statusBadge = row.querySelector('.status-badge').cloneNode(true);
+    document.querySelector('#viewReservationModal .detail-value span').replaceWith(statusBadge);
+}
+
+// Función para llenar el modal de edición
+function fillEditModal(row) {
+    const cells = row.querySelectorAll('td');
+    document.getElementById('editReservationClient').value = cells[1].textContent.includes('María') ? '1' : 
+                                                          cells[1].textContent.includes('Juan') ? '2' : '3';
+    document.getElementById('editReservationVehicle').value = cells[2].textContent.includes('Toyota') ? '1' : 
+                                                            cells[2].textContent.includes('Honda') ? '2' : '3';
+    document.getElementById('editReservationService').value = cells[3].textContent.includes('Premium') ? 'premium' : 
+                                                             cells[3].textContent.includes('Básico') ? 'basic' : 'express';
+    // Notas de ejemplo
+    document.getElementById('editReservationNotes').value = 'El cliente solicita limpieza especial de tapicería.';
+}
+
+// Función para llenar el modal de cancelación
+function fillCancelModal(row) {
+    const cells = row.querySelectorAll('td');
+    document.getElementById('reservationToCancel').textContent = 
+        `${cells[0].textContent} - ${cells[1].textContent} (${cells[2].textContent})`;
+}
+
+// Función para mostrar alertas
+function showAlert(alertId, message = null) {
+    const alert = document.getElementById(alertId);
+    
+    if (message) {
+        alert.querySelector('.alert-text').textContent = message;
+    }
+    
+    alert.classList.add('show');
+    
+    setTimeout(() => {
+        alert.classList.remove('show');
+    }, 3000);
+}
     </script>
 </body>
 </html>

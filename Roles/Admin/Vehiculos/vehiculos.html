@@ -29,9 +29,9 @@
                 </nav>
                 
                 <div class="header-actions">
-                    <button class="btn-icon">
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
-                    </button>
+                    </a>
                     <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
@@ -378,6 +378,142 @@
                 </div>
             </div>
         </div>
+        <!-- Modal para Ver Detalles -->
+<div class="modal" id="viewVehicleModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Detalles del Vehículo</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-row">
+                <span class="modal-label">ID:</span>
+                <span class="modal-value" id="view-vehicle-id">#V-1001</span>
+            </div>
+            <div class="modal-row">
+                <span class="modal-label">Marca:</span>
+                <span class="modal-value" id="view-vehicle-marca">Toyota</span>
+            </div>
+            <div class="modal-row">
+                <span class="modal-label">Modelo:</span>
+                <span class="modal-value" id="view-vehicle-modelo">Corolla</span>
+            </div>
+            <div class="modal-row">
+                <span class="modal-label">Tipo:</span>
+                <span class="modal-value" id="view-vehicle-tipo">Sedán</span>
+            </div>
+            <div class="modal-row">
+                <span class="modal-label">Placa:</span>
+                <span class="modal-value" id="view-vehicle-placa">ABC-123</span>
+            </div>
+            <div class="modal-row">
+                <span class="modal-label">Color:</span>
+                <span class="modal-value" id="view-vehicle-color">Plata</span>
+            </div>
+            <div class="modal-row">
+                <span class="modal-label">Estado:</span>
+                <span class="modal-value"><span class="status-badge status-completed">Activo</span></span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close-btn">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Editar -->
+<div class="modal" id="editVehicleModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Vehículo</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form class="modal-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-vehicle-marca" class="modal-label">Marca</label>
+                        <input type="text" id="edit-vehicle-marca" class="form-control" value="Toyota">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-vehicle-modelo" class="modal-label">Modelo</label>
+                        <input type="text" id="edit-vehicle-modelo" class="form-control" value="Corolla">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-vehicle-tipo" class="modal-label">Tipo</label>
+                        <select id="edit-vehicle-tipo" class="form-control">
+                            <option value="sedan" selected>Sedán</option>
+                            <option value="suv">SUV</option>
+                            <option value="hatchback">Hatchback</option>
+                            <option value="pickup">Camioneta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-vehicle-placa" class="modal-label">Placa</label>
+                        <input type="text" id="edit-vehicle-placa" class="form-control" value="ABC-123">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-vehicle-color" class="modal-label">Color</label>
+                        <input type="text" id="edit-vehicle-color" class="form-control" value="Plata">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-vehicle-estado" class="modal-label">Estado</label>
+                        <select id="edit-vehicle-estado" class="form-control">
+                            <option value="active" selected>Activo</option>
+                            <option value="inactive">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close-btn">Cancelar</button>
+            <button class="btn btn-primary" id="saveVehicleChanges">Guardar Cambios</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Eliminar -->
+<div class="modal" id="deleteVehicleModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Eliminar Vehículo</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>¿Estás seguro que deseas eliminar este vehículo? Esta acción no se puede deshacer.</p>
+            <div class="vehicle-to-delete">
+                <strong>Vehículo:</strong> Toyota Corolla (ABC-123)
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close-btn">Cancelar</button>
+            <button class="btn btn-primary" id="eliminarVehiculo">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Alerta de guardado -->
+<div class="alert-notification" id="saveVehicleAlert">
+    <div class="alert-content">
+        <i class="fas fa-check-circle alert-icon"></i>
+        <span class="alert-text">Los cambios se guardaron correctamente</span>
+    </div>
+</div>
+<!-- Alerta de eliminación (nueva) -->
+<div class="alert-notification alert-danger" id="deleteVehicleAlert">
+    <div class="alert-content">
+        <i class="fas fa-trash-alt alert-icon"></i>
+        <span class="alert-text">Vehículo eliminado correctamente</span>
+    </div>
+</div>
+
     </main>
 
     <script>
@@ -417,6 +553,76 @@
             alert('Vehículo guardado correctamente!');
             closeModalFunc();
         });
+        
+        // Nuevo código para los modales de acciones
+        document.addEventListener('DOMContentLoaded', function() {
+            // Abrir modales cuando se hace clic en los botones de acción
+            document.querySelectorAll('.table-action').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-eye')) {
+                        document.getElementById('viewVehicleModal').classList.add('active');
+                    } else if (icon.classList.contains('fa-edit')) {
+                        document.getElementById('editVehicleModal').classList.add('active');
+                    } else if (icon.classList.contains('fa-trash')) {
+                        document.getElementById('deleteVehicleModal').classList.add('active');
+                    }
+                });
+            });
+            
+            // Cerrar modales
+            document.querySelectorAll('.modal-close, .modal-close-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').classList.remove('active');
+                });
+            });
+            
+            // Cerrar modal al hacer clic fuera
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Mostrar alerta al guardar cambios
+            document.getElementById('saveVehicleChanges').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('editVehicleModal').classList.remove('active');
+                
+                // Mostrar alerta
+                const alert = document.getElementById('saveVehicleAlert');
+                alert.classList.add('show');
+                
+                // Ocultar después de 3 segundos
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                }, 3000);
+            });
+        });
+        document.getElementById('eliminarVehiculo').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // 1. Cierra el modal (ajusta el ID si es diferente)
+    const modal = document.querySelector('.modal.active'); // Cierra cualquier modal abierto
+    if (modal) modal.classList.remove('active');
+    
+    // 2. Muestra la alerta de eliminación (usando tu alerta existente)
+    const alert = document.getElementById('saveVehicleAlert');
+    const alertText = alert.querySelector('.alert-text');
+    
+    alertText.textContent = 'Vehículo eliminado correctamente'; // Mensaje personalizado
+    alert.style.backgroundColor = 'var(--danger)'; // Fondo rojo (asegúrate de que --danger existe en tu CSS)
+    alert.classList.add('show');
+    
+    // 3. Oculta después de 3 segundos (y restaura color original si es necesario)
+    setTimeout(() => {
+        alert.classList.remove('show');
+        alert.style.backgroundColor = 'var(--success)'; // Opcional: vuelve al verde
+    }, 3000);
+});
     </script>
 </body>
 </html>
