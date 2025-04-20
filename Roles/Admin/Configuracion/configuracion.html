@@ -20,21 +20,11 @@
                     <span class="logo-text">SLUSHY</span>
                 </div>
                 
-                <nav class="main-nav">
-                    <ul class="nav-list">
-                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
-                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
-                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
-                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
-                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
-                    </ul>
-                </nav>
-                
                 <div class="header-actions">
                     <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
                     </a>
-                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
+                    <a href="../Salir/salir.html" class="btn btn-primary">Salir</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -105,14 +95,6 @@
                 <button class="tab-btn" data-tab="notifications">
                     <i class="fas fa-bell"></i>
                     <span>Notificaciones</span>
-                </button>
-                <button class="tab-btn" data-tab="backup">
-                    <i class="fas fa-database"></i>
-                    <span>Respaldo</span>
-                </button>
-                <button class="tab-btn" data-tab="appearance">
-                    <i class="fas fa-paint-brush"></i>
-                    <span>Apariencia</span>
                 </button>
             </div>
             
@@ -405,146 +387,6 @@ El equipo de Slushy</textarea>
                     </form>
                 </div>
                 
-                <!-- Backup Settings -->
-                <div class="tab-content" id="backup">
-                    <h2 class="settings-title">Respaldo y Recuperación</h2>
-                    
-                    <div class="backup-actions">
-                        <div class="backup-info">
-                            <h3>Último respaldo</h3>
-                            <p>12 de abril de 2025, 03:45 AM</p>
-                            <p class="backup-status">Estado: <span class="status-badge status-completed">Completado</span></p>
-                        </div>
-                        
-                        <div class="backup-buttons">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-download"></i> Crear Respaldo
-                            </button>
-                            <button class="btn btn-outline">
-                                <i class="fas fa-upload"></i> Restaurar
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="backup-schedule">
-                        <h3>Programación de Respaldos</h3>
-                        
-                        <form class="settings-form">
-                            <div class="form-group">
-                                <label for="backupFrequency">Frecuencia</label>
-                                <select id="backupFrequency" class="form-control">
-                                    <option value="daily">Diario</option>
-                                    <option value="weekly" selected>Semanal</option>
-                                    <option value="monthly">Mensual</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="backupTime">Hora</label>
-                                <input type="time" id="backupTime" value="03:00" class="form-control">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="backupRetention">Retención (días)</label>
-                                <input type="number" id="backupRetention" value="30" min="1" class="form-control">
-                            </div>
-                            
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
-                <!-- Appearance Settings -->
-                <div class="tab-content" id="appearance">
-                    <h2 class="settings-title">Configuración de Apariencia</h2>
-                    
-                    <form class="settings-form">
-                        <div class="form-group">
-                            <label>Tema</label>
-                            <div class="theme-options">
-                                <label class="theme-option">
-                                    <input type="radio" name="theme" value="light" checked>
-                                    <div class="theme-preview light-theme">
-                                        <div class="theme-header"></div>
-                                        <div class="theme-sidebar"></div>
-                                        <div class="theme-content"></div>
-                                    </div>
-                                    <span>Claro</span>
-                                </label>
-                                
-                                <label class="theme-option">
-                                    <input type="radio" name="theme" value="dark">
-                                    <div class="theme-preview dark-theme">
-                                        <div class="theme-header"></div>
-                                        <div class="theme-sidebar"></div>
-                                        <div class="theme-content"></div>
-                                    </div>
-                                    <span>Oscuro</span>
-                                </label>
-                                
-                                <label class="theme-option">
-                                    <input type="radio" name="theme" value="auto">
-                                    <div class="theme-preview auto-theme">
-                                        <div class="theme-header"></div>
-                                        <div class="theme-sidebar"></div>
-                                        <div class="theme-content"></div>
-                                    </div>
-                                    <span>Automático</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Color Principal</label>
-                            <div class="color-options">
-                                <label class="color-option">
-                                    <input type="radio" name="color" value="red" checked>
-                                    <span class="color-preview" style="background-color: var(--primary);"></span>
-                                </label>
-                                
-                                <label class="color-option">
-                                    <input type="radio" name="color" value="blue">
-                                    <span class="color-preview" style="background-color: #3b82f6;"></span>
-                                </label>
-                                
-                                <label class="color-option">
-                                    <input type="radio" name="color" value="green">
-                                    <span class="color-preview" style="background-color: #10b981;"></span>
-                                </label>
-                                
-                                <label class="color-option">
-                                    <input type="radio" name="color" value="purple">
-                                    <span class="color-preview" style="background-color: #8b5cf6;"></span>
-                                </label>
-                                
-                                <label class="color-option">
-                                    <input type="radio" name="color" value="orange">
-                                    <span class="color-preview" style="background-color: #f59e0b;"></span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="logoUpload">Logo de la Empresa</label>
-                            <div class="file-upload">
-                                <input type="file" id="logoUpload" class="form-control-file">
-                                <label for="logoUpload" class="file-upload-label">
-                                    <i class="fas fa-upload"></i>
-                                    <span>Seleccionar archivo</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                            <button type="button" class="btn btn-outline">Restaurar Predeterminados</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
             <!-- Modal para Agregar Servicio -->
     <div class="modal" id="addServiceModal">
         <div class="modal-content">
@@ -856,45 +698,6 @@ El equipo de Slushy</textarea>
         </div>
     </div>
 
-    <!-- Modal para Restaurar Respaldo -->
-    <div class="modal" id="restoreBackupModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Restaurar desde Respaldo</h2>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form class="modal-form">
-                    <div class="form-group">
-                        <label for="backup-file" class="modal-label">Seleccionar archivo de respaldo</label>
-                        <div class="file-upload">
-                            <input type="file" id="backup-file" class="form-control-file" accept=".backup,.sql,.zip">
-                            <label for="backup-file" class="file-upload-label">
-                                <i class="fas fa-upload"></i>
-                                <span>Seleccionar archivo</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="confirm-restore">
-                            <span>Confirmo que deseo restaurar desde este respaldo</span>
-                        </label>
-                    </div>
-                    
-                    <div class="alert alert-warning">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <span>Esta acción sobrescribirá todos los datos actuales con los del respaldo seleccionado.</span>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline modal-close-btn">Cancelar</button>
-                <button class="btn btn-primary" id="confirmRestore" disabled>Restaurar Respaldo</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Alerta de guardado -->
     <div class="alert-notification" id="saveSettingsAlert">
@@ -937,259 +740,180 @@ El equipo de Slushy</textarea>
     </main>
 
     <script>
-        // Responsive sidebar toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('adminSidebar');
-            sidebar.classList.toggle('active');
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Menú responsive
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        const sidebar = document.getElementById('adminSidebar');
+        sidebar.classList.toggle('active');
+    });
+    
+    // 2. Funcionalidad de pestañas
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById(this.getAttribute('data-tab')).classList.add('active');
         });
-        
-        // Settings tabs functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                // Show corresponding content
-                const tabId = this.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-                // Funcionalidad para los modales de Configuración
-                document.addEventListener('DOMContentLoaded', function() {
-            // Abrir modales cuando se hace clic en los botones de acción
-            document.querySelectorAll('.table-action').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const icon = this.querySelector('i');
-                    
-                    if (icon.classList.contains('fa-eye')) {
-                        // Lógica para ver detalles (puedes implementar según necesidad)
-                        alert('Función de ver detalles');
-                    } else if (icon.classList.contains('fa-edit')) {
-                        // Determinar si es servicio o usuario
-                        const row = this.closest('tr');
-                        if (row.querySelector('td:nth-child(1)').textContent.includes('Lavado')) {
-                            document.getElementById('editServiceModal').classList.add('active');
-                        } else {
-                            document.getElementById('editUserModal').classList.add('active');
-                        }
-                    } else if (icon.classList.contains('fa-trash')) {
-                        // Determinar si es servicio o usuario
-                        const row = this.closest('tr');
-                        if (row.querySelector('td:nth-child(1)').textContent.includes('Lavado')) {
-                            document.getElementById('deleteServiceModal').classList.add('active');
-                        } else {
-                            document.getElementById('deleteUserModal').classList.add('active');
-                        }
-                    }
-                });
-            });
-            
-            // Botón Agregar Servicio
-            document.querySelector('.table-actions .btn-primary').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('addServiceModal').classList.add('active');
-            });
-            
-            // Botón Agregar Usuario
-            document.querySelector('#users .table-actions .btn-primary').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('addUserModal').classList.add('active');
-            });
-            
-            // Botón Restaurar en Configuración de Respaldo
-            document.querySelector('#backup .btn-outline').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('restoreBackupModal').classList.add('active');
-            });
-            
-            // Botón Configuración Avanzada de Notificaciones (podrías agregar un botón)
-            // document.getElementById('advancedNotificationBtn').addEventListener('click', function() {
-            //     document.getElementById('notificationSettingsModal').classList.add('active');
-            // });
-            
-            // Cerrar modales
-            document.querySelectorAll('.modal-close, .modal-close-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.closest('.modal').classList.remove('active');
-                });
-            });
-            
-            // Cerrar modal al hacer clic fuera
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                    }
-                });
-            });
-            
-            // Mostrar alerta al guardar cambios
-            const showAlert = (type = 'success') => {
-                const alert = type === 'success' 
-                    ? document.getElementById('saveSettingsAlert')
-                    : document.getElementById('deleteItemAlert');
-                
-                alert.classList.add('show');
-                
-                // Ocultar después de 3 segundos
-                setTimeout(() => {
-                    alert.classList.remove('show');
-                }, 3000);
-            };
-            
-            // Guardar cambios en los modales
-            document.getElementById('saveService').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('addServiceModal').classList.remove('active');
-                showAlert();
-            });
-            
-            document.getElementById('saveServiceChanges').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('editServiceModal').classList.remove('active');
-                showAlert();
-            });
-            
-            document.getElementById('confirmDeleteService').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('deleteServiceModal').classList.remove('active');
-                showAlert('danger');
-            });
-            
-            document.getElementById('saveUser').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('addUserModal').classList.remove('active');
-                showAlert();
-            });
-            
-            document.getElementById('saveUserChanges').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('editUserModal').classList.remove('active');
-                showAlert();
-            });
-            
-            document.getElementById('confirmDeleteUser').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('deleteUserModal').classList.remove('active');
-                showAlert('danger');
-            });
-            
-            document.getElementById('saveNotificationSettings').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('notificationSettingsModal').classList.remove('active');
-                showAlert();
-            });
-            
-            document.getElementById('confirmRestore').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('restoreBackupModal').classList.remove('active');
-                showAlert();
-            });
-            
-            // Habilitar/deshabilitar cambio de contraseña
-            document.getElementById('change-password-checkbox').addEventListener('change', function() {
-                const passwordFields = document.querySelector('.password-fields');
-                passwordFields.style.display = this.checked ? 'flex' : 'none';
-                
-                const inputs = passwordFields.querySelectorAll('input');
-                inputs.forEach(input => {
-                    input.required = this.checked;
-                    if (!this.checked) input.value = '';
-                });
-            });
-            
-            // Habilitar botón de restaurar cuando se confirma
-            document.getElementById('confirm-restore').addEventListener('change', function() {
-                document.getElementById('confirmRestore').disabled = !this.checked;
-            });
-        });
-                // Función para mostrar alertas específicas
-                function showSettingsAlert(type) {
-            // Ocultar todas las alertas primero
-            document.querySelectorAll('.alert-notification').forEach(alert => {
-                alert.classList.remove('show');
-            });
-            
-            // Mostrar la alerta específica
-            let alertId = '';
-            switch(type) {
-                case 'general':
-                    alertId = 'generalSettingsAlert';
-                    break;
-                case 'notifications':
-                    alertId = 'notificationSettingsAlert';
-                    break;
-                case 'appearance':
-                    alertId = 'appearanceSettingsAlert';
-                    break;
-                default:
-                    alertId = 'saveSettingsAlert';
-            }
-            
-            const alert = document.getElementById(alertId);
-            alert.classList.add('show');
-            
-            // Ocultar después de 3 segundos
-            setTimeout(() => {
-                alert.classList.remove('show');
-            }, 3000);
-        }
+    });
 
-        // Configurar los event listeners para los formularios
-        document.addEventListener('DOMContentLoaded', function() {
-            // Formulario de Configuración General
-            const generalForm = document.querySelector('#general .settings-form');
-            if (generalForm) {
-                generalForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    showSettingsAlert('general');
-                });
-            }
+    // 3. Funcionalidad para todos los botones de acción en tablas
+    document.querySelectorAll('.table-action').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const icon = this.querySelector('i');
+            const row = this.closest('tr');
             
-            // Formulario de Notificaciones
-            const notificationsForm = document.querySelector('#notifications .settings-form');
-            if (notificationsForm) {
-                notificationsForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    showSettingsAlert('notifications');
-                });
+            if (icon.classList.contains('fa-edit')) {
+                if (row.querySelector('td:nth-child(1)').textContent.includes('Lavado')) {
+                    document.getElementById('editServiceModal').classList.add('active');
+                } else {
+                    document.getElementById('editUserModal').classList.add('active');
+                }
+            } else if (icon.classList.contains('fa-trash')) {
+                if (row.querySelector('td:nth-child(1)').textContent.includes('Lavado')) {
+                    document.getElementById('deleteServiceModal').classList.add('active');
+                } else {
+                    document.getElementById('deleteUserModal').classList.add('active');
+                }
             }
-            
-            // Formulario de Apariencia
-            const appearanceForm = document.querySelector('#appearance .settings-form');
-            if (appearanceForm) {
-                appearanceForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    showSettingsAlert('appearance');
-                    
-                    // Cambiar el tema inmediatamente si se seleccionó
-                    const selectedTheme = document.querySelector('input[name="theme"]:checked').value;
-                    if (selectedTheme === 'dark') {
-                        document.body.classList.add('dark-theme');
-                    } else {
-                        document.body.classList.remove('dark-theme');
-                    }
-                });
-            }
-            
-            // Cambio de color principal
-            const colorOptions = document.querySelectorAll('input[name="color"]');
-            colorOptions.forEach(option => {
-                option.addEventListener('change', function() {
-                    if (this.checked) {
-                        document.documentElement.style.setProperty('--primary', getComputedStyle(this.nextElementSibling).backgroundColor);
-                    }
-                });
-            });
         });
+    });
+    
+    // 4. Botones "Agregar" en todas las secciones
+    document.querySelectorAll('.table-actions .btn-primary').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (this.closest('#services')) {
+                document.getElementById('addServiceModal').classList.add('active');
+            } else if (this.closest('#users')) {
+                document.getElementById('addUserModal').classList.add('active');
+            }
+        });
+    });
+    
+    // 5. Botones para cerrar modales (funciona para todos)
+    document.querySelectorAll('.modal-close, .modal-close-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.modal').classList.remove('active');
+        });
+    });
+    
+    // 6. Cerrar modal al hacer clic fuera (funciona para todos)
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+    });
+    
+    // 7. Función para mostrar alertas (común para todos)
+    const showAlert = (type = 'success', specificAlert = '') => {
+        let alert;
+        
+        if (specificAlert) {
+            alert = document.getElementById(specificAlert);
+        } else {
+            alert = type === 'success' 
+                ? document.getElementById('saveSettingsAlert')
+                : document.getElementById('deleteItemAlert');
+        }
+        
+        if (alert) {
+            alert.classList.add('show');
+            setTimeout(() => alert.classList.remove('show'), 3000);
+        }
+    };
+    
+    // 8. Guardar cambios en todos los modales
+    // Servicios
+    document.getElementById('saveService')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('addServiceModal').classList.remove('active');
+        showAlert('success', 'generalSettingsAlert');
+    });
+    
+    document.getElementById('saveServiceChanges')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('editServiceModal').classList.remove('active');
+        showAlert();
+    });
+    
+    document.getElementById('confirmDeleteService')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('deleteServiceModal').classList.remove('active');
+        showAlert('danger');
+    });
+    
+    // Usuarios
+    document.getElementById('saveUser')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('addUserModal').classList.remove('active');
+        showAlert();
+    });
+    
+    document.getElementById('saveUserChanges')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('editUserModal').classList.remove('active');
+        showAlert();
+    });
+    
+    document.getElementById('confirmDeleteUser')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('deleteUserModal').classList.remove('active');
+        showAlert('danger');
+    });
+    
+    // Notificaciones avanzadas
+    document.getElementById('saveNotificationSettings')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('notificationSettingsModal').classList.remove('active');
+        showAlert('success', 'notificationSettingsAlert');
+    });
+    
+    // Restaurar respaldo
+    document.getElementById('confirmRestore')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('restoreBackupModal').classList.remove('active');
+        showAlert();
+    });
+    
+    // 9. Configuración de cambio de contraseña
+    document.getElementById('change-password-checkbox')?.addEventListener('change', function() {
+        const passwordFields = document.querySelector('.password-fields');
+        if (passwordFields) {
+            passwordFields.style.display = this.checked ? 'flex' : 'none';
+            const inputs = passwordFields.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.required = this.checked;
+                if (!this.checked) input.value = '';
+            });
+        }
+    });
+    
+    // 10. Habilitar botón de restaurar cuando se confirma
+    document.getElementById('confirm-restore')?.addEventListener('change', function() {
+        const confirmBtn = document.getElementById('confirmRestore');
+        if (confirmBtn) confirmBtn.disabled = !this.checked;
+    });
+    
+    // 11. Manejo de envío de formularios principales
+    // Configuración General
+    document.querySelector('#general .settings-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        showAlert('success', 'generalSettingsAlert');
+    });
+    
+    // Configuración de Notificaciones
+    document.querySelector('#notifications .settings-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        showAlert('success', 'notificationSettingsAlert');
+    });
+});
     </script>
 </body>
 </html>

@@ -84,7 +84,7 @@ ul {
 }
 
 .logo-text {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.9rem;
     font-family: 'FuentePrueba', sans-serif;
 }
@@ -141,7 +141,7 @@ ul {
 
 .btn-primary {
     background-color: var(--primary);
-    color: var(--white);
+    color: var(--white);font-weight: 700;
 }
 
 .btn-primary:hover {
@@ -206,7 +206,7 @@ ul {
     padding: 0.75rem 1.5rem;
     color: var(--gray);
     transition: all 0.3s ease;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .sidebar-link:hover, 
@@ -240,6 +240,9 @@ ul {
     align-items: center;
     margin-bottom: 2rem;
 }
+.page-header h1{
+    font-weight: 500;
+}
 
 .date-filter {
     display: flex;
@@ -261,6 +264,8 @@ ul {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    font-weight: 700;
+    
 }
 
 .stat-header {
@@ -334,6 +339,7 @@ ul {
     box-shadow: var(--shadow);
     padding: 1.5rem;
     margin-bottom: 2rem;
+    font-weight: 700;
 }
 
 .half-width {
@@ -660,6 +666,5 @@ ul {
 @font-face {
     font-family: 'FuentePrueba';
     src: url('../../../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
-    font-weight: 700;
     font-style: normal;
 }

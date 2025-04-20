@@ -20,21 +20,11 @@
                     <span class="logo-text">SLUSHY</span>
                 </div>
                 
-                <nav class="main-nav">
-                    <ul class="nav-list">
-                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
-                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
-                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
-                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
-                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
-                    </ul>
-                </nav>
-                
                 <div class="header-actions">
                     <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
                     </a>
-                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
+                    <a href="../Salir/salir.html" class="btn btn-primary">Salir</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -612,7 +602,6 @@
             </div>
         </div>
     </div>
-    <!-- Alertas (agregar antes del cierre de </body>) -->
 <div class="alert-notification" id="saveEmployeeAlert">
     <div class="alert-content">
         <i class="fas fa-check-circle alert-icon"></i>
@@ -729,6 +718,48 @@
     document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
         deleteModal.classList.remove('show');
         showAlert('deleteEmployeeAlert', 'Empleado eliminado correctamente');
+    });
+    
+    // Función para filtrar empleados por estado
+    function filterEmployees(status) {
+        const rows = document.querySelectorAll('tbody tr');
+        
+        rows.forEach(row => {
+            const statusBadge = row.querySelector('.status-badge');
+            const statusText = statusBadge.textContent.toLowerCase();
+            
+            if (status === 'all' || 
+                (status === 'active' && statusText === 'activo') ||
+                (status === 'vacation' && statusText === 'vacaciones')) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    
+    // Configurar los filtros de estado
+    const chartFilters = document.querySelectorAll('.chart-filter');
+    chartFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+            // Remover clase active de todos los filtros
+            chartFilters.forEach(f => f.classList.remove('active'));
+            
+            // Agregar clase active al filtro seleccionado
+            this.classList.add('active');
+            
+            // Obtener el tipo de filtro
+            const filterType = this.textContent.toLowerCase();
+            
+            // Filtrar empleados
+            if (filterType === 'todos') {
+                filterEmployees('all');
+            } else if (filterType === 'activos') {
+                filterEmployees('active');
+            } else if (filterType === 'vacaciones') {
+                filterEmployees('vacation');
+            }
+        });
     });
     
     // Inicializar los eventos de la tabla

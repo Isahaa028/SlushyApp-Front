@@ -84,7 +84,7 @@ ul {
 }
 
 .logo-text {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.9rem;
     font-family: 'FuentePrueba', sans-serif;
 }
@@ -142,6 +142,7 @@ ul {
 .btn-primary {
     background-color: var(--primary);
     color: var(--white);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
@@ -206,7 +207,7 @@ ul {
     padding: 0.75rem 1.5rem;
     color: var(--gray);
     transition: all 0.3s ease;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .sidebar-link:hover, 
@@ -239,6 +240,11 @@ ul {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    
+}
+.page-header h1{
+    font-weight: 500;
+
 }
 
 /* Dashboard Grid */
@@ -256,6 +262,8 @@ ul {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    font-weight: 700;
+
 }
 
 .stat-header {
@@ -392,6 +400,10 @@ ul {
     padding: 1.5rem;
     margin-bottom: 2rem;
     overflow-x: auto;
+    font-weight: 700;
+    font-weight: 700;
+
+
 }
 
 .chart-header {
@@ -587,6 +599,8 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    font-weight: 700;
+
 }
 
 .client-profile-header {
@@ -755,6 +769,7 @@ ul {
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
+    font-weight: 700;
 }
 
 .modal-header {
@@ -805,7 +820,7 @@ ul {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .form-group input,
@@ -817,6 +832,7 @@ ul {
     border-radius: var(--border-radius);
     font-size: 0.875rem;
     font-family: inherit;
+    font-weight: 700;
 }
 
 .form-group textarea {
@@ -1034,6 +1050,24 @@ ul {
 .alert-danger {
     background-color: var(--danger) !important;
 }
+/* Eliminar cualquier contenido residual */
+body:after {
+    content: "";
+    display: none !important;
+}
+
+/* Ocultar elementos no deseados específicos */
+.modal-footer:empty::after,
+.client-details-container:empty::after {
+    display: none !important;
+    content: "" !important;
+}
+/* Ocultar cualquier resto de comentario */
+body::after, 
+body::before {
+    content: none !important;
+    display: none !important;
+}
 
 /* Fonts */
 @font-face {
@@ -1060,6 +1094,5 @@ ul {
 @font-face {
     font-family: 'FuentePrueba';
     src: url('../../../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
-    font-weight: 700;
     font-style: normal;
 }

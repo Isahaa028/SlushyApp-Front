@@ -19,21 +19,11 @@
                         <span class="logo-text">SLUSHY</span>
                     </div>
                     
-                    <nav class="main-nav">
-                        <ul class="nav-list">
-                            <li><a href="../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
-                            <li><a href="../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
-                            <li><a href="../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
-                            <li><a href="../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
-                            <li><a href="../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
-                        </ul>
-                    </nav>
-                    
                     <div class="header-actions">
                         <a href="../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                             <i class="fas fa-user"></i>
                         </a>
-                        <a href="../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
+                        <a href="Salir/salir.html" class="btn btn-primary">Salir</a>
                         <button class="menu-toggle" id="menuToggle">
                             <i class="fas fa-bars"></i>
                         </button>
@@ -82,7 +72,7 @@
 
         <!-- Admin Content -->
         <main class="admin-content">
-            <h1 style="margin-bottom: 2rem;">Dashboard</h1>
+            <h1 style="margin-bottom: 2rem;font-family: 'FuentePrueba'; font-weight: 500; ">Dashboard</h1>
             
             <!-- Stats Cards -->
             <div class="dashboard-grid">
@@ -456,13 +446,36 @@
                     </div>
                 </div>
 
-                <script>
-                    // Responsive sidebar toggle
-                    function toggleSidebar() {
-                        const sidebar = document.getElementById('adminSidebar');
-                        sidebar.classList.toggle('active');
-                    }
-                    
+<script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+        }
+
+        // Event listeners
+        document.getElementById('menuToggle').addEventListener('click', toggleMobileMenu);
+        document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on links
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        // Función para manejar el cambio de tamaño de pantalla
+            function handleResize() {
+                if (window.innerWidth >= 769) {
+                    closeMobileMenu();
+                }
+            }
+        // Agrega el event listener para resize
+            window.addEventListener('resize', handleResize);
+
+        // Llama a la función al cargar la página por si acaso
+            window.addEventListener('load', handleResize);
                     // Chart animation on load
                     document.addEventListener('DOMContentLoaded', function() {
                         const bars = document.querySelectorAll('.chart-bar');
@@ -473,7 +486,7 @@
                                 bar.style.height = height;
                             }, 300);
                         });
-        
+            
                         // Modal functionality
                         const modals = document.querySelectorAll('.modal');
                         const modalCloseButtons = document.querySelectorAll('.modal-close, .modal-close-btn');
@@ -486,20 +499,20 @@
                                 document.getElementById(modalId).classList.add('active');
                             });
                         });
-        
+            
                         // Open activity modal
                         document.querySelector('.recent-activity .btn-outline').addEventListener('click', function(e) {
                             e.preventDefault();
                             document.getElementById('activityModal').classList.add('active');
                         });
-        
+            
                         // Close modals
                         modalCloseButtons.forEach(btn => {
                             btn.addEventListener('click', function() {
                                 this.closest('.modal').classList.remove('active');
                             });
                         });
-        
+            
                         // Close modal when clicking outside
                         modals.forEach(modal => {
                             modal.addEventListener('click', function(e) {
@@ -508,7 +521,59 @@
                                 }
                             });
                         });
+            
+                        // Manejar los filtros de gráfico (Día, Semana, Mes)
+                        document.querySelectorAll('.chart-actions .chart-filter').forEach(filter => {
+                            filter.addEventListener('click', function() {
+                                // Remover la clase active de todos los filtros en este grupo
+                                this.parentNode.querySelectorAll('.chart-filter').forEach(item => {
+                                    item.classList.remove('active');
+                                });
+                                // Agregar la clase active al filtro clickeado
+                                this.classList.add('active');
+                                
+                                // Actualizar el gráfico según el filtro seleccionado
+                                updateChart(this.textContent.trim());
+                            });
+                        });
+            
+                        // Manejar los filtros de tabla (Todos, Completados, En Proceso)
+                        document.querySelectorAll('.table-container .chart-filter').forEach(filter => {
+                            filter.addEventListener('click', function() {
+                                // Remover la clase active de todos los filtros en este grupo
+                                this.parentNode.querySelectorAll('.chart-filter').forEach(item => {
+                                    item.classList.remove('active');
+                                });
+                                // Agregar la clase active al filtro clickeado
+                                this.classList.add('active');
+                                
+                                // Filtrar la tabla según el estado seleccionado
+                                filterTable(this.textContent.trim());
+                            });
+                        });
+            
+                        // Función para actualizar el gráfico (ejemplo)
+                        function updateChart(timeRange) {
+                            console.log('Actualizar gráfico para:', timeRange);
+                            // Aquí iría la lógica para actualizar el gráfico según el rango de tiempo
+                            // En una implementación real, podrías hacer una petición AJAX o filtrar datos locales
+                        }
+            
+                        // Función para filtrar la tabla
+                        function filterTable(status) {
+                            const rows = document.querySelectorAll('.table tbody tr');
+                            
+                            rows.forEach(row => {
+                                const rowStatus = row.querySelector('.status-badge').textContent.trim();
+                                const shouldShow = status === 'Todos' || 
+                                                 (status === 'Completados' && rowStatus === 'Completado') ||
+                                                 (status === 'En Proceso' && rowStatus === 'En Proceso');
+                                
+                                row.style.display = shouldShow ? '' : 'none';
+                            });
+                        }
                     });
+            
                     // Alerta guardado correctamente 
                     document.querySelector('#editModal .btn-primary').addEventListener('click', function(e) {
                         e.preventDefault();

@@ -19,25 +19,16 @@
                     <div class="logo-icon">G</div>
                     <span class="logo-text">SLUSHY</span>
                 </div>
-                
-                <nav class="main-nav">
-                    <ul class="nav-list">
-                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
-                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
-                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
-                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
-                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
-                    </ul>
-                </nav>
-                
+            
                 <div class="header-actions">
                     <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
                     </a>
-                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
+                    <a href="../Salir/salir.html" class="btn btn-primary">Salir</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
+                </div>
                 </div>
             </div>
         </div>
@@ -557,153 +548,707 @@
     </main>
 
     <script>
-// Responsive sidebar toggle
-document.getElementById('menuToggle').addEventListener('click', function() {
-    const sidebar = document.getElementById('adminSidebar');
-    sidebar.classList.toggle('active');
-});
-
-// Modal functionality
-const modal = document.getElementById('addReservationModal');
-const btnAddReservation = document.getElementById('btnAddReservation');
-const closeModal = document.getElementById('closeModal');
-const cancelBtn = document.getElementById('cancelBtn');
-
-btnAddReservation.addEventListener('click', function() {
-    modal.classList.add('show');
-});
-
-function closeModalFunc() {
-    modal.classList.remove('show');
-}
-
-closeModal.addEventListener('click', closeModalFunc);
-cancelBtn.addEventListener('click', closeModalFunc);
-
-// Close modal when clicking outside
-window.addEventListener('click', function(event) {
-    if (event.target === modal) {
-        closeModalFunc();
+    // Responsive sidebar toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        const sidebar = document.getElementById('adminSidebar');
+        sidebar.classList.toggle('active');
+    });
+    
+    // Modal functionality
+    const modal = document.getElementById('addReservationModal');
+    const btnAddReservation = document.getElementById('btnAddReservation');
+    const closeModal = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    
+    btnAddReservation.addEventListener('click', function() {
+        modal.classList.add('show');
+    });
+    
+    function closeModalFunc() {
+        modal.classList.remove('show');
     }
-});
-
-// Form submission
-document.getElementById('reservationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    modal.classList.remove('show');
-    showAlert('saveReservationAlert', 'Reserva creada correctamente');
-});
-
-// Modales para Ver/Editar/Cancelar
-const viewModal = document.getElementById('viewReservationModal');
-const editModal = document.getElementById('editReservationModal');
-const cancelModal = document.getElementById('cancelReservationModal');
-
-// Configurar eventos para los botones de acción
-document.querySelectorAll('.table-action[title="Ver detalles"]').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const row = this.closest('tr');
-        fillViewModal(row);
-        viewModal.classList.add('show');
+    
+    closeModal.addEventListener('click', closeModalFunc);
+    cancelBtn.addEventListener('click', closeModalFunc);
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModalFunc();
+        }
     });
-});
-
-document.querySelectorAll('.table-action[title="Editar"]').forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    
+    // Form submission
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const row = this.closest('tr');
-        fillEditModal(row);
-        editModal.classList.add('show');
+        modal.classList.remove('show');
+        showAlert('saveReservationAlert', 'Reserva creada correctamente');
     });
-});
-
-document.querySelectorAll('.table-action[title="Cancelar"]').forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    
+    // Modales para Ver/Editar/Cancelar
+    const viewModal = document.getElementById('viewReservationModal');
+    const editModal = document.getElementById('editReservationModal');
+    const cancelModal = document.getElementById('cancelReservationModal');
+    
+    // Configurar eventos para los botones de acción
+    document.querySelectorAll('.table-action[title="Ver detalles"]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            fillViewModal(row);
+            viewModal.classList.add('show');
+        });
+    });
+    
+    document.querySelectorAll('.table-action[title="Editar"]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            fillEditModal(row);
+            editModal.classList.add('show');
+        });
+    });
+    
+    document.querySelectorAll('.table-action[title="Cancelar"]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            fillCancelModal(row);
+            cancelModal.classList.add('show');
+        });
+    });
+    
+    // Cerrar modales
+    document.querySelectorAll('.modal-close').forEach(btn => {
+        btn.addEventListener('click', function() {
+            viewModal.classList.remove('show');
+            editModal.classList.remove('show');
+            cancelModal.classList.remove('show');
+        });
+    });
+    
+    // Cerrar al hacer clic fuera del modal
+    window.addEventListener('click', function(event) {
+        if (event.target === viewModal) viewModal.classList.remove('show');
+        if (event.target === editModal) editModal.classList.remove('show');
+        if (event.target === cancelModal) cancelModal.classList.remove('show');
+    });
+    
+    // Formulario de edición
+    document.getElementById('editReservationForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const row = this.closest('tr');
-        fillCancelModal(row);
-        cancelModal.classList.add('show');
-    });
-});
-
-// Cerrar modales
-document.querySelectorAll('.modal-close').forEach(btn => {
-    btn.addEventListener('click', function() {
-        viewModal.classList.remove('show');
         editModal.classList.remove('show');
+        showAlert('saveReservationAlert', 'Cambios en la reserva guardados correctamente');
+    });
+    
+    // Confirmar cancelación
+    document.getElementById('confirmCancelBtn').addEventListener('click', function() {
         cancelModal.classList.remove('show');
+        showAlert('cancelReservationAlert', 'Reserva cancelada correctamente');
+    });
+    
+    // Función para llenar el modal de vista
+    function fillViewModal(row) {
+        const cells = row.querySelectorAll('td');
+        document.getElementById('reservationId').textContent = cells[0].textContent;
+        document.getElementById('reservationClient').textContent = cells[1].textContent;
+        document.getElementById('reservationVehicle').textContent = cells[2].textContent;
+        document.getElementById('reservationService').textContent = cells[3].textContent;
+        document.getElementById('reservationDateTime').textContent = `${cells[4].textContent} - ${cells[5].textContent}`;
+        
+        // Actualizar estado
+        const statusBadge = row.querySelector('.status-badge').cloneNode(true);
+        document.querySelector('#viewReservationModal .detail-value span').replaceWith(statusBadge);
+    }
+    
+    // Función para llenar el modal de edición
+    function fillEditModal(row) {
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editReservationClient').value = cells[1].textContent.includes('María') ? '1' : 
+                                                          cells[1].textContent.includes('Juan') ? '2' : '3';
+        document.getElementById('editReservationVehicle').value = cells[2].textContent.includes('Toyota') ? '1' : 
+                                                                  cells[2].textContent.includes('Honda') ? '2' : '3';
+        document.getElementById('editReservationService').value = cells[3].textContent.includes('Premium') ? 'premium' : 
+                                                                   cells[3].textContent.includes('Básico') ? 'basic' : 'express';
+        // Notas de ejemplo
+        document.getElementById('editReservationNotes').value = 'El cliente solicita limpieza especial de tapicería.';
+    }
+    
+    // Función para llenar el modal de cancelación
+    function fillCancelModal(row) {
+        const cells = row.querySelectorAll('td');
+        document.getElementById('reservationToCancel').textContent = 
+            `${cells[0].textContent} - ${cells[1].textContent} (${cells[2].textContent})`;
+    }
+    
+    // Función para mostrar alertas
+    function showAlert(alertId, message = null) {
+        const alert = document.getElementById(alertId);
+        
+        if (message) {
+            alert.querySelector('.alert-text').textContent = message;
+        }
+        
+        alert.classList.add('show');
+        
+        setTimeout(() => {
+            alert.classList.remove('show');
+        }, 3000);
+    }
+    
+    // Inicializar vistas del calendario al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar vista día por defecto
+        document.querySelector('.calendar-day-view').style.display = 'flex';
+        document.querySelector('.btn-view').classList.add('active');
+        
+        // Crear vistas de semana y mes (ocultas inicialmente)
+        const calendarContainer = document.querySelector('.calendar-container');
+        
+        if (!document.querySelector('.calendar-week-view')) {
+            const weekView = document.createElement('div');
+            weekView.className = 'calendar-week-view';
+            calendarContainer.appendChild(weekView);
+        }
+        
+        if (!document.querySelector('.calendar-month-view')) {
+            const monthView = document.createElement('div');
+            monthView.className = 'calendar-month-view';
+            const monthGrid = document.createElement('div');
+            monthGrid.className = 'month-grid';
+            monthView.appendChild(monthGrid);
+            calendarContainer.appendChild(monthView);
+        }
+    });
+
+    // Funcionalidad para los botones de vista del calendario
+    const viewButtons = document.querySelectorAll('.btn-view');
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover la clase active de todos los botones
+            viewButtons.forEach(btn => btn.classList.remove('active'));
+            // Agregar la clase active al botón clickeado
+            this.classList.add('active');
+            
+            // Ocultar todas las vistas
+            document.querySelector('.calendar-day-view').style.display = 'none';
+            document.querySelector('.calendar-week-view').style.display = 'none';
+            document.querySelector('.calendar-month-view').style.display = 'none';
+            
+            // Mostrar la vista correspondiente
+            const viewType = this.textContent.toLowerCase();
+            if (viewType === 'día') {
+                document.querySelector('.calendar-day-view').style.display = 'flex';
+            } else if (viewType === 'semana') {
+                generateWeekView();
+                document.querySelector('.calendar-week-view').style.display = 'flex';
+            } else if (viewType === 'mes') {
+                generateMonthView();
+                document.querySelector('.calendar-month-view').style.display = 'block';
+            }
+        });
+    });
+
+    // Función para generar la vista semanal
+    function generateWeekView() {
+        const weekView = document.querySelector('.calendar-week-view');
+        if (!weekView) return;
+        
+        // Limpiar contenido existente
+        weekView.innerHTML = '';
+        
+        // Crear encabezado de días
+        const weekHeader = document.createElement('div');
+        weekHeader.className = 'week-header';
+        
+        const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const currentDate = new Date();
+        const currentDay = currentDate.getDay(); // Día actual (0-6)
+        
+        // Obtener el primer día de la semana (domingo)
+        const startDate = new Date(currentDate);
+        startDate.setDate(currentDate.getDate() - currentDay);
+        
+        // Crear encabezados de días
+        for (let i = 0; i < 7; i++) {
+            const dayDate = new Date(startDate);
+            dayDate.setDate(startDate.getDate() + i);
+            
+            const dayElement = document.createElement('div');
+            dayElement.className = 'week-day';
+            dayElement.textContent = `${days[i]} ${dayDate.getDate()}`;
+            weekHeader.appendChild(dayElement);
+        }
+        
+        weekView.appendChild(weekHeader);
+        
+        // Crear grid de la semana
+        const weekGrid = document.createElement('div');
+        weekGrid.className = 'week-grid';
+        
+        // Crear columnas para cada día
+        for (let i = 0; i < 7; i++) {
+            const dayColumn = document.createElement('div');
+            dayColumn.className = 'day-column';
+            
+            // Agregar eventos de ejemplo
+            if (i === 2) { // Miércoles
+                const event = createWeekEvent('10:00 AM', '12:00 PM', 'Lavado Premium', 'Toyota Corolla', 'María González', 'completed');
+                dayColumn.appendChild(event);
+            }
+            
+            if (i === 4) { // Viernes
+                const event = createWeekEvent('2:00 PM', '3:30 PM', 'Detallado Completo', 'Ford F-150', 'Carlos Rodríguez', 'pending');
+                dayColumn.appendChild(event);
+            }
+            
+            weekGrid.appendChild(dayColumn);
+        }
+        
+        weekView.appendChild(weekGrid);
+    }
+
+    // Función para crear un evento en la vista semanal
+    function createWeekEvent(startTime, endTime, service, vehicle, client, status) {
+        const eventContainer = document.createElement('div');
+        eventContainer.className = 'week-event';
+        eventContainer.style.top = '100px'; // Posición vertical aproximada
+        eventContainer.style.height = '80px'; // Altura basada en la duración
+        
+        const eventCard = document.createElement('div');
+        eventCard.className = `event-card status-${status}`;
+        
+        const eventTime = document.createElement('div');
+        eventTime.className = 'event-time';
+        eventTime.textContent = `${startTime} - ${endTime}`;
+        
+        const eventTitle = document.createElement('div');
+        eventTitle.className = 'event-title';
+        eventTitle.textContent = `${service} - ${vehicle}`;
+        
+        const eventClient = document.createElement('div');
+        eventClient.className = 'event-client';
+        eventClient.textContent = client;
+        
+        eventCard.appendChild(eventTime);
+        eventCard.appendChild(eventTitle);
+        eventCard.appendChild(eventClient);
+        eventContainer.appendChild(eventCard);
+        
+        return eventContainer;
+    }
+
+    // Función para generar la vista mensual
+    function generateMonthView() {
+        const monthView = document.querySelector('.calendar-month-view .month-grid');
+        if (!monthView) return;
+        
+        // Limpiar contenido existente
+        monthView.innerHTML = '';
+        
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        
+        // Obtener el primer día del mes y el último día del mes
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        
+        // Obtener el día de la semana del primer día (0-6, donde 0 es domingo)
+        const firstDayOfWeek = firstDay.getDay();
+        
+        // Obtener el número de días en el mes
+        const daysInMonth = lastDay.getDate();
+        
+        // Crear celdas vacías para los días del mes anterior
+        for (let i = 0; i < firstDayOfWeek; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.className = 'month-day empty';
+            monthView.appendChild(emptyDay);
+        }
+        
+        // Crear celdas para cada día del mes
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayCell = document.createElement('div');
+            dayCell.className = 'month-day';
+            dayCell.textContent = day;
+            
+            // Agregar eventos de ejemplo
+            if (day === 12) {
+                const event = createMonthEvent('Lavado Premium', 'Toyota Corolla', 'completed');
+                dayCell.appendChild(event);
+            }
+            
+            if (day === 15) {
+                const event = createMonthEvent('Lavado Básico', 'Honda Civic', 'in-progress');
+                dayCell.appendChild(event);
+            }
+            
+            if (day === 20) {
+                const event = createMonthEvent('Detallado', 'Ford F-150', 'pending');
+                dayCell.appendChild(event);
+            }
+            
+            monthView.appendChild(dayCell);
+        }
+        
+        // Calcular el total de celdas necesarias (siempre 42 para 6 semanas)
+        const totalCells = 42;
+        const filledCells = firstDayOfWeek + daysInMonth;
+        
+        // Agregar celdas vacías para completar la cuadrícula si es necesario
+        if (filledCells < totalCells) {
+            for (let i = filledCells; i < totalCells; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'month-day empty';
+                monthView.appendChild(emptyDay);
+            }
+        }
+    }
+
+    // Función para crear un evento en la vista mensual
+    function createMonthEvent(service, vehicle, status) {
+        const eventCard = document.createElement('div');
+        eventCard.className = `event-card status-${status}`;
+        
+        const eventTitle = document.createElement('div');
+        eventTitle.className = 'event-title';
+        eventTitle.textContent = `${service} - ${vehicle}`;
+        
+        eventCard.appendChild(eventTitle);
+        return eventCard;
+    }
+
+    // Modifica la funcionalidad de los filtros de la tabla (al final del script)
+const tableFilters = document.querySelectorAll('.chart-filter');
+tableFilters.forEach(filter => {
+    filter.addEventListener('click', function() {
+        // Remover la clase active de todos los filtros
+        tableFilters.forEach(f => f.classList.remove('active'));
+        // Agregar la clase active al filtro clickeado
+        this.classList.add('active');
+        
+        const filterType = this.textContent.toLowerCase();
+        
+        // Obtener la fecha actual y configurar rangos
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        
+        const nextWeek = new Date(today);
+        nextWeek.setDate(nextWeek.getDate() + 7);
+        
+        // Filtrar eventos en el calendario
+        const events = document.querySelectorAll('.event-container');
+        
+        events.forEach(event => {
+            // Obtener la fecha del evento (esto es un ejemplo, necesitarías adaptarlo a tu estructura real)
+            const eventDateText = event.querySelector('.event-time').textContent.split(' - ')[0];
+            const [time, period] = eventDateText.split(' ');
+            let [hours, minutes] = time.split(':').map(Number);
+            
+            if (period === 'PM' && hours < 12) hours += 12;
+            if (period === 'AM' && hours === 12) hours = 0;
+            
+            const eventDate = new Date(today);
+            eventDate.setHours(hours, minutes, 0, 0);
+            
+            let shouldShow = false;
+            
+            if (filterType === 'todas') {
+                shouldShow = true;
+            } else if (filterType === 'hoy') {
+                shouldShow = eventDate.toDateString() === today.toDateString();
+            } else if (filterType === 'mañana') {
+                shouldShow = eventDate.toDateString() === tomorrow.toDateString();
+            } else if (filterType === 'esta semana') {
+                shouldShow = eventDate >= today && eventDate <= nextWeek;
+            }
+            
+            event.style.display = shouldShow ? '' : 'none';
+        });
+        
+        // También actualizar la vista semanal o mensual si están activas
+        const activeView = document.querySelector('.btn-view.active').textContent.toLowerCase();
+        
+        if (activeView === 'semana') {
+            generateWeekView(filterType);
+        } else if (activeView === 'mes') {
+            generateMonthView(filterType);
+        }
     });
 });
 
-// Cerrar al hacer clic fuera del modal
-window.addEventListener('click', function(event) {
-    if (event.target === viewModal) viewModal.classList.remove('show');
-    if (event.target === editModal) editModal.classList.remove('show');
-    if (event.target === cancelModal) cancelModal.classList.remove('show');
-});
-
-// Formulario de edición
-document.getElementById('editReservationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    editModal.classList.remove('show');
-    showAlert('saveReservationAlert', 'Cambios en la reserva guardados correctamente');
-});
-
-// Confirmar cancelación
-document.getElementById('confirmCancelBtn').addEventListener('click', function() {
-    cancelModal.classList.remove('show');
-    showAlert('cancelReservationAlert', 'Reserva cancelada correctamente');
-});
-
-// Función para llenar el modal de vista
-function fillViewModal(row) {
-    const cells = row.querySelectorAll('td');
-    document.getElementById('reservationId').textContent = cells[0].textContent;
-    document.getElementById('reservationClient').textContent = cells[1].textContent;
-    document.getElementById('reservationVehicle').textContent = cells[2].textContent;
-    document.getElementById('reservationService').textContent = cells[3].textContent;
-    document.getElementById('reservationDateTime').textContent = `${cells[4].textContent} - ${cells[5].textContent}`;
+// Modifica la función generateWeekView para aceptar el filtro
+function generateWeekView(filterType = 'todas') {
+    const weekView = document.querySelector('.calendar-week-view');
+    if (!weekView) return;
     
-    // Actualizar estado
-    const statusBadge = row.querySelector('.status-badge').cloneNode(true);
-    document.querySelector('#viewReservationModal .detail-value span').replaceWith(statusBadge);
-}
-
-// Función para llenar el modal de edición
-function fillEditModal(row) {
-    const cells = row.querySelectorAll('td');
-    document.getElementById('editReservationClient').value = cells[1].textContent.includes('María') ? '1' : 
-                                                          cells[1].textContent.includes('Juan') ? '2' : '3';
-    document.getElementById('editReservationVehicle').value = cells[2].textContent.includes('Toyota') ? '1' : 
-                                                            cells[2].textContent.includes('Honda') ? '2' : '3';
-    document.getElementById('editReservationService').value = cells[3].textContent.includes('Premium') ? 'premium' : 
-                                                             cells[3].textContent.includes('Básico') ? 'basic' : 'express';
-    // Notas de ejemplo
-    document.getElementById('editReservationNotes').value = 'El cliente solicita limpieza especial de tapicería.';
-}
-
-// Función para llenar el modal de cancelación
-function fillCancelModal(row) {
-    const cells = row.querySelectorAll('td');
-    document.getElementById('reservationToCancel').textContent = 
-        `${cells[0].textContent} - ${cells[1].textContent} (${cells[2].textContent})`;
-}
-
-// Función para mostrar alertas
-function showAlert(alertId, message = null) {
-    const alert = document.getElementById(alertId);
+    // Limpiar contenido existente
+    weekView.innerHTML = '';
     
-    if (message) {
-        alert.querySelector('.alert-text').textContent = message;
+    // Crear encabezado de días
+    const weekHeader = document.createElement('div');
+    weekHeader.className = 'week-header';
+    
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const currentDate = new Date();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    const nextWeek = new Date(today);
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    
+    // Obtener el primer día de la semana (domingo)
+    const startDate = new Date(currentDate);
+    startDate.setDate(currentDate.getDate() - currentDate.getDay());
+    
+    // Crear encabezados de días
+    for (let i = 0; i < 7; i++) {
+        const dayDate = new Date(startDate);
+        dayDate.setDate(startDate.getDate() + i);
+        
+        const dayElement = document.createElement('div');
+        dayElement.className = 'week-day';
+        dayElement.textContent = `${days[i]} ${dayDate.getDate()}`;
+        
+        // Resaltar el día actual
+        if (dayDate.toDateString() === today.toDateString()) {
+            dayElement.style.fontWeight = 'bold';
+            dayElement.style.color = 'var(--primary)';
+        }
+        
+        weekHeader.appendChild(dayElement);
     }
     
-    alert.classList.add('show');
+    weekView.appendChild(weekHeader);
     
-    setTimeout(() => {
-        alert.classList.remove('show');
-    }, 3000);
+    // Crear grid de la semana
+    const weekGrid = document.createElement('div');
+    weekGrid.className = 'week-grid';
+    
+    // Crear columnas para cada día
+    for (let i = 0; i < 7; i++) {
+        const dayColumn = document.createElement('div');
+        dayColumn.className = 'day-column';
+        
+        const dayDate = new Date(startDate);
+        dayDate.setDate(startDate.getDate() + i);
+        
+        // Agregar eventos de ejemplo filtrados
+        if (shouldShowEvent(filterType, dayDate, today, tomorrow, nextWeek)) {
+            // Eventos para el miércoles (ejemplo)
+            if (i === 3) { // Miércoles
+                const event = createWeekEvent('10:00 AM', '12:00 PM', 'Lavado Premium', 'Toyota Corolla', 'María González', 'completed');
+                dayColumn.appendChild(event);
+            }
+            
+            // Eventos para el viernes (ejemplo)
+            if (i === 5) { // Viernes
+                const event = createWeekEvent('2:00 PM', '3:30 PM', 'Detallado Completo', 'Ford F-150', 'Carlos Rodríguez', 'pending');
+                dayColumn.appendChild(event);
+            }
+        }
+        
+        weekGrid.appendChild(dayColumn);
+    }
+    
+    weekView.appendChild(weekGrid);
 }
-    </script>
+
+// Modifica la función generateMonthView para aceptar el filtro
+function generateMonthView(filterType = 'todas') {
+    const monthView = document.querySelector('.calendar-month-view .month-grid');
+    if (!monthView) return;
+    
+    // Limpiar contenido existente
+    monthView.innerHTML = '';
+    
+    const currentDate = new Date();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    const nextWeek = new Date(today);
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Obtener el primer día del mes y el último día del mes
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    
+    // Obtener el día de la semana del primer día (0-6, donde 0 es domingo)
+    const firstDayOfWeek = firstDay.getDay();
+    
+    // Obtener el número de días en el mes
+    const daysInMonth = lastDay.getDate();
+    
+    // Crear celdas vacías para los días del mes anterior
+    for (let i = 0; i < firstDayOfWeek; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'month-day empty';
+        monthView.appendChild(emptyDay);
+    }
+    
+    // Crear celdas para cada día del mes
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'month-day';
+        dayCell.textContent = day;
+        
+        const dayDate = new Date(year, month, day);
+        
+        // Resaltar el día actual
+        if (dayDate.toDateString() === today.toDateString()) {
+            dayCell.style.fontWeight = 'bold';
+            dayCell.style.border = '2px solid var(--primary)';
+        }
+        
+        // Agregar eventos de ejemplo filtrados
+        if (shouldShowEvent(filterType, dayDate, today, tomorrow, nextWeek)) {
+            if (day === today.getDate()) {
+                const event = createMonthEvent('Lavado Premium', 'Toyota Corolla', 'completed');
+                dayCell.appendChild(event);
+            }
+            
+            if (day === tomorrow.getDate()) {
+                const event = createMonthEvent('Lavado Básico', 'Honda Civic', 'in-progress');
+                dayCell.appendChild(event);
+            }
+            
+            if (day > today.getDate() && day <= nextWeek.getDate()) {
+                const event = createMonthEvent('Detallado', 'Ford F-150', 'pending');
+                dayCell.appendChild(event);
+            }
+        }
+        
+        monthView.appendChild(dayCell);
+    }
+    
+    // Calcular el total de celdas necesarias (siempre 42 para 6 semanas)
+    const totalCells = 42;
+    const filledCells = firstDayOfWeek + daysInMonth;
+    
+    // Agregar celdas vacías para completar la cuadrícula si es necesario
+    if (filledCells < totalCells) {
+        for (let i = filledCells; i < totalCells; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.className = 'month-day empty';
+            monthView.appendChild(emptyDay);
+        }
+    }
+}
+
+// Función auxiliar para determinar si un evento debe mostrarse según el filtro
+function shouldShowEvent(filterType, eventDate, today, tomorrow, nextWeek) {
+    if (filterType === 'todas') return true;
+    if (filterType === 'hoy') return eventDate.toDateString() === today.toDateString();
+    if (filterType === 'mañana') return eventDate.toDateString() === tomorrow.toDateString();
+    if (filterType === 'esta semana') return eventDate >= today && eventDate <= nextWeek;
+    return true;
+}
+    
+    // Navegación del calendario (mes anterior/siguiente)
+    document.querySelector('.calendar-nav button:first-child').addEventListener('click', function() {
+        const monthElement = document.querySelector('.calendar-nav h2');
+        const currentMonth = monthElement.textContent.split(' ')[0];
+        const currentYear = parseInt(monthElement.textContent.split(' ')[1]);
+        
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+                       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        
+        let newMonthIndex = months.indexOf(currentMonth) - 1;
+        let newYear = currentYear;
+        
+        if (newMonthIndex < 0) {
+            newMonthIndex = 11;
+            newYear--;
+        }
+        
+        monthElement.textContent = `${months[newMonthIndex]} ${newYear}`;
+        
+        // Regenerar vista si estamos en modo mes
+        if (document.querySelector('.btn-view.active').textContent.toLowerCase() === 'mes') {
+            generateMonthView();
+        }
+    });
+    
+    document.querySelector('.calendar-nav button:last-child').addEventListener('click', function() {
+        const monthElement = document.querySelector('.calendar-nav h2');
+        const currentMonth = monthElement.textContent.split(' ')[0];
+        const currentYear = parseInt(monthElement.textContent.split(' ')[1]);
+        
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+                       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        
+        let newMonthIndex = months.indexOf(currentMonth) + 1;
+        let newYear = currentYear;
+        
+        if (newMonthIndex > 11) {
+            newMonthIndex = 0;
+            newYear++;
+        }
+        
+        monthElement.textContent = `${months[newMonthIndex]} ${newYear}`;
+        
+        // Regenerar vista si estamos en modo mes
+        if (document.querySelector('.btn-view.active').textContent.toLowerCase() === 'mes') {
+            generateMonthView();
+        }
+    });
+    
+    // Filtros de búsqueda y selección
+    document.querySelector('.search-box input').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const rows = document.querySelectorAll('.table tbody tr');
+        
+        rows.forEach(row => {
+            const rowText = row.textContent.toLowerCase();
+            row.style.display = rowText.includes(searchTerm) ? '' : 'none';
+        });
+    });
+    
+    document.getElementById('filterService').addEventListener('change', function() {
+        filterTable();
+    });
+    
+    document.getElementById('filterStatus').addEventListener('change', function() {
+        filterTable();
+    });
+    
+    function filterTable() {
+        const serviceFilter = document.getElementById('filterService').value;
+        const statusFilter = document.getElementById('filterStatus').value;
+        const rows = document.querySelectorAll('.table tbody tr');
+        
+        rows.forEach(row => {
+            const service = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+            const status = row.querySelector('.status-badge').textContent.toLowerCase();
+            
+            const serviceMatch = !serviceFilter || 
+                               (serviceFilter === 'premium' && service.includes('premium')) ||
+                               (serviceFilter === 'basic' && service.includes('básico')) ||
+                               (serviceFilter === 'express' && service.includes('exprés')) ||
+                               (serviceFilter === 'detail' && service.includes('detallado'));
+            
+            const statusMatch = !statusFilter || 
+                              (statusFilter === 'pending' && status.includes('pendiente')) ||
+                              (statusFilter === 'in-progress' && status.includes('proceso')) ||
+                              (statusFilter === 'completed' && status.includes('completado')) ||
+                              (statusFilter === 'cancelled' && status.includes('cancelado'));
+            
+            row.style.display = serviceMatch && statusMatch ? '' : 'none';
+        });
+    }
+</script>
 </body>
 </html>

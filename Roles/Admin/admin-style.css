@@ -85,7 +85,7 @@ ul {
 }
 
 .logo-text {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.9rem;
     font-family: 'FuentePrueba' , sans-serif;
 }
@@ -192,6 +192,8 @@ ul {
     background-color: transparent;
     border: 1px solid var(--primary);
     color: var(--primary);
+    font-weight:700;
+
 }
 
 .btn-outline:hover {
@@ -225,11 +227,13 @@ ul {
     padding: 1.5rem 0;
     overflow-y: auto;
     z-index: 40;
+    font-weight: 500;
     font-family: 'FuentePrueba', sans-serif;
     a {
         color: #0f172a;
         font-size: 20px;
     }
+    
     
 }
 
@@ -237,6 +241,7 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 1.0rem;
+    
 }
 
 .sidebar-link {
@@ -283,6 +288,7 @@ ul {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    font-weight: 700;
 }
 
 .stat-header {
@@ -375,6 +381,8 @@ ul {
 .chart-actions {
     display: flex;
     gap: 0.5rem;
+    font-weight: 700;
+
 }
 
 .chart-filter {
@@ -448,6 +456,8 @@ ul {
 .table {
     width: 100%;
     border-collapse: collapse;
+    font-weight:600;
+
 }
 
 .table th, 
@@ -549,6 +559,8 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    font-weight: 600;
+
 }
 
 .activity-item {
@@ -770,6 +782,25 @@ ul {
 .alert-text {
     font-weight: 500;
 }
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
+    }
+    
+    .mobile-menu.active {
+        display: none !important;
+    }
+    
+    /* Esto asegura que el menú no sea visible en desktop */
+    .menu-toggle {
+        display: none;
+    }
+    
+    /* Restaura la navegación principal */
+    .main-nav {
+        display: flex;
+    }
+}
 /* Fonts */
 @font-face {
     font-family: 'Dunkin';
@@ -793,6 +824,5 @@ ul {
 @font-face {
     font-family: 'FuentePrueba';
     src: url('../../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
-    font-weight: 700;
     font-style: normal;
 }

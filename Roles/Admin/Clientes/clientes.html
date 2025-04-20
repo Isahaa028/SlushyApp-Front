@@ -19,22 +19,11 @@
                     <div class="logo-icon">G</div>
                     <span class="logo-text">SLUSHY</span>
                 </div>
-                
-                <nav class="main-nav">
-                    <ul class="nav-list">
-                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
-                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
-                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
-                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
-                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
-                    </ul>
-                </nav>
-                
                 <div class="header-actions">
                     <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
                     </a>
-                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
+                    <a href="../Salir/salir.html" class="btn btn-primary">Salir</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -394,9 +383,6 @@
             <div class="chart-header">
                 <h2 class="chart-title">Historial de Servicios - María González</h2>
                 <div class="chart-actions">
-                    <button class="btn btn-outline">
-                        <i class="fas fa-download"></i> Exportar
-                    </button>
                 </div>
             </div>
             
@@ -705,7 +691,6 @@
         </div>
     </div>
 </div>
-<!-- Alertas (agregar antes del cierre de </body>) -->
 <div class="alert-notification" id="saveAlert">
     <div class="alert-content">
         <i class="fas fa-check-circle alert-icon"></i>
@@ -892,6 +877,51 @@ document.addEventListener('DOMContentLoaded', function() {
             alert.classList.remove('show');
         }, 3000);
     }
+});
+// Filtrado de clientes
+document.querySelectorAll('.chart-filter').forEach(filter => {
+    filter.addEventListener('click', function() {
+        // Remover clase active de todos los filtros
+        document.querySelectorAll('.chart-filter').forEach(f => f.classList.remove('active'));
+        // Agregar clase active al filtro seleccionado
+        this.classList.add('active');
+        
+        const filterType = this.getAttribute('data-filter');
+        const rows = document.querySelectorAll('.table tbody tr');
+        
+        rows.forEach(row => {
+            switch(filterType) {
+                case 'all':
+                    row.style.display = '';
+                    break;
+                case 'vip':
+                    if (row.querySelector('.membership-badge.vip')) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                    break;
+                case 'recurrent':
+                    // Mostrar solo clientes con más de un vehículo
+                    const vehicleCount = row.querySelector('.vehicle-count');
+                    if (vehicleCount && parseInt(vehicleCount.textContent.replace('+', '')) > 0) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                    break;
+                    case 'new':
+                    // Mostrar solo los últimos IDs (ejemplo)
+                    const id = parseInt(row.cells[0].textContent.replace('#C-', ''));
+                    if (id >= 1005) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                    break;
+            }
+        });
+    });
 });
     </script>
 </body>

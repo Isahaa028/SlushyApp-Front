@@ -20,21 +20,11 @@
                     <span class="logo-text">SLUSHY</span>
                 </div>
                 
-                <nav class="main-nav">
-                    <ul class="nav-list">
-                        <li><a href="../../../Publico/Index/index.html" class="nav-link">Inicio</a></li>
-                        <li><a href="../../../Publico/Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
-                        <li><a href="../../../Publico/Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
-                        <li><a href="../../../Publico/Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
-                        <li><a href="../../../Publico/Contacto/contacto.html" class="nav-link">Contacto</a></li>
-                    </ul>
-                </nav>
-                
                 <div class="header-actions">
                     <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
                         <i class="fas fa-user"></i>
                     </a>
-                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn btn-primary">Reservar Ahora</a>
+                    <a href="../Salir/salir.html" class="btn btn-primary">Salir</a>
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -86,15 +76,7 @@
         <div class="page-header">
             <h1>Reportes y Análisis</h1>
             <div class="date-filter">
-                <button class="btn btn-outline">
-                    <i class="fas fa-calendar"></i>
-                    <span>Abril 2025</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <button class="btn btn-primary">
-                    <i class="fas fa-download"></i>
-                    <span>Exportar</span>
-                </button>
+        
             </div>
         </div>
         
@@ -500,10 +482,125 @@
     </main>
 
     <script>
-        // Responsive sidebar toggle
+        // 1. Toggle del sidebar responsive
         document.getElementById('menuToggle').addEventListener('click', function() {
             const sidebar = document.getElementById('adminSidebar');
             sidebar.classList.toggle('active');
+        });
+    
+        // 2. Función para inicializar el date picker
+        function initDatePicker() {
+            const dateFilterBtn = document.querySelector('.date-filter .btn-outline');
+            
+            if (dateFilterBtn) {
+                dateFilterBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Crear input de tipo month (selector nativo)
+                    const input = document.createElement('input');
+                    input.type = 'month';
+                    input.value = '2025-04'; // Valor inicial (Abril 2025)
+                    
+                    // Mostrar el date picker
+                    input.click();
+                    
+                    // Manejar cambio de fecha
+                    input.addEventListener('change', function() {
+                        if (this.value) {
+                            const [year, month] = this.value.split('-');
+                            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                                              "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                            const monthName = monthNames[parseInt(month) - 1];
+                            
+                            // Actualizar texto del botón
+                            dateFilterBtn.querySelector('span').textContent = `${monthName} ${year}`;
+                            
+                            // Actualizar reportes
+                            updateReportsByDate(year, month);
+                        }
+                    });
+                });
+            }
+        }
+    
+        // 3. Función para manejar los filtros de período
+        function setupPeriodFilters() {
+            // Seleccionar todos los grupos de filtros
+            const filterGroups = document.querySelectorAll('.chart-actions');
+            
+            filterGroups.forEach(group => {
+                const filters = group.querySelectorAll('.chart-filter');
+                
+                filters.forEach(filter => {
+                    filter.addEventListener('click', function() {
+                        // Remover clase active de todos los filtros en este grupo
+                        filters.forEach(f => f.classList.remove('active'));
+                        
+                        // Agregar clase active al filtro clickeado
+                        this.classList.add('active');
+                        
+                        // Actualizar los reportes según el filtro
+                        updateReportsByPeriod(this.textContent.trim(), group);
+                    });
+                });
+            });
+        }
+    
+        // 4. Función para actualizar reportes por fecha (simulada)
+        function updateReportsByDate(year, month) {
+            console.log(`Actualizando reportes para: ${month}/${year}`);
+            // Aquí iría tu lógica real para actualizar los datos
+            
+            // Ejemplo de actualización visual (simulada)
+            document.querySelectorAll('.stat-value').forEach(stat => {
+                const randomChange = Math.floor(Math.random() * 5) + 1;
+                const currentValue = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+                
+                if (stat.textContent.includes('$')) {
+                    stat.textContent = `$${(currentValue + randomChange * 100).toLocaleString()}`;
+                } else if (stat.textContent.includes('min')) {
+                    stat.textContent = `${currentValue + randomChange} min`;
+                } else {
+                    stat.textContent = currentValue + randomChange;
+                }
+            });
+        }
+    
+        // 5. Función para actualizar reportes por período (simulada)
+        function updateReportsByPeriod(period, filterGroup) {
+            console.log(`Filtro seleccionado: ${period}`);
+            
+            // Determinar qué sección se está filtrando
+            const sectionTitle = filterGroup.closest('.chart-container, .table-container')
+                                .querySelector('.chart-title').textContent;
+            
+            console.log(`Sección afectada: ${sectionTitle}`);
+            
+            // Aquí iría tu lógica real para actualizar los datos según el período
+            // Esta es solo una simulación visual
+            if (sectionTitle.includes('Ingresos Mensuales')) {
+                // Simular cambio en el gráfico de barras
+                document.querySelectorAll('.chart-bar').forEach(bar => {
+                    const randomHeight = Math.floor(Math.random() * 30) + 50;
+                    bar.style.height = `${randomHeight}%`;
+                    
+                    // Actualizar valores (simulado)
+                    const valueElement = bar.querySelector('.chart-bar-value');
+                    if (valueElement) {
+                        const currentValue = parseInt(valueElement.textContent.replace(/[^0-9]/g, ''));
+                        valueElement.textContent = `$${(currentValue + Math.floor(Math.random() * 1000)).toLocaleString()}`;
+                    }
+                });
+            }
+        }
+    
+        // 6. Inicialización cuando el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            initDatePicker();
+            setupPeriodFilters();
+            
+            // Mostrar mensaje de consola para verificar que el script se cargó
+            console.log('Script de reportes cargado correctamente');
         });
     </script>
 </body>
