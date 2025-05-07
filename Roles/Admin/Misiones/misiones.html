@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Misiones - Slushy App</title>
+    <link rel="stylesheet" href="misiones-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <span class="logo-text">SLUSHY</span>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="../../../Publico/Iniciar-Sesion/iniciar-sesion.html" class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="../Salir/salir.html" class="btn btn-primary">Salir</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="../admin.html" class="mobile-nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="../Vehiculos/vehiculos.html" class="mobile-nav-link"><i class="fas fa-car"></i> Vehículos</a></li>
+                    <li><a href="misiones.html" class="mobile-nav-link"><i class="fas fa-trophy"></i> Misiones</a></li>
+                    <li><a href="../Clientes/clientes.html" class="mobile-nav-link"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="../Empleados/empleados.html" class="mobile-nav-link"><i class="fas fa-user-tie"></i> Empleados</a></li>
+                    <li><a href="../Reservas/reservas.html" class="mobile-nav-link"><i class="fas fa-calendar-alt"></i> Reservas</a></li>
+                    <li><a href="../Reportes/reportes.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i> Reportes</a></li>
+                    <li><a href="../Configuracion/configuracion.html" class="mobile-nav-link"><i class="fas fa-cog"></i> Configuración</a></li>
+                    <li><a href="../Salir/salir.html" class="mobile-nav-link"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <nav class="sidebar-menu">
+            <a href="../admin.html" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="../Vehiculos/vehiculos.html" class="sidebar-link">
+                <i class="fas fa-car"></i>
+                <span>Vehículos</span>
+            </a>
+            <a href="../Clientes/clientes.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="misiones.html" class="sidebar-link active">
+                <i class="fas fa-trophy"></i>
+                <span>Misiones a</span>
+            </a>
+            <a href="../Empleados/empleados.html" class="sidebar-link">
+                <i class="fas fa-user-tie"></i>
+                <span>Empleados</span>
+            </a>
+            <a href="../Reservas/reservas.html" class="sidebar-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Reservas</span>
+            </a>
+            <a href="../Reportes/reportes.html" class="sidebar-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="../Configuracion/configuracion.html" class="sidebar-link">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="../Salir/salir.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Content -->
+    <main class="admin-content">
+        <div class="page-header">
+            <h1>Gestión de Misiones</h1>
+            <button class="btn btn-primary" id="btnAddMision">
+                <i class="fas fa-plus"></i> Crear Misión
+            </button>
+        </div>
+        
+        <!-- Filters and Search -->
+        <div class="filters-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar misión...">
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filterReward">Recompensa:</label>
+                    <select id="filterReward" class="filter-select">
+                        <option value="">Todas</option>
+                        <option value="sp">Puntos SP</option>
+                        <option value="discount">Descuentos</option>
+                        <option value="premium">Servicios Premium</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filterStatus">Estado:</label>
+                    <select id="filterStatus" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="active">Activa</option>
+                        <option value="inactive">Inactiva</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-outline">
+                    <i class="fas fa-filter"></i> Filtrar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mission Stats -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Misiones</div>
+                    <div class="stat-icon primary">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+                <div class="stat-value">24</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend-up"></i>
+                    <span>4 más que el mes pasado</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Misiones Activas</div>
+                    <div class="stat-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value">18</div>
+                <div class="stat-description">
+                    <span>75% del total</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Completadas (Mes)</div>
+                    <div class="stat-icon warning">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="stat-value">342</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend-up"></i>
+                    <span>15% más que el mes anterior</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">SP Entregados</div>
+                    <div class="stat-icon info">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                </div>
+                <div class="stat-value">5,280</div>
+                <div class="stat-description">
+                    <span>Este mes</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Missions Preview -->
+        <div class="missions-preview-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Vista Previa de Misiones</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todas</div>
+                    <div class="chart-filter">Activas</div>
+                    <div class="chart-filter">Inactivas</div>
+                </div>
+            </div>
+            
+            <div class="missions-grid">
+                <!-- Misión 1 -->
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <h3 class="mission-title">Lavar tu auto 3 veces</h3>
+                        <div class="mission-reward">10 SP</div>
+                    </div>
+                    <p class="mission-description">Completa 3 lavados en nuestro centro</p>
+                    <div class="mission-progress-container">
+                        <div class="mission-progress-label">
+                            <span>Progreso</span>
+                            <span class="mission-progress-value">Meta: 3</span>
+                        </div>
+                        <div class="mission-progress-bar">
+                            <div class="mission-progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="mission-status active">Activa</div>
+                    <div class="mission-actions">
+                        <button class="btn-icon mission-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon mission-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                        <button class="btn-icon mission-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Misión 2 -->
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <h3 class="mission-title">Referir a 1 amigo</h3>
+                        <div class="mission-reward">20 SP + 10% descuento</div>
+                    </div>
+                    <p class="mission-description">Invita a un amigo a usar Slushy App</p>
+                    <div class="mission-progress-container">
+                        <div class="mission-progress-label">
+                            <span>Progreso</span>
+                            <span class="mission-progress-value">Meta: 1</span>
+                        </div>
+                        <div class="mission-progress-bar">
+                            <div class="mission-progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="mission-status active">Activa</div>
+                    <div class="mission-actions">
+                        <button class="btn-icon mission-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon mission-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                        <button class="btn-icon mission-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Misión 3 -->
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <h3 class="mission-title">Suscribirte a VIP</h3>
+                        <div class="mission-reward">200 SP + 1 lavado premium</div>
+                    </div>
+                    <p class="mission-description">Conviértete en miembro VIP</p>
+                    <div class="mission-progress-container">
+                        <div class="mission-progress-label">
+                            <span>Progreso</span>
+                            <span class="mission-progress-value">Meta: 1</span>
+                        </div>
+                        <div class="mission-progress-bar">
+                            <div class="mission-progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="mission-status active">Activa</div>
+                    <div class="mission-actions">
+                        <button class="btn-icon mission-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon mission-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                        <button class="btn-icon mission-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Misión 4 -->
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <h3 class="mission-title">Usar la app por primera vez</h3>
+                        <div class="mission-reward">10 SP</div>
+                    </div>
+                    <p class="mission-description">Completa tu primer servicio con la app</p>
+                    <div class="mission-progress-container">
+                        <div class="mission-progress-label">
+                            <span>Progreso</span>
+                            <span class="mission-progress-value">Meta: 1</span>
+                        </div>
+                        <div class="mission-progress-bar">
+                            <div class="mission-progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="mission-status active">Activa</div>
+                    <div class="mission-actions">
+                        <button class="btn-icon mission-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon mission-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                        <button class="btn-icon mission-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Misión 5 -->
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <h3 class="mission-title">Completar 5 servicios</h3>
+                        <div class="mission-reward">50 SP</div>
+                    </div>
+                    <p class="mission-description">Realiza 5 servicios en nuestro centro</p>
+                    <div class="mission-progress-container">
+                        <div class="mission-progress-label">
+                            <span>Progreso</span>
+                            <span class="mission-progress-value">Meta: 5</span>
+                        </div>
+                        <div class="mission-progress-bar">
+                            <div class="mission-progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="mission-status inactive">Inactiva</div>
+                    <div class="mission-actions">
+                        <button class="btn-icon mission-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon mission-action toggle-mission" title="Activar"><i class="fas fa-power-off"></i></button>
+                        <button class="btn-icon mission-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Misión 6 -->
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <h3 class="mission-title">Calificar el servicio</h3>
+                        <div class="mission-reward">5 SP</div>
+                    </div>
+                    <p class="mission-description">Deja una reseña después de tu servicio</p>
+                    <div class="mission-progress-container">
+                        <div class="mission-progress-label">
+                            <span>Progreso</span>
+                            <span class="mission-progress-value">Meta: 1</span>
+                        </div>
+                        <div class="mission-progress-bar">
+                            <div class="mission-progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="mission-status active">Activa</div>
+                    <div class="mission-actions">
+                        <button class="btn-icon mission-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon mission-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                        <button class="btn-icon mission-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Missions Table -->
+        <div class="table-container">
+            <div class="chart-header">
+                <h2 class="chart-title">Lista de Misiones</h2>
+                <div class="chart-actions">
+                    <div class="chart-filter active">Todas</div>
+                    <div class="chart-filter">Activas</div>
+                    <div class="chart-filter">Inactivas</div>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Recompensa</th>
+                        <th>Meta</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#M-001</td>
+                        <td>Lavar tu auto 3 veces</td>
+                        <td>Completa 3 lavados en nuestro centro</td>
+                        <td>10 SP</td>
+                        <td>3</td>
+                        <td><span class="status-badge status-completed">Activa</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="table-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                                <button class="table-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                                <button class="table-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#M-002</td>
+                        <td>Referir a 1 amigo</td>
+                        <td>Invita a un amigo a usar Slushy App</td>
+                        <td>20 SP + 10% descuento</td>
+                        <td>1</td>
+                        <td><span class="status-badge status-completed">Activa</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="table-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                                <button class="table-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                                <button class="table-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#M-003</td>
+                        <td>Suscribirte a VIP</td>
+                        <td>Conviértete en miembro VIP</td>
+                        <td>200 SP + 1 lavado premium</td>
+                        <td>1</td>
+                        <td><span class="status-badge status-completed">Activa</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="table-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                                <button class="table-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                                <button class="table-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#M-004</td>
+                        <td>Usar la app por primera vez</td>
+                        <td>Completa tu primer servicio con la app</td>
+                        <td>10 SP</td>
+                        <td>1</td>
+                        <td><span class="status-badge status-completed">Activa</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="table-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                                <button class="table-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                                <button class="table-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#M-005</td>
+                        <td>Completar 5 servicios</td>
+                        <td>Realiza 5 servicios en nuestro centro</td>
+                        <td>50 SP</td>
+                        <td>5</td>
+                        <td><span class="status-badge status-pending">Inactiva</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="table-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                                <button class="table-action toggle-mission" title="Activar"><i class="fas fa-power-off"></i></button>
+                                <button class="table-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#M-006</td>
+                        <td>Calificar el servicio</td>
+                        <td>Deja una reseña después de tu servicio</td>
+                        <td>5 SP</td>
+                        <td>1</td>
+                        <td><span class="status-badge status-completed">Activa</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="table-action edit-mission" title="Editar"><i class="fas fa-edit"></i></button>
+                                <button class="table-action toggle-mission" title="Desactivar"><i class="fas fa-power-off"></i></button>
+                                <button class="table-action delete-mission" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <span class="pagination-ellipsis">...</span>
+                <button class="pagination-btn">10</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Add Mission Modal -->
+        <div class="modal" id="addMisionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Crear Nueva Misión</h2>
+                    <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="misionForm">
+                        <div class="form-group">
+                            <label for="titulo">Título de la Misión</label>
+                            <input type="text" id="titulo" name="titulo" placeholder="Ej: Lavar tu auto 3 veces" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="descripcion">Descripción</label>
+                            <textarea id="descripcion" name="descripcion" placeholder="Ej: Completa 3 lavados en nuestro centro" rows="2"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="recompensaTipo">Tipo de Recompensa</label>
+                                <select id="recompensaTipo" name="recompensaTipo" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="sp">Puntos SP</option>
+                                    <option value="sp_discount">Puntos SP + Descuento</option>
+                                    <option value="sp_service">Puntos SP + Servicio</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="recompensaValor">Valor de Puntos SP</label>
+                                <input type="number" id="recompensaValor" name="recompensaValor" placeholder="Ej: 10" min="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row" id="recompensaAdicional" style="display: none;">
+                            <div class="form-group">
+                                <label for="recompensaAdicionalTipo">Tipo Adicional</label>
+                                <select id="recompensaAdicionalTipo" name="recompensaAdicionalTipo">
+                                    <option value="discount">Descuento (%)</option>
+                                    <option value="service">Servicio Premium</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="recompensaAdicionalValor">Valor Adicional</label>
+                                <input type="text" id="recompensaAdicionalValor" name="recompensaAdicionalValor" placeholder="Ej: 10 o nombre del servicio">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="metaTipo">Tipo de Meta</label>
+                                <select id="metaTipo" name="metaTipo" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="services">Número de Servicios</option>
+                                    <option value="referrals">Referidos</option>
+                                    <option value="subscription">Suscripción</option>
+                                    <option value="app_usage">Uso de App</option>
+                                    <option value="reviews">Reseñas</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="metaValor">Valor de Meta</label>
+                                <input type="number" id="metaValor" name="metaValor" placeholder="Ej: 3" min="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select id="estado" name="estado" required>
+                                <option value="active">Activa</option>
+                                <option value="inactive">Inactiva</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelBtn">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Misión</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Mission Modal -->
+        <div class="modal" id="editMisionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Editar Misión</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="modal-form">
+                        <div class="form-group">
+                            <label for="edit-titulo" class="modal-label">Título de la Misión</label>
+                            <input type="text" id="edit-titulo" class="form-control" value="Lavar tu auto 3 veces">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-descripcion" class="modal-label">Descripción</label>
+                            <textarea id="edit-descripcion" class="form-control" rows="2">Completa 3 lavados en nuestro centro</textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-recompensaTipo" class="modal-label">Tipo de Recompensa</label>
+                                <select id="edit-recompensaTipo" class="form-control">
+                                    <option value="sp" selected>Puntos SP</option>
+                                    <option value="sp_discount">Puntos SP + Descuento</option>
+                                    <option value="sp_service">Puntos SP + Servicio</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-recompensaValor" class="modal-label">Valor de Puntos SP</label>
+                                <input type="number" id="edit-recompensaValor" class="form-control" value="10" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row" id="edit-recompensaAdicional" style="display: none;">
+                            <div class="form-group">
+                                <label for="edit-recompensaAdicionalTipo" class="modal-label">Tipo Adicional</label>
+                                <select id="edit-recompensaAdicionalTipo" class="form-control">
+                                    <option value="discount">Descuento (%)</option>
+                                    <option value="service">Servicio Premium</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-recompensaAdicionalValor" class="modal-label">Valor Adicional</label>
+                                <input type="text" id="edit-recompensaAdicionalValor" class="form-control" placeholder="Ej: 10 o nombre del servicio">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-metaTipo" class="modal-label">Tipo de Meta</label>
+                                <select id="edit-metaTipo" class="form-control">
+                                    <option value="services" selected>Número de Servicios</option>
+                                    <option value="referrals">Referidos</option>
+                                    <option value="subscription">Suscripción</option>
+                                    <option value="app_usage">Uso de App</option>
+                                    <option value="reviews">Reseñas</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-metaValor" class="modal-label">Valor de Meta</label>
+                                <input type="number" id="edit-metaValor" class="form-control" value="3" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-estado" class="modal-label">Estado</label>
+                            <select id="edit-estado" class="form-control">
+                                <option value="active" selected>Activa</option>
+                                <option value="inactive">Inactiva</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline modal-close-btn">Cancelar</button>
+                    <button class="btn btn-primary" id="saveMisionChanges">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Mission Modal -->
+        <div class="modal" id="deleteMisionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Eliminar Misión</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro que deseas eliminar esta misión? Esta acción no se puede deshacer.</p>
+                    <div class="mision-to-delete">
+                        <strong>Misión:</strong> <span id="delete-mission-name">Lavar tu auto 3 veces (10 SP)</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline modal-close-btn">Cancelar</button>
+                    <button class="btn btn-primary" id="eliminarMision">Eliminar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerta de guardado -->
+        <div class="alert-notification" id="saveMisionAlert">
+            <div class="alert-content">
+                <i class="fas fa-check-circle alert-icon"></i>
+                <span class="alert-text">Los cambios se guardaron correctamente</span>
+            </div>
+        </div>
+        
+        <!-- Alerta de eliminación -->
+        <div class="alert-notification alert-danger" id="deleteMisionAlert">
+            <div class="alert-content">
+                <i class="fas fa-trash-alt alert-icon"></i>
+                <span class="alert-text">Misión eliminada correctamente</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile Menu Functions
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+        }
+
+        // Event listeners
+        menuToggle.addEventListener('click', toggleMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Función para manejar el cambio de tamaño de pantalla
+        function handleResize() {
+            if (window.innerWidth >= 769) {
+                closeMobileMenu();
+            }
+        }
+
+        // Agrega el event listener para resize
+        window.addEventListener('resize', handleResize);
+
+        // Llama a la función al cargar la página
+        window.addEventListener('load', handleResize);
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal para Agregar Misión
+            const addModal = document.getElementById('addMisionModal');
+            const editModal = document.getElementById('editMisionModal');
+            const deleteModal = document.getElementById('deleteMisionModal');
+            const btnAddMision = document.getElementById('btnAddMision');
+            const closeModal = document.getElementById('closeModal');
+            const cancelBtn = document.getElementById('cancelBtn');
+            
+            // Función para mostrar alerta
+            function showAlert(alertId) {
+                const alert = document.getElementById(alertId);
+                alert.classList.add('show');
+                
+                // Ocultar después de 3 segundos
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Función para cerrar todos los modales
+            function closeAllModals() {
+                addModal.classList.remove('active');
+                editModal.classList.remove('active');
+                deleteModal.classList.remove('active');
+            }
+            
+            // Abrir modal de agregar misión
+            btnAddMision.addEventListener('click', function() {
+                addModal.classList.add('active');
+            });
+            
+            // Cerrar modal de agregar misión
+            closeModal.addEventListener('click', closeAllModals);
+            cancelBtn.addEventListener('click', closeAllModals);
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === addModal || event.target === editModal || event.target === deleteModal) {
+                    closeAllModals();
+                }
+            });
+            
+            // Mostrar/ocultar campos adicionales según el tipo de recompensa
+            const recompensaTipo = document.getElementById('recompensaTipo');
+            const recompensaAdicional = document.getElementById('recompensaAdicional');
+            
+            recompensaTipo.addEventListener('change', function() {
+                if (this.value === 'sp_discount' || this.value === 'sp_service') {
+                    recompensaAdicional.style.display = 'flex';
+                    
+                    // Actualizar el label según el tipo seleccionado
+                    const recompensaAdicionalTipo = document.getElementById('recompensaAdicionalTipo');
+                    if (this.value === 'sp_discount') {
+                        recompensaAdicionalTipo.value = 'discount';
+                    } else {
+                        recompensaAdicionalTipo.value = 'service';
+                    }
+                } else {
+                    recompensaAdicional.style.display = 'none';
+                }
+            });
+            
+            // Mismo comportamiento para el formulario de edición
+            const editRecompensaTipo = document.getElementById('edit-recompensaTipo');
+            const editRecompensaAdicional = document.getElementById('edit-recompensaAdicional');
+            
+            if (editRecompensaTipo) {
+                editRecompensaTipo.addEventListener('change', function() {
+                    if (this.value === 'sp_discount' || this.value === 'sp_service') {
+                        editRecompensaAdicional.style.display = 'flex';
+                        
+                        // Actualizar el label según el tipo seleccionado
+                        const editRecompensaAdicionalTipo = document.getElementById('edit-recompensaAdicionalTipo');
+                        if (this.value === 'sp_discount') {
+                            editRecompensaAdicionalTipo.value = 'discount';
+                        } else {
+                            editRecompensaAdicionalTipo.value = 'service';
+                        }
+                    } else {
+                        editRecompensaAdicional.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Form submission (prevent default for demo)
+            document.getElementById('misionForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                closeAllModals();
+                
+                // Mostrar alerta de guardado
+                showAlert('saveMisionAlert');
+            });
+            
+            // Botones de editar misión
+            document.querySelectorAll('.edit-mission').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    editModal.classList.add('active');
+                });
+            });
+            
+            // Botones de eliminar misión
+            document.querySelectorAll('.delete-mission').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Obtener el nombre de la misión para mostrar en el modal
+                    let missionName = "Misión";
+                    const card = this.closest('.mission-card');
+                    if (card) {
+                        const title = card.querySelector('.mission-title');
+                        const reward = card.querySelector('.mission-reward');
+                        if (title && reward) {
+                            missionName = `${title.textContent} (${reward.textContent})`;
+                        }
+                    } else {
+                        const row = this.closest('tr');
+                        if (row) {
+                            const title = row.cells[1].textContent;
+                            const reward = row.cells[3].textContent;
+                            missionName = `${title} (${reward})`;
+                        }
+                    }
+                    
+                    // Actualizar el texto en el modal
+                    document.getElementById('delete-mission-name').textContent = missionName;
+                    
+                    // Mostrar el modal
+                    deleteModal.classList.add('active');
+                });
+            });
+            
+            // Botones de activar/desactivar misión
+            document.querySelectorAll('.toggle-mission').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Cambiar el estado de la misión (para demo)
+                    const card = this.closest('.mission-card');
+                    if (card) {
+                        const statusElement = card.querySelector('.mission-status');
+                        if (statusElement) {
+                            if (statusElement.classList.contains('active')) {
+                                statusElement.classList.remove('active');
+                                statusElement.classList.add('inactive');
+                                statusElement.textContent = 'Inactiva';
+                                this.title = 'Activar';
+                            } else {
+                                statusElement.classList.remove('inactive');
+                                statusElement.classList.add('active');
+                                statusElement.textContent = 'Activa';
+                                this.title = 'Desactivar';
+                            }
+                        }
+                    }
+                    
+                    // Mostrar alerta de guardado
+                    showAlert('saveMisionAlert');
+                });
+            });
+            
+            // Cerrar modales
+            document.querySelectorAll('.modal-close, .modal-close-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    closeAllModals();
+                });
+            });
+            
+            // Mostrar alerta al guardar cambios
+            document.getElementById('saveMisionChanges').addEventListener('click', function(e) {
+                e.preventDefault();
+                closeAllModals();
+                
+                // Mostrar alerta
+                showAlert('saveMisionAlert');
+            });
+            
+            // Mostrar alerta al eliminar
+            document.getElementById('eliminarMision').addEventListener('click', function(e) {
+                e.preventDefault();
+                closeAllModals();
+                
+                // Mostrar alerta
+                showAlert('deleteMisionAlert');
+            });
+            
+            // Código para los filtros de estado
+            const filterAll = document.querySelector('.chart-filter:nth-child(1)');
+            const filterActive = document.querySelector('.chart-filter:nth-child(2)');
+            const filterInactive = document.querySelector('.chart-filter:nth-child(3)');
+            
+            // Filtros para la tabla
+            const tableRows = document.querySelectorAll('.table tbody tr');
+            
+            // Función para aplicar filtro a la tabla
+            function applyTableFilter(status) {
+                tableRows.forEach(row => {
+                    const statusCell = row.querySelector('.status-badge');
+                    if (status === 'all') {
+                        row.style.display = '';
+                    } else if (status === 'active' && statusCell.classList.contains('status-completed')) {
+                        row.style.display = '';
+                    } else if (status === 'inactive' && statusCell.classList.contains('status-pending')) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Filtros para las tarjetas de misión
+            const missionCards = document.querySelectorAll('.mission-card');
+            
+            // Función para aplicar filtro a las tarjetas
+            function applyCardFilter(status) {
+                missionCards.forEach(card => {
+                    const statusElement = card.querySelector('.mission-status');
+                    if (status === 'all') {
+                        card.style.display = '';
+                    } else if (status === 'active' && statusElement.classList.contains('active')) {
+                        card.style.display = '';
+                    } else if (status === 'inactive' && statusElement.classList.contains('inactive')) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Event listeners para los filtros de la tabla
+            document.querySelectorAll('.table-container .chart-filter').forEach((filter, index) => {
+                filter.addEventListener('click', function() {
+                    document.querySelectorAll('.table-container .chart-filter').forEach(f => {
+                        f.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    if (index === 0) applyTableFilter('all');
+                    else if (index === 1) applyTableFilter('active');
+                    else if (index === 2) applyTableFilter('inactive');
+                });
+            });
+            
+            // Event listeners para los filtros de las tarjetas
+            document.querySelectorAll('.missions-preview-container .chart-filter').forEach((filter, index) => {
+                filter.addEventListener('click', function() {
+                    document.querySelectorAll('.missions-preview-container .chart-filter').forEach(f => {
+                        f.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    if (index === 0) applyCardFilter('all');
+                    else if (index === 1) applyCardFilter('active');
+                    else if (index === 2) applyCardFilter('inactive');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
