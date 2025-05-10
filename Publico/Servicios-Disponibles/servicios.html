@@ -14,8 +14,7 @@
     <div class="container">
         <div class="header-content">
             <div class="logo">
-                <div class="logo-icon">G</div>
-                <span class="logo-text">SLUSHY</span>
+                <img src="../../imgs/logoletras.png" alt="Slushy App" class="logo-img">
             </div>
             
             <nav class="main-nav">
@@ -44,13 +43,18 @@
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-content">
-        <ul class="mobile-nav-list">
-            <li><a href="../Index/index.html" class="nav-link">Inicio</a></li>
-            <li><a href="../Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
-            <li><a href="../Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
-            <li><a href="../Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
-            <li><a href="../Contacto/contacto.html" class="nav-link">Contacto</a></li>
-        </ul>
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-container">
+            <ul class="mobile-nav-list">
+                <li><a href="../Index/index.html" class="nav-link">Inicio</a></li>
+                <li><a href="../Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                <li><a href="../Membresias/vip.html" class="nav-link">Membresía VIP</a></li>
+                <li><a href="../Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                <li><a href="../Contacto/contacto.html" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -374,8 +378,7 @@
                 <div class="footer-grid">
                     <div class="footer-about">
                         <div class="logo">
-                            <div class="logo-icon">G</div>
-                            <span class="logo-text">SLUSHY</span>
+                            <img src="../../imgs/logoletras.png" alt="Slushy App" class="logo-img">
                         </div>
                         <p class="footer-description">
                             La mejor aplicación para el cuidado de tu vehículo. Reserva citas, monitorea el progreso y disfruta de beneficios exclusivos.
@@ -423,21 +426,80 @@
         </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.toggle('active');
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+    });
+    
+    closeMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileLinks = document.querySelectorAll('.mobile-nav-list .nav-link');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+    });
+    
+    // Close mobile menu when window is resized to desktop size
+    function handleResize() {
+        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+        }
+    }
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Update current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Highlight current page in navigation
+    function highlightCurrentPage() {
+        // Get current page path
+        const currentPath = window.location.pathname;
+        
+        // Find all navigation links
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-list .nav-link');
+        
+        // Check each link to see if it matches the current path
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (currentPath.includes('servicios') && href.includes('servicios')) {
+                link.classList.add('active');
+            }
         });
         
-        // Close mobile menu when clicking on a link
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobileMenu').classList.remove('active');
-            });
+        // Do the same for mobile links
+        mobileNavLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (currentPath.includes('servicios') && href.includes('servicios')) {
+                link.classList.add('active');
+            }
         });
-        
-        // Update current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+    }
+    
+    // Run the function when the page loads
+    highlightCurrentPage();
+    
+    // Reinicia la animación al cambiar de página
+function resetActiveAnimation() {
+    const activeLinks = document.querySelectorAll('.nav-link.active');
+    activeLinks.forEach(link => {
+        link.style.animation = 'none';
+        void link.offsetWidth; // Trigger reflow
+        link.style.animation = null;
+    });
+}
+
+// Ejecutar cuando se cargue la página
+window.addEventListener('load', resetActiveAnimation);
+</script>
 </body>
 </html>
