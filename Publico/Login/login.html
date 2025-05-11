@@ -4,205 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Slushy App</title>
-    <link rel="stylesheet" href="loginstyles.css">
+    <link rel="stylesheet" href="login-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
 </head>
 <body>
- <!-- Header -->
- <header class="header">
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">G</div>
-                <span class="logo-text">Slushy</span>
-            </div>
-            
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="#" class="nav-link">Servicios</a></li>
-                    <li><a href="vip.html" class="nav-link">Membresía VIP</a></li>
-                    <li><a href="recompensas.html" class="nav-link">Recompensas</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <button class="btn-icon">
-                    <i class="fas fa-user"></i>
-                </button>
-                <a href="reservar.html" class="btn btn-primary">Reservar Ahora</a>
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="../../imgs/logoletras.png" alt="Slushy App" class="logo-img">
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../Index/index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="../Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                        <li><a href="../Membresias/membresias.html" class="nav-link">Membresía VIP</a></li>
+                        <li><a href="../Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                        <li><a href="../Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <a href="../Login/login.html" class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="../Login/login.html" class="btn btn-primary">Ingresa</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
-            <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link">Inicio</a></li>
-                <li><a href="servicios.html" class="mobile-nav-link">Servicios</a></li>
-                <li><a href="vip.html" class="mobile-nav-link">Membresía VIP</a></li>
-                <li><a href="recompensas.html" class="mobile-nav-link">Recompensas</a></li>
-                <li><a href="contacto.html" class="mobile-nav-link">Contacto</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Iniciar Sesión</a></li>
-            </ul>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mobile-menu-container">
+                <ul class="mobile-nav-list">
+                    <li><a href="../Index/index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="../Servicios-Disponibles/servicios.html" class="nav-link">Servicios</a></li>
+                    <li><a href="../Membresias/membresias.html" class="nav-link">Membresía VIP</a></li>
+                    <li><a href="../Recompensas/recompensas.html" class="nav-link">Recompensas</a></li>
+                    <li><a href="../Contacto/contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <!-- Login Section -->
-    <section class="login-section">
-        <div class="login-container">
-            <div class="login-header">
-                <h1 class="login-title">Accede a Slushy App</h1>
-                <p class="login-description">
-                    Selecciona el tipo de cuenta con el que deseas iniciar sesión para acceder a todas las funcionalidades disponibles.
-                </p>
-            </div>
-            
-            <div class="login-options">
-                <!-- Opción de Cliente -->
-                <div class="login-card">
-                    <div class="login-card-header">
-                        <div class="login-card-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h2 class="login-card-title">Cliente</h2>
-                        <p class="login-card-subtitle">Acceso para usuarios</p>
-                    </div>
-                    <div class="login-card-content">
-                        <p class="login-card-description">
-                            Accede a tu cuenta para reservar servicios, ver tu historial y acumular recompensas.
-                        </p>
-                        <ul class="login-card-features">
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Reserva servicios</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Seguimiento en tiempo real</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Sistema de recompensas</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Historial de servicios</span>
-                            </li>
-                        </ul>
-                        <a href="iniciar-sesion.html" class="btn btn-primary btn-block">Acceder como Cliente</a>
-                    </div>
-                </div>
-                
-                <!-- Opción de Administrador -->
-                <div class="login-card">
-                    <div class="login-card-header">
-                        <div class="login-card-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h2 class="login-card-title">Administrador</h2>
-                        <p class="login-card-subtitle">Acceso para gestión</p>
-                    </div>
-                    <div class="login-card-content">
-                        <p class="login-card-description">
-                            Panel de control con todas las herramientas para administrar el negocio.
-                        </p>
-                        <ul class="login-card-features">
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Gestión de servicios</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Reportes y estadísticas</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Administración de usuarios</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Configuración del sistema</span>
-                            </li>
-                        </ul>
-                        <a href="iniciar-sesion.html" class="btn btn-primary btn-block">Acceder como Admin</a>
-                    </div>
-                </div>
-                
-                <!-- Opción de Empleado -->
-                <div class="login-card">
-                    <div class="login-card-header">
-                        <div class="login-card-icon">
-                            <i class="fas fa-hard-hat"></i>
-                        </div>
-                        <h2 class="login-card-title">Empleado</h2>
-                        <p class="login-card-subtitle">Acceso operativo</p>
-                    </div>
-                    <div class="login-card-content">
-                        <p class="login-card-description">
-                            Gestiona tus tareas, actualiza el estado de los servicios y registra tu actividad.
-                        </p>
-                        <ul class="login-card-features">
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Lista de tareas asignadas</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Actualización de estado</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Registro de actividades</span>
-                            </li>
-                            <li class="login-card-feature">
-                                <div class="login-card-feature-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <span>Historial de servicios</span>
-                            </li>
-                        </ul>
-                        <a href="iniciar-sesion.html" class="btn btn-primary btn-block">Acceder como Empleado</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <p style="color: var(--white); margin-bottom: 1rem;">¿No tienes una cuenta?</p>
-                <a href="#" class="btn btn-light">Registrarse</a>
-            </div>
+    <!-- Main con el nuevo fondo premium -->
+    <main class="auth-main">
+        <!-- Elementos del fondo -->
+        <div class="auth-background">
+            <div class="auth-water-effect"></div>
+            <div class="auth-car-silhouettes"></div>
+            <div class="auth-light-reflections"></div>
         </div>
-    </section>
+        
+        <!-- Contenido del formulario (se mantiene igual) -->
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="auth-header">
+                        <h1 class="section-title">Accede a tu cuenta</h1>
+                        <p class="section-description">Ingresa tus credenciales para Loguearte en tu cuenta de Slushy</p>
+                    </div>
+
+                    <form class="auth-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" id="email" class="form-input" placeholder="tucorreo@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" id="password" class="form-input" placeholder="Ingresa Tu Contraseña" required>
+                        </div>
+
+                        <div class="form-group remember-forgot">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="remember" class="form-checkbox">
+                                <label for="remember">Recordar sesión</label>
+                            </div>
+                            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Iniciar Sesión</button>
+
+                        <div class="auth-divider">
+                            <span>o continúa con</span>
+                        </div>
+
+                        <div class="social-auth">
+                            <button type="button" class="btn btn-outline btn-block">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                            <button type="button" class="btn btn-outline btn-block">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </button>
+                        </div>
+
+                        <div class="auth-footer">
+                            ¿No tienes una cuenta? <a href="/registerSlushy" class="auth-link">Regístrate aquí</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -210,39 +125,32 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <div class="logo">
-                        <div class="logo-icon">G</div>
-                        <span class="logo-text">Slushy</span>
+                        <img src="../../imgs/logoletras.png" alt="Slushy App" class="logo-img">
                     </div>
                     <p class="footer-description">
                         La mejor aplicación para el cuidado de tu vehículo. Reserva citas, monitorea el progreso y disfruta de beneficios exclusivos.
                     </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
                 </div>
                 
                 <div class="footer-links">
                     <h3 class="footer-title">Enlaces Rápidos</h3>
                     <ul class="footer-nav">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="servicios.html" class="footer-link">Nuestros Servicios</a></li>
-                        <li><a href="vip.html" class="footer-link">Membresía VIP</a></li>
-                        <li><a href="recompensas.html" class="footer-link">Sistema de Recompensas</a></li>
-                        <li><a href="contacto.html" class="footer-link">Contacto</a></li>
+                        <li><a href="../../Publico/Index/index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="../../Publico/Servicios-Disponibles/servicios.html" class="footer-link">Nuestros Servicios</a></li>
+                        <li><a href="../../Publico/Membresias/membresias.html" class="footer-link">Membresía VIP</a></li>
+                        <li><a href="../../Publico/Recompensas/recompensas.html" class="footer-link">Sistema de Recompensas</a></li>
+                        <li><a href="../../Publico/Contacto/contacto.html" class="footer-link">Contacto</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-services">
                     <h3 class="footer-title">Servicios</h3>
                     <ul class="footer-nav">
-                        <li><a href="servicios.html" class="footer-link">Lavado Básico</a></li>
-                        <li><a href="servicios.html" class="footer-link">Lavado Premium</a></li>
-                        <li><a href="servicios.html" class="footer-link">Lavado Deluxe</a></li>
-                        <li><a href="servicios.html" class="footer-link">Lavado Exprés</a></li>
-                        <li><a href="servicios.html" class="footer-link">Encerado</a></li>
+                        <li><a href="../../Publico/Servicios-Disponibles/servicios.html" class="footer-link">Lavado Básico</a></li>
+                        <li><a href="../../Publico/Servicios-Disponibles/servicios.html" class="footer-link">Lavado Premium</a></li>
+                        <li><a href="../../Publico/Servicios-Disponibles/servicios.html" class="footer-link">Lavado Deluxe</a></li>
+                        <li><a href="../../Publico/Servicios-Disponibles/servicios.html#adicionales" class="footer-link">Adicionales</a></li>
+                        <li><a href="../../Publico/Servicios-Disponibles/servicios.html#premium" class="footer-link">Servicios Premium</a></li>
                     </ul>
                 </div>
                 
@@ -266,21 +174,108 @@
 
     <script>
         // Mobile Menu Toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.toggle('active');
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
         });
         
         // Close mobile menu when clicking on a link
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-list .nav-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
-                document.getElementById('mobileMenu').classList.remove('active');
+                mobileMenu.classList.remove('active');
             });
         });
         
+        // Close mobile menu when window is resized to desktop size
+        function handleResize() {
+            if (window.innerWidth >= 1024 && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+            }
+        }
+        window.addEventListener('resize', handleResize);
+        
         // Update current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Highlight current page in navigation
+        function highlightCurrentPage() {
+            // Get current page path
+            const currentPath = window.location.pathname;
+            
+            // Find all navigation links
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-list .nav-link');
+            
+            // Check each link to see if it matches the current path
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (currentPath.includes('iniciar-sesion') && href.includes('iniciar-sesion')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Do the same for mobile links
+            mobileNavLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (currentPath.includes('iniciar-sesion') && href.includes('iniciar-sesion')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Run the function when the page loads
+        highlightCurrentPage();
+    </script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+          event.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          try {
+            const response = await fetch("/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+              credentials: "include" // 🔥 Esto es CLAVE para que reciba la cookie
+            });
+
+            if (!response.ok) {
+              const error = await response.text();
+              alert("Error: " + error);
+              return;
+            }
+
+            const data = await response.json();
+
+            switch (data.rol) {
+              case "ADMIN":
+                window.location.href = "/admin/dashboard";
+                break;
+              case "EMPLOYEE":
+                window.location.href = "/employee/dashboard";
+                break;
+              case "USER":
+                window.location.href = "/user/dashboard";
+                break;
+              default:
+                alert("Rol desconocido");
+            }
+
+          } catch (error) {
+            console.error("Error en login:", error);
+            alert("Ocurrió un error al iniciar sesión");
+          }
+        });
     </script>
 </body>
 </html>
-
